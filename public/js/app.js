@@ -5634,6 +5634,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -13366,7 +13371,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nbody {\n  background: #dcdcdc;\n}\n.total-like-user-main a {\n  display: inline-block;\n  margin: 0 -17px 0 0;\n}\n.total-like {\n  border: 1px solid;\n  border-radius: 50px;\n  display: inline-block;\n  font-weight: 500;\n  height: 34px;\n  line-height: 33px;\n  padding: 0 13px;\n  vertical-align: top;\n}\n.restaurant-detailed-ratings-and-reviews hr {\n  margin: 0 -24px;\n}\n.graph-star-rating-header .star-rating {\n  font-size: 17px;\n}\n.progress {\n  background: #f2f4f8 none repeat scroll 0 0;\n  border-radius: 0;\n  height: 30px;\n}\n.rating-list {\n  display: inline-flex;\n  margin-bottom: 15px;\n  width: 100%;\n}\n.rating-list-left {\n  height: 16px;\n  line-height: 29px;\n  width: 10%;\n}\n.rating-list-center {\n  width: 80%;\n}\n.rating-list-right {\n  line-height: 29px;\n  text-align: right;\n  width: 10%;\n}\n.restaurant-slider-pics {\n  bottom: 0;\n  font-size: 12px;\n  left: 0;\n  z-index: 999;\n  padding: 0 10px;\n}\n.restaurant-slider-view-all {\n  bottom: 15px;\n  right: 15px;\n  z-index: 999;\n}\n.offer-dedicated-nav .nav-link.active,\n.offer-dedicated-nav .nav-link:hover,\n.offer-dedicated-nav .nav-link:focus {\n  border-color: #3868fb;\n  color: #3868fb;\n}\n.offer-dedicated-nav .nav-link {\n  border-bottom: 2px solid #fff;\n  color: #000000;\n  padding: 16px 0;\n  font-weight: 600;\n}\n.offer-dedicated-nav .nav-item {\n  margin: 0 37px 0 0;\n}\n.restaurant-detailed-action-btn {\n  margin-top: 12px;\n}\n.restaurant-detailed-header-right .btn-success {\n  border-radius: 3px;\n  height: 45px;\n  margin: -18px 0 18px;\n  min-width: 130px;\n  padding: 7px;\n}\n.text-black {\n  color: #000000;\n}\n.icon-overlap {\n  bottom: -23px;\n  font-size: 74px;\n  opacity: 0.23;\n  position: absolute;\n  right: -32px;\n}\n.menu-list img {\n  width: 41px;\n  height: 41px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.restaurant-detailed-header-left img {\n  width: 88px;\n  height: 88px;\n  border-radius: 3px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n}\n.reviews-members .media .mr-3 {\n  width: 56px;\n  height: 56px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.rounded-pill {\n  border-radius: 50rem !important;\n}\n.total-like-user {\n  border: 2px solid #fff;\n  height: 34px;\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n  width: 34px;\n}\n.total-like-user-main a {\n  display: inline-block;\n  margin: 0 -17px 0 0;\n}\n.total-like {\n  border: 1px solid;\n  border-radius: 50px;\n  display: inline-block;\n  font-weight: 500;\n  height: 34px;\n  line-height: 33px;\n  padding: 0 13px;\n  vertical-align: top;\n}\n.restaurant-detailed-ratings-and-reviews hr {\n  margin: 0 -24px;\n}\n.graph-star-rating-header .star-rating {\n  font-size: 17px;\n}\n.progress {\n  background: #f2f4f8 none repeat scroll 0 0;\n  border-radius: 0;\n  height: 30px;\n}\n.rating-list {\n  display: inline-flex;\n  margin-bottom: 15px;\n  width: 100%;\n}\n.rating-list-left {\n  height: 16px;\n  line-height: 29px;\n  width: 10%;\n}\n.rating-list-center {\n  width: 80%;\n}\n.rating-list-right {\n  line-height: 29px;\n  text-align: right;\n  width: 10%;\n}\n.restaurant-slider-pics {\n  bottom: 0;\n  font-size: 12px;\n  left: 0;\n  z-index: 999;\n  padding: 0 10px;\n}\n.restaurant-slider-view-all {\n  bottom: 15px;\n  right: 15px;\n  z-index: 999;\n}\n.progress {\n  background: #f2f4f8 none repeat scroll 0 0;\n  border-radius: 0;\n  height: 30px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nbody {\r\n  background: #dcdcdc;\n}\n.total-like-user-main a {\r\n  display: inline-block;\r\n  margin: 0 -17px 0 0;\n}\n.total-like {\r\n  border: 1px solid;\r\n  border-radius: 50px;\r\n  display: inline-block;\r\n  font-weight: 500;\r\n  height: 34px;\r\n  line-height: 33px;\r\n  padding: 0 13px;\r\n  vertical-align: top;\n}\n.restaurant-detailed-ratings-and-reviews hr {\r\n  margin: 0 -24px;\n}\n.graph-star-rating-header .star-rating {\r\n  font-size: 17px;\n}\n.progress {\r\n  background: #f2f4f8 none repeat scroll 0 0;\r\n  border-radius: 0;\r\n  height: 30px;\n}\n.rating-list {\r\n  display: inline-flex;\r\n  margin-bottom: 15px;\r\n  width: 100%;\n}\n.rating-list-left {\r\n  height: 16px;\r\n  line-height: 29px;\r\n  width: 10%;\n}\n.rating-list-center {\r\n  width: 80%;\n}\n.rating-list-right {\r\n  line-height: 29px;\r\n  text-align: right;\r\n  width: 10%;\n}\n.restaurant-slider-pics {\r\n  bottom: 0;\r\n  font-size: 12px;\r\n  left: 0;\r\n  z-index: 999;\r\n  padding: 0 10px;\n}\n.restaurant-slider-view-all {\r\n  bottom: 15px;\r\n  right: 15px;\r\n  z-index: 999;\n}\n.offer-dedicated-nav .nav-link.active,\r\n.offer-dedicated-nav .nav-link:hover,\r\n.offer-dedicated-nav .nav-link:focus {\r\n  border-color: #3868fb;\r\n  color: #3868fb;\n}\n.offer-dedicated-nav .nav-link {\r\n  border-bottom: 2px solid #fff;\r\n  color: #000000;\r\n  padding: 16px 0;\r\n  font-weight: 600;\n}\n.offer-dedicated-nav .nav-item {\r\n  margin: 0 37px 0 0;\n}\n.restaurant-detailed-action-btn {\r\n  margin-top: 12px;\n}\n.restaurant-detailed-header-right .btn-success {\r\n  border-radius: 3px;\r\n  height: 45px;\r\n  margin: -18px 0 18px;\r\n  min-width: 130px;\r\n  padding: 7px;\n}\n.text-black {\r\n  color: #000000;\n}\n.icon-overlap {\r\n  bottom: -23px;\r\n  font-size: 74px;\r\n  opacity: 0.23;\r\n  position: absolute;\r\n  right: -32px;\n}\n.menu-list img {\r\n  width: 41px;\r\n  height: 41px;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\n}\n.restaurant-detailed-header-left img {\r\n  width: 88px;\r\n  height: 88px;\r\n  border-radius: 3px;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n}\n.reviews-members .media .mr-3 {\r\n  width: 56px;\r\n  height: 56px;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\n}\n.rounded-pill {\r\n  border-radius: 50rem !important;\n}\n.total-like-user {\r\n  border: 2px solid #fff;\r\n  height: 34px;\r\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\r\n  width: 34px;\n}\n.total-like-user-main a {\r\n  display: inline-block;\r\n  margin: 0 -17px 0 0;\n}\n.total-like {\r\n  border: 1px solid;\r\n  border-radius: 50px;\r\n  display: inline-block;\r\n  font-weight: 500;\r\n  height: 34px;\r\n  line-height: 33px;\r\n  padding: 0 13px;\r\n  vertical-align: top;\n}\n.restaurant-detailed-ratings-and-reviews hr {\r\n  margin: 0 -24px;\n}\n.graph-star-rating-header .star-rating {\r\n  font-size: 17px;\n}\n.progress {\r\n  background: #f2f4f8 none repeat scroll 0 0;\r\n  border-radius: 0;\r\n  height: 30px;\n}\n.rating-list {\r\n  display: inline-flex;\r\n  margin-bottom: 15px;\r\n  width: 100%;\n}\n.rating-list-left {\r\n  height: 16px;\r\n  line-height: 29px;\r\n  width: 10%;\n}\n.rating-list-center {\r\n  width: 80%;\n}\n.rating-list-right {\r\n  line-height: 29px;\r\n  text-align: right;\r\n  width: 10%;\n}\n.restaurant-slider-pics {\r\n  bottom: 0;\r\n  font-size: 12px;\r\n  left: 0;\r\n  z-index: 999;\r\n  padding: 0 10px;\n}\n.restaurant-slider-view-all {\r\n  bottom: 15px;\r\n  right: 15px;\r\n  z-index: 999;\n}\n.progress {\r\n  background: #f2f4f8 none repeat scroll 0 0;\r\n  border-radius: 0;\r\n  height: 30px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -58415,7 +58420,7 @@ var render = function () {
                                 staticClass: "btn btn-primary",
                                 attrs: { href: "#" },
                               },
-                              [_vm._v("หยิบใส่ตะกร้า")]
+                              [_vm._v("เลือกสินค้า")]
                             ),
                           ]),
                         ]),
@@ -58489,8 +58494,8 @@ var staticRenderFns = [
               _c("img", {
                 staticClass: "d-block w-100",
                 attrs: {
-                  src: "https://img.freepik.com/free-photo/multiple-colored-balls-yarn-top-view_1268-17322.jpg?size=626&ext=jpg",
-                  height: "400px",
+                  src: "https://st4.depositphotos.com/36458286/38379/i/450/depositphotos_383791554-stock-photo-string-bag-process-knitting-turquoise.jpg",
+                  height: "530px",
                   alt: "...",
                 },
               }),
@@ -58510,8 +58515,8 @@ var staticRenderFns = [
               _c("img", {
                 staticClass: "d-block w-100",
                 attrs: {
-                  src: "https://st4.depositphotos.com/36458286/38379/i/450/depositphotos_383791554-stock-photo-string-bag-process-knitting-turquoise.jpg",
-                  height: "400px",
+                  src: "https://img.freepik.com/free-photo/multiple-colored-balls-yarn-top-view_1268-17322.jpg?size=626&ext=jpg",
+                  height: "530px",
                   alt: "...",
                 },
               }),
@@ -58532,7 +58537,7 @@ var staticRenderFns = [
                 staticClass: "d-block w-100",
                 attrs: {
                   src: "https://wallpaperaccess.com/full/2135518.jpg",
-                  height: "400px",
+                  height: "530px",
                   alt: "...",
                 },
               }),
@@ -58716,7 +58721,7 @@ var staticRenderFns = [
                 _c(
                   "a",
                   { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                  [_vm._v("หยิบใส่ตะกร้า")]
+                  [_vm._v("เลือกสินค้า")]
                 ),
               ]),
             ]),
@@ -58763,7 +58768,7 @@ var staticRenderFns = [
                 _c(
                   "a",
                   { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                  [_vm._v("หยิบใส่ตะกร้า")]
+                  [_vm._v("เลือกสินค้า")]
                 ),
               ]),
             ]),
@@ -75900,7 +75905,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\\Knit-Bag"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\xampp\\\\htdocs\\\\Knit-Bag","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\xampp\\\\htdocs\\\\knit-bag"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\xampp\\\\htdocs\\\\knit-bag","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

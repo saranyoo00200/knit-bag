@@ -32,8 +32,8 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="https://img.freepik.com/free-photo/multiple-colored-balls-yarn-top-view_1268-17322.jpg?size=626&ext=jpg"
-              height="400px"
+              src="https://st4.depositphotos.com/36458286/38379/i/450/depositphotos_383791554-stock-photo-string-bag-process-knitting-turquoise.jpg"
+              height="530px"
               class="d-block w-100"
               alt="..."
             />
@@ -46,8 +46,8 @@
           </div>
           <div class="carousel-item">
             <img
-              src="https://st4.depositphotos.com/36458286/38379/i/450/depositphotos_383791554-stock-photo-string-bag-process-knitting-turquoise.jpg"
-              height="400px"
+              src="https://img.freepik.com/free-photo/multiple-colored-balls-yarn-top-view_1268-17322.jpg?size=626&ext=jpg"
+              height="530px"
               class="d-block w-100"
               alt="..."
             />
@@ -61,7 +61,7 @@
           <div class="carousel-item">
             <img
               src="https://wallpaperaccess.com/full/2135518.jpg"
-              height="400px"
+              height="530px"
               class="d-block w-100"
               alt="..."
             />
@@ -157,14 +157,19 @@
                 class="col-md-4 mb-3"
               >
                 <div class="card">
-                  <img :src="data.Pimage" height="400px" class="card-img-top w-100" alt="..." />
+                  <img
+                    :src="data.Pimage"
+                    height="400px"
+                    class="card-img-top w-100"
+                    alt="..."
+                  />
                   <div class="card-body">
                     <h5 class="card-title">{{ data.Pname }}</h5>
                     <p
                       class="card-text"
                       :inner-html.prop="data.Pdetail | truncate(70)"
                     ></p>
-                    <a href="#" class="btn btn-primary">หยิบใส่ตะกร้า</a>
+                    <a href="#" class="btn btn-primary">เลือกสินค้า</a>
                   </div>
                 </div>
               </div>
@@ -190,7 +195,7 @@
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">หยิบใส่ตะกร้า</a>
+                    <a href="#" class="btn btn-primary">เลือกสินค้า</a>
                   </div>
                 </div>
               </div>
@@ -216,7 +221,7 @@
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">หยิบใส่ตะกร้า</a>
+                    <a href="#" class="btn btn-primary">เลือกสินค้า</a>
                   </div>
                 </div>
               </div>
