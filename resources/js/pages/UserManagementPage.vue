@@ -90,7 +90,7 @@
       </div>
     </div>
 
-    <!-- Modal Edit Products -->
+    <!-- Modal Edit user -->
     <div
       class="modal fade"
       id="EditUsers"
@@ -196,7 +196,6 @@
                     <input
                       type="file"
                       @change="onEditFileImageChange"
-                      name="user_photo"
                       id="UsersFileImage"
                       accept="image/jpeg, image/png"
                       class="form-control"
@@ -233,7 +232,7 @@
       </div>
     </div>
 
-    <!-- Modal Add Product-->
+    <!-- Modal Add user-->
     <div
       class="modal fade"
       id="AddUsers"
@@ -323,7 +322,6 @@
                 <input
                   type="file"
                   @change="onAddFileImageChange"
-                  name="user_photo"
                   id="AddUsersFileImage"
                   accept="image/jpeg, image/png"
                   class="form-control"
@@ -468,17 +466,28 @@ export default {
         });
     },
     DeleteUsers(value, index) {
-      // API Delete
-      if (confirm("Do you really want to delete?")) {
-        axios
-          .get("/api/users/delete/" + value)
-          .then((response) => {
-            this.DataList.splice(index, 1);
-          })
-          .catch((error) => {
-            console.log("error");
-          });
-      }
+      this.$swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.value) {
+          // API Delete
+          axios
+            .get("/api/users/delete/" + value)
+            .then((response) => {
+              this.$swal("Deleted!", "Your file has been deleted.", "success");
+              this.DataList.splice(index, 1);
+            })
+            .catch((error) => {
+              console.log("error");
+            });
+        }
+      });
     },
     AddUsers() {
       let formData = new FormData();

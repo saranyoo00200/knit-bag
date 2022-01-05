@@ -175,10 +175,8 @@
                       type="file"
                       @change="onEditFileImageChange"
                       name="user_photo"
-                      id="DetailProduct"
                       accept="image/jpeg, image/png"
                       class="form-control"
-                      placeholder="Detail Product ......."
                       multiple
                     />
                   </div>
@@ -318,11 +316,8 @@
                       type="file"
                       @change="onAddFileImageChange"
                       name="user_photo"
-                      id="DetailProduct"
                       accept="image/jpeg, image/png"
                       class="form-control"
-                      placeholder="Detail Product ......."
-                      multiple
                       required
                     />
                   </div>
@@ -468,18 +463,28 @@ export default {
         });
     },
     DeleteProduct(value, index) {
-      // API Delete
-      if (confirm("Do you really want to delete?")) {
-        axios
-          .get("/api/products/delete/" + value)
-          .then((response) => {
-            // this.getProductsAfresh();
-            this.DataList.splice(index, 1);
-          })
-          .catch((error) => {
-            console.log("error");
-          });
-      }
+      this.$swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.value) {
+          // API Delete
+          axios
+            .get("/api/products/delete/" + value)
+            .then((response) => {
+              this.$swal("Deleted!", "Your file has been deleted.", "success");
+              this.DataList.splice(index, 1);
+            })
+            .catch((error) => {
+              console.log("error");
+            });
+        }
+      });
     },
     AddProduct() {
       let formData = new FormData();

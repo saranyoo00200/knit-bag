@@ -53,4 +53,16 @@ class HomeController extends Controller
             return view('errors.404');
         }
     }
+
+    public function profile()
+    {
+        return view('pages.dashboard.profile');
+    }
+
+    public function info_profile()
+    {
+        $info = Auth()->user();
+
+        return $info;
+    }
 }

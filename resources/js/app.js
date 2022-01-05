@@ -7,8 +7,12 @@
 require("./bootstrap");
 
 // import router from "./router.js";
+// import { store } from "./store.js";
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 window.Vue = require("vue").default;
 
+Vue.use(VueSweetalert2);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,12 +24,20 @@ window.Vue = require("vue").default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component("login", require("./pages/auth/Login.vue").default);
 Vue.component("index", require("./pages/IndexPage.vue").default);
 Vue.component("reviews", require("./pages/ReviewsPage.vue").default);
 Vue.component("contact", require("./pages/ContactPage.vue").default);
-Vue.component("admin-dashboard", require("./pages/AdminsHomePages.vue").default);
+Vue.component("profile", require("./pages/profile.vue").default);
+Vue.component(
+    "admin-dashboard",
+    require("./pages/AdminsHomePages.vue").default
+);
 Vue.component("user-dashboard", require("./pages/UsersHomePages.vue").default);
-Vue.component("products-management", require("./pages/ProductsPages.vue").default);
+Vue.component(
+    "products-management",
+    require("./pages/ProductsManagementPages.vue").default
+);
 Vue.component(
     "users-management",
     require("./pages/UserManagementPage.vue").default
@@ -39,5 +51,6 @@ Vue.component(
 
 const app = new Vue({
     el: "#app",
+    // store: store,
     // router,
 });

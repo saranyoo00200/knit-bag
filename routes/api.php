@@ -4,9 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // routes/api.php
-use App\Http\Controllers\api\AuthController;
-use App\Http\Controllers\api\ProductsController;
 use App\Http\Controllers\api\UsersManageController;
+use App\Http\Controllers\api\ProductsController;
+use App\Http\Controllers\api\ProfileController;
+use App\Http\Controllers\api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +24,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 // Auth
-// Route::post('/register', [AuthController::class, 'register']);
-// Route::post('/login', [AuthController::class, 'login']);
-// Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth:sanctum');
-// Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth:sanctum');
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+// Profile
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/profile/update/{id}', [ProfileController::class, 'update']);
+    Route::post('/profile/checkPasswprd/{id}', [ProfileController::class, 'checkPasswprd']);
+    Route::post('/profile/changePasswprd/{id}', [ProfileController::class, 'changePasswprd']);
+});
 
 // Users
 Route::group(['middleware' => ['auth:sanctum']], function () {

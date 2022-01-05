@@ -22,6 +22,8 @@ Route::get('/contact', function () { return view('pages.index.contact'); });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+Route::get('/info/profile', [App\Http\Controllers\HomeController::class, 'info_profile'])->name('info_profile');
 Route::get('/management/products', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
 Route::get('/management/users', [App\Http\Controllers\HomeController::class, 'users'])->name('users');
 

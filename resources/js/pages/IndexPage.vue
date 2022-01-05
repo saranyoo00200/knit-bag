@@ -46,7 +46,7 @@
           </div>
           <div class="carousel-item">
             <img
-              src="https://img.freepik.com/free-photo/multiple-colored-balls-yarn-top-view_1268-17322.jpg?size=626&ext=jpg"
+              src="https://images.squarespace-cdn.com/content/v1/572f6d87b654f90629116055/1558368557143-OIT26EVR2YUK9GJ7TE92/Thistle+Market+Bag+pattern+by+Two+of+Wands"
               height="530px"
               class="d-block w-100"
               alt="..."
@@ -60,7 +60,7 @@
           </div>
           <div class="carousel-item">
             <img
-              src="https://wallpaperaccess.com/full/2135518.jpg"
+              src="https://cdn.discordapp.com/attachments/773251194344570923/927151883389370378/262211449_1013796819182245_3280536133553709503_n.jpg"
               height="530px"
               class="d-block w-100"
               alt="..."
