@@ -99,6 +99,7 @@
                       name=""
                       id=""
                       placeholder="ที่อยู่ ..."
+                      readonly
                     ></textarea>
                   </div>
                   <div class="form-group">
@@ -108,6 +109,7 @@
                           type="text"
                           class="form-control"
                           placeholder="เบอร์โทร ..."
+                          readonly
                         />
                       </div>
                       <div class="col-md-6 mb-2">
@@ -115,6 +117,7 @@
                           type="text"
                           class="form-control"
                           placeholder="ตำบล/แขวง ..."
+                          readonly
                         />
                       </div>
                     </div>
@@ -126,6 +129,7 @@
                           type="text"
                           class="form-control"
                           placeholder="อำเภอ/เขต"
+                          readonly
                         />
                       </div>
                       <div class="col-md-6 mb-2">
@@ -133,6 +137,7 @@
                           type="text"
                           class="form-control"
                           placeholder="จังหวัด ..."
+                          readonly
                         />
                       </div>
                     </div>
@@ -144,6 +149,7 @@
                           type="text"
                           class="form-control"
                           placeholder="รหัสไปรษณีย์ ..."
+                          readonly
                         />
                       </div>
                       <div class="col-md-6 mb-2">
@@ -329,6 +335,7 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.infoProfile = {
+            id: response.data.id,
             name: response.data.name,
             email: response.data.email,
             image: response.data.image,
@@ -383,7 +390,7 @@ export default {
           current_password: this.current_password,
         })
         .then((res) => {
-          if (res.data.success === true) {
+          if (res.data.success == true) {
             $("#closeModalCurrentPassword").click();
             // clear value
             this.current_password = "";

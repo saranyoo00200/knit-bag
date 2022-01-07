@@ -5639,11 +5639,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      dataLists: []
+      dataLists: [],
+      infoClickProduct: [],
+      productNumber: 0
     };
   },
   mounted: function mounted() {
@@ -5654,6 +5721,32 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       console.log("error");
     });
+  },
+  methods: {
+    GetClickProduct: function GetClickProduct(value) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/get/products/info/product/" + value).then(function (res) {
+        _this2.infoClickProduct = res.data;
+      })["catch"](function (error) {
+        console.log("error");
+      });
+    },
+    PushNumPro: function PushNumPro() {
+      this.productNumber++;
+    },
+    DeleteNumPro: function DeleteNumPro() {
+      if (this.productNumber > 0) {
+        this.productNumber--;
+      }
+    },
+    submit: function submit() {
+      if (this.productNumber != 0) {
+        window.location.assign("/home");
+      } else {
+        this.$swal("Alert!", "Please specify the number of products.", "warning");
+      }
+    }
   }
 });
 Vue.filter("truncate", function (value, length) {
@@ -8592,6 +8685,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -8621,6 +8720,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/info/profile").then(function (response) {
         console.log(response.data);
         _this.infoProfile = {
+          id: response.data.id,
           name: response.data.name,
           email: response.data.email,
           image: response.data.image
@@ -8672,7 +8772,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/profile/checkPasswprd/" + this.infoProfile.id, {
         current_password: this.current_password
       }).then(function (res) {
-        if (res.data.success === true) {
+        if (res.data.success == true) {
           jquery__WEBPACK_IMPORTED_MODULE_1___default()("#closeModalCurrentPassword").click(); // clear value
 
           _this3.current_password = "";
@@ -59157,12 +59257,25 @@ var render = function () {
                             }),
                             _vm._v(" "),
                             _c(
-                              "a",
+                              "button",
                               {
                                 staticClass: "btn btn-primary",
-                                attrs: { href: "#" },
+                                attrs: {
+                                  type: "button",
+                                  "data-bs-toggle": "modal",
+                                  "data-bs-target": "#ClickShowInfoProduct",
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.GetClickProduct(data.id)
+                                  },
+                                },
                               },
-                              [_vm._v("เลือกสินค้า")]
+                              [
+                                _vm._v(
+                                  "\n                    เลือกสินค้า\n                  "
+                                ),
+                              ]
                             ),
                           ]),
                         ]),
@@ -59181,6 +59294,89 @@ var render = function () {
         ),
       ]),
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "ClickShowInfoProduct",
+          tabindex: "-1",
+          "aria-labelledby": "modalInfoProduct",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c(
+              "form",
+              {
+                attrs: { method: "post" },
+                on: {
+                  submit: function ($event) {
+                    $event.preventDefault()
+                    return _vm.submit.apply(null, arguments)
+                  },
+                },
+              },
+              [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body text-center" }, [
+                  _c("div", { staticClass: "header-image mb-3" }, [
+                    _c("img", {
+                      staticClass: "w-25",
+                      attrs: { src: _vm.infoClickProduct.Pimage, alt: "" },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "body-text" }, [
+                    _c("div", { staticClass: "title-text" }, [
+                      _c("h4", [_vm._v(_vm._s(_vm.infoClickProduct.Pname))]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "body-text" }, [
+                      _c("p", [_vm._v(_vm._s(_vm.infoClickProduct.Pdetail))]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "footer-text d-flex justify-content-center",
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-default",
+                          on: { click: _vm.DeleteNumPro },
+                        },
+                        [_c("i", { staticClass: "fas fa-minus-square" })]
+                      ),
+                      _vm._v(" "),
+                      _c("h3", [_vm._v(_vm._s(_vm.productNumber))]),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-default",
+                          on: { click: _vm.PushNumPro },
+                        },
+                        [_c("i", { staticClass: "fas fa-plus-circle" })]
+                      ),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
+                _vm._m(5),
+              ]
+            ),
+          ]),
+        ]),
+      ]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -59518,6 +59714,50 @@ var staticRenderFns = [
         ]),
       ]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-header d-flex justify-content-end" },
+      [
+        _c("i", {
+          staticClass: "fas fa-times",
+          attrs: {
+            type: "button",
+            "data-bs-dismiss": "modal",
+            "aria-label": "Close",
+          },
+        }),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: {
+            id: "closeModalCurrentPassword",
+            type: "button",
+            "data-bs-dismiss": "modal",
+          },
+        },
+        [_vm._v("\n              Close\n            ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Submit")]
+      ),
+    ])
   },
 ]
 render._withStripped = true
@@ -64954,7 +65194,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("textarea", {
         staticClass: "form-control",
-        attrs: { name: "", id: "", placeholder: "ที่อยู่ ..." },
+        attrs: { name: "", id: "", placeholder: "ที่อยู่ ...", readonly: "" },
       }),
     ])
   },
@@ -64967,14 +65207,14 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-6 mb-2" }, [
           _c("input", {
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "เบอร์โทร ..." },
+            attrs: { type: "text", placeholder: "เบอร์โทร ...", readonly: "" },
           }),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6 mb-2" }, [
           _c("input", {
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "ตำบล/แขวง ..." },
+            attrs: { type: "text", placeholder: "ตำบล/แขวง ...", readonly: "" },
           }),
         ]),
       ]),
@@ -64989,14 +65229,14 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-6 mb-2" }, [
           _c("input", {
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "อำเภอ/เขต" },
+            attrs: { type: "text", placeholder: "อำเภอ/เขต", readonly: "" },
           }),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6 mb-2" }, [
           _c("input", {
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "จังหวัด ..." },
+            attrs: { type: "text", placeholder: "จังหวัด ...", readonly: "" },
           }),
         ]),
       ]),
@@ -65011,7 +65251,11 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-6 mb-2" }, [
           _c("input", {
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "รหัสไปรษณีย์ ..." },
+            attrs: {
+              type: "text",
+              placeholder: "รหัสไปรษณีย์ ...",
+              readonly: "",
+            },
           }),
         ]),
         _vm._v(" "),

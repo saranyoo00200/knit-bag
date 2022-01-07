@@ -169,7 +169,15 @@
                       class="card-text"
                       :inner-html.prop="data.Pdetail | truncate(70)"
                     ></p>
-                    <a href="#" class="btn btn-primary">เลือกสินค้า</a>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#ClickShowInfoProduct"
+                      @click="GetClickProduct(data.id)"
+                    >
+                      เลือกสินค้า
+                    </button>
                   </div>
                 </div>
               </div>
@@ -230,6 +238,63 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal show info product -->
+    <div
+      class="modal fade"
+      id="ClickShowInfoProduct"
+      tabindex="-1"
+      aria-labelledby="modalInfoProduct"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form v-on:submit.prevent="submit" method="post">
+            <div class="modal-header d-flex justify-content-end">
+              <i
+                type="button"
+                class="fas fa-times"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></i>
+            </div>
+            <div class="modal-body text-center">
+              <div class="header-image mb-3">
+                <img class="w-25" :src="infoClickProduct.Pimage" alt="" />
+              </div>
+              <div class="body-text">
+                <div class="title-text">
+                  <h4>{{ infoClickProduct.Pname }}</h4>
+                </div>
+                <div class="body-text">
+                  <p>{{ infoClickProduct.Pdetail }}</p>
+                </div>
+              </div>
+              <div class="footer-text d-flex justify-content-center">
+                <a @click="DeleteNumPro" class="btn btn-default">
+                  <i class="fas fa-minus-square"></i>
+                </a>
+                <h3>{{ productNumber }}</h3>
+                <a @click="PushNumPro" class="btn btn-default">
+                  <i class="fas fa-plus-circle"></i>
+                </a>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                id="closeModalCurrentPassword"
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 <script>
@@ -238,6 +303,8 @@ export default {
   data() {
     return {
       dataLists: [],
+      infoClickProduct: [],
+      productNumber: 0,
     };
   },
   mounted() {
@@ -249,6 +316,37 @@ export default {
       .catch((error) => {
         console.log("error");
       });
+  },
+  methods: {
+    GetClickProduct(value) {
+      axios
+        .get("/api/get/products/info/product/" + value)
+        .then((res) => {
+          this.infoClickProduct = res.data;
+        })
+        .catch((error) => {
+          console.log("error");
+        });
+    },
+    PushNumPro() {
+      this.productNumber++;
+    },
+    DeleteNumPro() {
+      if (this.productNumber > 0) {
+        this.productNumber--;
+      }
+    },
+    submit() {
+      if (this.productNumber != 0) {
+        window.location.assign("/home");
+      } else {
+        this.$swal(
+          "Alert!",
+          "Please specify the number of products.",
+          "warning"
+        );
+      }
+    },
   },
 };
 
