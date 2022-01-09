@@ -307,11 +307,12 @@ export default {
       productNumber: 0,
     };
   },
+  props: ["auth_user"],
   mounted() {
     axios
       .get("/api/products/show")
-      .then((response) => {
-        this.dataLists = response.data;
+      .then((res) => {
+        this.dataLists = res.data;
       })
       .catch((error) => {
         console.log("error");
@@ -338,7 +339,11 @@ export default {
     },
     submit() {
       if (this.productNumber != 0) {
-        window.location.assign("/home");
+        if (this.auth_user) {
+          window.location.assign("/products/users/store");
+        } else {
+          window.location.assign("/login");
+        }
       } else {
         this.$swal(
           "Alert!",

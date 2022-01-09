@@ -65,4 +65,9 @@ class HomeController extends Controller
 
         return $info;
     }
+
+    public function myProducts()
+    {
+        return view('pages.dashboard.usersProducts');
+    }
 }

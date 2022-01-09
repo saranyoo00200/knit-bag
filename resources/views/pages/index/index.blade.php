@@ -1,5 +1,5 @@
 @extends('layouts.index')
 
 @section('content')
-    <index></index>
+    <index :auth_user='@json($auth_user)'></index>
 @endsection

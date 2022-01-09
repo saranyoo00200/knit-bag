@@ -32,24 +32,6 @@
 </head>
 
 <body>
-    {{-- <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-    </div> --}}
-
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
             <a href="/" class="navbar-brand text-dark">KNIT BAG</a>
@@ -72,10 +54,65 @@
                 </ul>
                 @if (Route::has('login'))
                     <div class="hidden fixed top-0 right-0 px-6 sm:block">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-evenly list-group-horizontal">
                             @auth
                                 <li class="nav-item">
-                                    <a href="{{ url('/home') }}" class="nav-link">Home</a>
+                                    <a class="nav-link mx-1 position-relative" href="#">
+                                        <i class="fas fa-heart"></i>
+                                        <span class="position-absolute translate-middle-x badge bg-danger"
+                                            style="font-size: 9px">
+                                            3+
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link mx-1 position-relative" href="{{ url('/products/users/store') }}">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span class="position-absolute translate-middle-x badge bg-danger"
+                                            style="font-size: 9px">
+                                            7
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown no-arrow">
+                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span
+                                            class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                        @if (Auth::user()->image != null)
+                                            <img class="img-profile rounded-circle" width="30px"
+                                                src="{{ asset(Auth::user()->image) }}">
+                                        @else
+                                            <img class="img-profile rounded-circle" width="30px"
+                                                src="https://image.shutterstock.com/mosaic_250/169412572/1040084344/stock-vector-man-icon-vector-1040084344.jpg">
+                                        @endif
+                                    </a>
+                                    <!-- Dropdown - User Information -->
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                        aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="{{ url('/home') }}">
+                                            <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Home
+                                        </a>
+                                        <a class="dropdown-item" href="{{ url('/profile') }}">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Profile
+                                        </a>
+                                        <a class="dropdown-item disabled" href="#">
+                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Settings
+                                        </a>
+                                        <a class="dropdown-item disabled" href="#">
+                                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Activity Log
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#logoutModal">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Logout
+                                        </a>
+                                    </div>
                                 </li>
                             @else
                                 <li class="nav-item">
@@ -125,6 +162,36 @@
             </div>
         </section>
     </footer>
+
+    @auth
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endauth
 
     <script src="{{ mix('/js/app.js') }}" defer></script>
 </body>

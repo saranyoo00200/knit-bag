@@ -90,7 +90,7 @@
                     <!-- Nav Item - Dashboard -->
                     <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/home') }}">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <i class="fas fa-home"></i>
                             <span>Home Page</span></a>
                     </li>
 
@@ -138,6 +138,30 @@
                         <!-- Divider -->
                         <hr class="sidebar-divider d-none d-md-block">
                     @endrole
+
+                    <!-- my product -->
+                    <div class="sidebar-heading">
+                        my selected product
+                    </div>
+
+                    <li class="nav-item {{ request()->routeIs('myProducts') ? 'active' : '' }}">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#myProducts"
+                            aria-expanded="true" aria-controls="Products">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>My Products</span>
+                        </a>
+                        <div id="myProducts" class="collapse {{ request()->routeIs('myProducts') ? 'show' : '' }}"
+                            aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Custom Products:</h6>
+                                <a class="collapse-item {{ request()->routeIs('myProducts') ? 'active' : '' }}"
+                                    href="{{ url('/products/users/store') }}">Products</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Divider -->
+                    <hr class="sidebar-divider d-none d-md-block">
 
                     <!-- Sidebar Toggler (Sidebar) -->
                     <div class="text-center d-none d-md-inline">
@@ -212,7 +236,7 @@
 
                                 <!-- Nav Item - cart -->
                                 <li class="nav-item mx-1">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ url('/products/users/store') }}">
                                         <i class="fas fa-shopping-cart"></i>
                                         <span class="badge badge-danger badge-counter">7</span>
                                     </a>
@@ -237,15 +261,20 @@
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                         aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="{{ url('/profile') }}">
+                                        <a class="dropdown-item {{ request()->routeIs('home') ? 'active' : '' }}"
+                                            href="{{ url('/home') }}">
+                                            <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Home
+                                        </a>
+                                        <a class="dropdown-item {{ request()->routeIs('profile') ? 'active' : '' }}" href="{{ url('/profile') }}">
                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Profile
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item disabled" href="#">
                                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Settings
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item disabled" href="#">
                                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Activity Log
                                         </a>
@@ -332,7 +361,7 @@
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                             <a class="btn btn-primary" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
