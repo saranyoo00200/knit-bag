@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // routes/api.php
 use App\Http\Controllers\api\UsersManageController;
+use App\Http\Controllers\api\UsersProductsController;
 use App\Http\Controllers\api\ProductsController;
 use App\Http\Controllers\api\ProfileController;
 use App\Http\Controllers\api\AuthController;
@@ -43,6 +44,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users/edit/{id}', [UsersManageController::class, 'edit']);
     Route::post('/users/update/{id}', [UsersManageController::class, 'update']);
     Route::get('/users/delete/{id}', [UsersManageController::class, 'destroy']);
+});
+
+// UsersProducts
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/users/product/{id}/index', [UsersProductsController::class, 'index']);
+    Route::post('/users/addProduct/create', [UsersProductsController::class, 'create']);
+    Route::get('/users/product/{id}/delete', [UsersProductsController::class, 'destroy']);
+    Route::post('/users/product/{id}/plus', [UsersProductsController::class, 'plus']);
+    Route::post('/users/product/{id}/minus', [UsersProductsController::class, 'minus']);
 });
 
 // product

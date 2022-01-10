@@ -26,7 +26,7 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])-
 Route::get('/info/profile', [App\Http\Controllers\HomeController::class, 'info_profile'])->name('info_profile');
 Route::get('/management/products', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
 Route::get('/management/users', [App\Http\Controllers\HomeController::class, 'users'])->name('users');
-Route::get('/products/users/store', [App\Http\Controllers\HomeController::class, 'myProducts'])->name('myProducts');
+Route::get('/my-products', [App\Http\Controllers\HomeController::class, 'myProducts'])->name('myProducts');
 
 // Route::get('/{any?}', function () {
 //     return view('index');

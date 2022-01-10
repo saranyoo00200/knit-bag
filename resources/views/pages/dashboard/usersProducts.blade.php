@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <my-product></my-product>
+    <my-product :auth_user='@json($auth_user)'></my-product>
 @endsection

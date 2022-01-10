@@ -6,8 +6,6 @@
 
 require("./bootstrap");
 
-// import router from "./router.js";
-// import { store } from "./store.js";
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 window.Vue = require("vue").default;
@@ -52,6 +50,4 @@ Vue.component(
 
 const app = new Vue({
     el: "#app",
-    // store: store,
-    // router,
 });

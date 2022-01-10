@@ -56,21 +56,26 @@
                     <div class="hidden fixed top-0 right-0 px-6 sm:block">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-evenly list-group-horizontal">
                             @auth
+                                @php
+                                    $count_cart = DB::table('user_products')
+                                        ->where('user_id', Auth()->user()->id)
+                                        ->count();
+                                @endphp
                                 <li class="nav-item">
                                     <a class="nav-link mx-1 position-relative" href="#">
                                         <i class="fas fa-heart"></i>
                                         <span class="position-absolute translate-middle-x badge bg-danger"
                                             style="font-size: 9px">
-                                            3+
+                                            0
                                         </span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link mx-1 position-relative" href="{{ url('/products/users/store') }}">
+                                    <a class="nav-link mx-1 position-relative" href="{{ url('/my-products') }}">
                                         <i class="fas fa-shopping-cart"></i>
                                         <span class="position-absolute translate-middle-x badge bg-danger"
                                             style="font-size: 9px">
-                                            7
+                                            {{ $count_cart }}
                                         </span>
                                     </a>
                                 </li>
@@ -181,7 +186,7 @@
                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -68,6 +68,6 @@ class HomeController extends Controller
 
     public function myProducts()
     {
-        return view('pages.dashboard.usersProducts');
+        return view('pages.dashboard.usersProducts')->with('auth_user', auth()->user());
     }
 }

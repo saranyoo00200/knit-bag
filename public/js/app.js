@@ -5704,13 +5704,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       dataLists: [],
       infoClickProduct: [],
-      productNumber: 0
+      productNumber: 0,
+      loadingModel: true
     };
   },
   props: ["auth_user"],
@@ -5729,6 +5736,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/get/products/info/product/" + value).then(function (res) {
         _this2.infoClickProduct = res.data;
+        _this2.loadingModel = false;
       })["catch"](function (error) {
         console.log("error");
       });
@@ -5741,10 +5749,25 @@ __webpack_require__.r(__webpack_exports__);
         this.productNumber--;
       }
     },
+    clockClose: function clockClose() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        _this3.productNumber = 0;
+      }, 1000);
+    },
     submit: function submit() {
       if (this.productNumber != 0) {
         if (this.auth_user) {
-          window.location.assign("/products/users/store");
+          axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/users/addProduct/create", {
+            user_id: this.auth_user.id,
+            product_id: this.infoClickProduct.id,
+            number: this.productNumber
+          }).then(function (res) {
+            window.location.assign("/my-products");
+          })["catch"](function (error) {
+            console.log("error!");
+          });
         } else {
           window.location.assign("/login");
         }
@@ -8278,6 +8301,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -8326,13 +8351,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index",
   data: function data() {
     return {
-      dataLists: []
+      infoUserProduct: [],
+      total: 0
     };
   },
+  props: ["auth_user"],
   mounted: function mounted() {
     this.getProducts();
   },
@@ -8340,11 +8389,58 @@ __webpack_require__.r(__webpack_exports__);
     getProducts: function getProducts() {
       var _this = this;
 
-      axios.get("/api/products/show").then(function (res) {
-        _this.dataLists = res.data;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/product/" + this.auth_user.id + "/index").then(function (res) {
+        _this.infoUserProduct = res.data;
+
+        for (var i = 0; i < _this.infoUserProduct.length; i++) {
+          _this.total += _this.infoUserProduct[i].Pprice * _this.infoUserProduct[i].number;
+        }
       })["catch"](function (error) {
         console.log("error");
-      }); //   console.log(this.dataLists);
+      });
+    },
+    DeleteProduct: function DeleteProduct(value, index) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/product/" + value + "/delete").then(function (res) {
+        _this2.infoUserProduct.splice(index, 1);
+      })["catch"](function (error) {
+        console.log("error!");
+      });
+    },
+    clickPlus: function clickPlus(value, index) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/users/product/" + value + "/plus", {
+        user_id: this.auth_user.id
+      }).then(function (res) {
+        _this3.infoUserProduct[index].number++;
+        _this3.total = 0;
+
+        for (var i = 0; i < _this3.infoUserProduct.length; i++) {
+          _this3.total += _this3.infoUserProduct[i].Pprice * _this3.infoUserProduct[i].number;
+        }
+      })["catch"](function (error) {
+        console.log("error!");
+      });
+    },
+    clickMinus: function clickMinus(value, index) {
+      var _this4 = this;
+
+      if (this.infoUserProduct[index].number > 1) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/users/product/" + value + "/minus", {
+          user_id: this.auth_user.id
+        }).then(function (res) {
+          _this4.infoUserProduct[index].number--;
+          _this4.total = 0;
+
+          for (var i = 0; i < _this4.infoUserProduct.length; i++) {
+            _this4.total += _this4.infoUserProduct[i].Pprice * _this4.infoUserProduct[i].number;
+          }
+        })["catch"](function (error) {
+          console.log("error!");
+        });
+      }
     }
   }
 });
@@ -8917,9 +9013,7 @@ __webpack_require__.r(__webpack_exports__);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // import router from "./router.js";
-// import { store } from "./store.js";
-
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
@@ -8952,9 +9046,7 @@ Vue.component("users-management", (__webpack_require__(/*! ./pages/UserManagemen
  */
 
 var app = new Vue({
-  el: "#app" // store: store,
-  // router,
-
+  el: "#app"
 });
 
 /***/ }),
@@ -59483,56 +59575,112 @@ var render = function () {
                 },
               },
               [
-                _vm._m(4),
+                _c(
+                  "div",
+                  { staticClass: "modal-header d-flex justify-content-end" },
+                  [
+                    _c("i", {
+                      staticClass: "fas fa-times",
+                      attrs: {
+                        type: "button",
+                        "data-bs-dismiss": "modal",
+                        "aria-label": "Close",
+                      },
+                      on: { click: _vm.clockClose },
+                    }),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body text-center" }, [
-                  _c("div", { staticClass: "header-image mb-3" }, [
-                    _c("img", {
-                      staticClass: "w-25",
-                      attrs: { src: _vm.infoClickProduct.Pimage, alt: "" },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "body-text" }, [
-                    _c("div", { staticClass: "title-text" }, [
-                      _c("h4", [_vm._v(_vm._s(_vm.infoClickProduct.Pname))]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "body-text" }, [
-                      _c("p", [_vm._v(_vm._s(_vm.infoClickProduct.Pdetail))]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "footer-text d-flex justify-content-center",
-                    },
-                    [
-                      _c(
-                        "a",
+                  _vm.loadingModel
+                    ? _c(
+                        "div",
                         {
-                          staticClass: "btn btn-default",
-                          on: { click: _vm.DeleteNumPro },
+                          staticClass: "spinner-border",
+                          attrs: { role: "status" },
                         },
-                        [_c("i", { staticClass: "fas fa-minus-square" })]
-                      ),
-                      _vm._v(" "),
-                      _c("h3", [_vm._v(_vm._s(_vm.productNumber))]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-default",
-                          on: { click: _vm.PushNumPro },
-                        },
-                        [_c("i", { staticClass: "fas fa-plus-circle" })]
-                      ),
-                    ]
-                  ),
+                        [
+                          _c("span", { staticClass: "visually-hidden" }, [
+                            _vm._v("Loading..."),
+                          ]),
+                        ]
+                      )
+                    : _c("div", { staticClass: "info-body" }, [
+                        _c("div", { staticClass: "header-image mb-3" }, [
+                          _c("img", {
+                            staticClass: "w-25",
+                            attrs: {
+                              src: _vm.infoClickProduct.Pimage,
+                              alt: "",
+                            },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "body-text" }, [
+                          _c("div", { staticClass: "title-text" }, [
+                            _c("h4", [
+                              _vm._v(_vm._s(_vm.infoClickProduct.Pname)),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "body-text" }, [
+                            _c("p", [
+                              _vm._v(_vm._s(_vm.infoClickProduct.Pdetail)),
+                            ]),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "footer-text d-flex justify-content-center",
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-default",
+                                on: { click: _vm.DeleteNumPro },
+                              },
+                              [_c("i", { staticClass: "fas fa-minus-square" })]
+                            ),
+                            _vm._v(" "),
+                            _c("h3", [_vm._v(_vm._s(_vm.productNumber))]),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-default",
+                                on: { click: _vm.PushNumPro },
+                              },
+                              [_c("i", { staticClass: "fas fa-plus-circle" })]
+                            ),
+                          ]
+                        ),
+                      ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(5),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      on: { click: _vm.clockClose },
+                    },
+                    [_vm._v("\n              Close\n            ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit" },
+                    },
+                    [_vm._v("Submit")]
+                  ),
+                ]),
               ]
             ),
           ]),
@@ -59876,50 +60024,6 @@ var staticRenderFns = [
         ]),
       ]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal-header d-flex justify-content-end" },
-      [
-        _c("i", {
-          staticClass: "fas fa-times",
-          attrs: {
-            type: "button",
-            "data-bs-dismiss": "modal",
-            "aria-label": "Close",
-          },
-        }),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: {
-            id: "closeModalCurrentPassword",
-            type: "button",
-            "data-bs-dismiss": "modal",
-          },
-        },
-        [_vm._v("\n              Close\n            ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
-      ),
-    ])
   },
 ]
 render._withStripped = true
@@ -64854,90 +64958,139 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", [
+    _c("div", { attrs: { id: "contact" } }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "bg-white shadow-lg my-3 p-3" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-responsive-md" }, [
+            _c(
+              "table",
+              { staticClass: "table table-bordered table-hover text-center" },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.infoUserProduct, function (data, index) {
+                    return _c("tr", { key: index }, [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v(_vm._s(index + 1)),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("img", {
+                          attrs: { width: "50px", src: data.Pimage, alt: "" },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(data.Pname))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(data.Pprice * data.number))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("div", { staticClass: "btn-group" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-outline-secondary p-1",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.clickPlus(data.id, index)
+                                },
+                              },
+                            },
+                            [_c("i", { staticClass: "fas fa-plus" })]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "fs-5 badge text-dark" }, [
+                            _vm._v(_vm._s(data.number)),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-outline-secondary p-1",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.clickMinus(data.id, index)
+                                },
+                              },
+                            },
+                            [_c("i", { staticClass: "fas fa-minus" })]
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function ($event) {
+                                return _vm.DeleteProduct(data.id, index)
+                              },
+                            },
+                          },
+                          [_vm._v("Delete")]
+                        ),
+                      ]),
+                    ])
+                  }),
+                  0
+                ),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-center" }, [
+            _c("span", { staticClass: "badge bg-secondary mb-2" }, [
+              _vm._v("Total = " + _vm._s(_vm.total) + " $"),
+            ]),
+            _c("br"),
+            _vm._v(" "),
+            _c("button", { staticClass: "btn btn-success" }, [
+              _vm._v("Pay Money"),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", [
-      _c("div", { attrs: { id: "contact" } }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _c("div", { staticClass: "bg-white shadow-lg my-3 p-3" }, [
-            _c("div", { staticClass: "text-center mb-3" }, [
-              _c("h3", [_vm._v("My Product")]),
-            ]),
-            _vm._v(" "),
-            _c(
-              "table",
-              { staticClass: "table table-bordered table-hover text-center" },
-              [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("No.")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Image")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Number")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Tool")]),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Image")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Bag01")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("350.00")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "btn-group" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-outline-secondary p-1",
-                            attrs: { href: "" },
-                          },
-                          [_c("i", { staticClass: "fas fa-plus" })]
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "fs-5 badge text-dark" }, [
-                          _vm._v("1"),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-outline-secondary p-1",
-                            attrs: { href: "" },
-                          },
-                          [_c("i", { staticClass: "fas fa-minus" })]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        { staticClass: "btn btn-danger", attrs: { href: "" } },
-                        [_vm._v("Delete")]
-                      ),
-                    ]),
-                  ]),
-                ]),
-              ]
-            ),
-          ]),
-        ]),
+    return _c("div", { staticClass: "text-center mb-3" }, [
+      _c("h3", [_vm._v("My Product")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("No.")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Image")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Number")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tool")]),
       ]),
     ])
   },

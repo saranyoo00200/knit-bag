@@ -252,6 +252,7 @@
           <form v-on:submit.prevent="submit" method="post">
             <div class="modal-header d-flex justify-content-end">
               <i
+                @click="clockClose"
                 type="button"
                 class="fas fa-times"
                 data-bs-dismiss="modal"
@@ -259,30 +260,35 @@
               ></i>
             </div>
             <div class="modal-body text-center">
-              <div class="header-image mb-3">
-                <img class="w-25" :src="infoClickProduct.Pimage" alt="" />
+              <div v-if="loadingModel" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
               </div>
-              <div class="body-text">
-                <div class="title-text">
-                  <h4>{{ infoClickProduct.Pname }}</h4>
+              <div v-else class="info-body">
+                <div class="header-image mb-3">
+                  <img class="w-25" :src="infoClickProduct.Pimage" alt="" />
                 </div>
                 <div class="body-text">
-                  <p>{{ infoClickProduct.Pdetail }}</p>
+                  <div class="title-text">
+                    <h4>{{ infoClickProduct.Pname }}</h4>
+                  </div>
+                  <div class="body-text">
+                    <p>{{ infoClickProduct.Pdetail }}</p>
+                  </div>
                 </div>
-              </div>
-              <div class="footer-text d-flex justify-content-center">
-                <a @click="DeleteNumPro" class="btn btn-default">
-                  <i class="fas fa-minus-square"></i>
-                </a>
-                <h3>{{ productNumber }}</h3>
-                <a @click="PushNumPro" class="btn btn-default">
-                  <i class="fas fa-plus-circle"></i>
-                </a>
+                <div class="footer-text d-flex justify-content-center">
+                  <a @click="DeleteNumPro" class="btn btn-default">
+                    <i class="fas fa-minus-square"></i>
+                  </a>
+                  <h3>{{ productNumber }}</h3>
+                  <a @click="PushNumPro" class="btn btn-default">
+                    <i class="fas fa-plus-circle"></i>
+                  </a>
+                </div>
               </div>
             </div>
             <div class="modal-footer">
               <button
-                id="closeModalCurrentPassword"
+                @click="clockClose"
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
@@ -305,6 +311,7 @@ export default {
       dataLists: [],
       infoClickProduct: [],
       productNumber: 0,
+      loadingModel: true,
     };
   },
   props: ["auth_user"],
@@ -324,6 +331,7 @@ export default {
         .get("/api/get/products/info/product/" + value)
         .then((res) => {
           this.infoClickProduct = res.data;
+          this.loadingModel = false;
         })
         .catch((error) => {
           console.log("error");
@@ -337,10 +345,26 @@ export default {
         this.productNumber--;
       }
     },
+    clockClose() {
+      setTimeout(() => {
+        this.productNumber = 0;
+      }, 1000);
+    },
     submit() {
       if (this.productNumber != 0) {
         if (this.auth_user) {
-          window.location.assign("/products/users/store");
+          axios
+            .post("/api/users/addProduct/create", {
+              user_id: this.auth_user.id,
+              product_id: this.infoClickProduct.id,
+              number: this.productNumber,
+            })
+            .then((res) => {
+              window.location.assign("/my-products");
+            })
+            .catch((error) => {
+              console.log("error!");
+            });
         } else {
           window.location.assign("/login");
         }
