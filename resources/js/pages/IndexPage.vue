@@ -347,6 +347,7 @@ export default {
     },
     clockClose() {
       setTimeout(() => {
+        this.loadingModel = true;
         this.productNumber = 0;
       }, 1000);
     },

@@ -101,6 +101,11 @@ export default {
         .get("/api/users/product/" + value + "/delete")
         .then((res) => {
           this.infoUserProduct.splice(index, 1);
+          this.total = 0;
+          for (let i = 0; i < this.infoUserProduct.length; i++) {
+            this.total +=
+              this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+          }
         })
         .catch((error) => {
           console.log("error!");

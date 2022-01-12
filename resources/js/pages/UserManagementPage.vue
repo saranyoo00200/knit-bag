@@ -108,6 +108,7 @@
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Edit Users</h5>
               <i
+                @click="clockClose"
                 type="button"
                 class="fas fa-times"
                 data-bs-dismiss="modal"
@@ -115,110 +116,118 @@
               ></i>
             </div>
             <div class="modal-body">
-              <div class="form-group">
-                <label for="NameUsers" class="label-control">Name</label>
-                <input
-                  v-model="InfoEdit.name"
-                  type="text"
-                  name="name"
-                  class="form-control"
-                  id="NameUsers"
-                  placeholder="First name - Last name  .......... "
-                  required
-                />
+              <div v-if="loadingModel" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
               </div>
-              <div class="form-group">
-                <label for="UsersEmail" class="label-control">Email</label>
-                <input
-                  v-model="InfoEdit.email"
-                  type="text"
-                  name="email"
-                  class="form-control"
-                  id="UsersEmail"
-                  placeholder="Eamil .......... "
-                  required
-                />
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="password" class="label-control">Password</label>
-                    <input
-                      v-model="InfoEdit.password"
-                      id="password"
-                      type="password"
-                      class="form-control"
-                      name="password"
-                      placeholder="password .........."
-                    />
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="password_confirmation" class="label-control"
-                      >Password confirm</label
-                    >
-                    <input
-                      v-model="InfoEdit.password_confirmation"
-                      id="password_confirmation"
-                      type="password"
-                      name="password_confirmation"
-                      class="form-control"
-                      placeholder="password confirmation .........."
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="UsersStatus" class="label-control"
-                      >Usage status</label
-                    >
-                    <select
-                      v-model="InfoEdit.status"
-                      id="UsersStatus"
-                      class="form-control dropdown"
-                      name="status"
-                      required
-                    >
-                      <option value="">Select status ..........</option>
-                      <option value="1">Active</option>
-                      <option value="0">Inactive</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="UsersFileImage" class="label-control"
-                      >Image</label
-                    >
-                    <input
-                      type="file"
-                      @change="onEditFileImageChange"
-                      id="UsersFileImage"
-                      accept="image/jpeg, image/png"
-                      class="form-control"
-                      multiple
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="image-show">
-                <div class="mx-auto" style="width: 140px">
-                  <img
-                    :src="file_photo_edit"
-                    class="rounded-circle"
-                    alt=""
-                    width="100%"
-                    height="140px;"
+              <div v-else>
+                <div class="form-group">
+                  <label for="NameUsers" class="label-control">Name</label>
+                  <input
+                    v-model="InfoEdit.name"
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="NameUsers"
+                    placeholder="First name - Last name  .......... "
+                    required
                   />
+                </div>
+                <div class="form-group">
+                  <label for="UsersEmail" class="label-control">Email</label>
+                  <input
+                    v-model="InfoEdit.email"
+                    type="text"
+                    name="email"
+                    class="form-control"
+                    id="UsersEmail"
+                    placeholder="Eamil .......... "
+                    required
+                  />
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="password" class="label-control"
+                        >Password</label
+                      >
+                      <input
+                        v-model="InfoEdit.password"
+                        id="password"
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        placeholder="password .........."
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="password_confirmation" class="label-control"
+                        >Password confirm</label
+                      >
+                      <input
+                        v-model="InfoEdit.password_confirmation"
+                        id="password_confirmation"
+                        type="password"
+                        name="password_confirmation"
+                        class="form-control"
+                        placeholder="password confirmation .........."
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="UsersStatus" class="label-control"
+                        >Usage status</label
+                      >
+                      <select
+                        v-model="InfoEdit.status"
+                        id="UsersStatus"
+                        class="form-control dropdown"
+                        name="status"
+                        required
+                      >
+                        <option value="">Select status ..........</option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="UsersFileImage" class="label-control"
+                        >Image</label
+                      >
+                      <input
+                        type="file"
+                        @change="onEditFileImageChange"
+                        id="UsersFileImage"
+                        accept="image/jpeg, image/png"
+                        class="form-control"
+                        multiple
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="image-show">
+                  <div class="mx-auto" style="width: 140px">
+                    <img
+                      :src="file_photo_edit"
+                      class="rounded-circle"
+                      alt=""
+                      width="100%"
+                      height="140px;"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <button
                 id="closeModalEdit"
+                @click="clockClose"
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
@@ -389,6 +398,7 @@ export default {
       },
       file_photo_add:
         "https://www.kpsq.org/wp-content/uploads/2019/07/Community-hour-blank-face.jpg",
+      loadingModel: true,
     };
   },
   mounted() {
@@ -422,6 +432,7 @@ export default {
             this.file_photo_edit =
               "https://www.kpsq.org/wp-content/uploads/2019/07/Community-hour-blank-face.jpg";
           }
+          this.loadingModel = false;
         })
         .catch((error) => {
           console.log("error");
@@ -464,6 +475,11 @@ export default {
         .catch((err) => {
           this.error = "Error!!";
         });
+    },
+    clockClose() {
+      setTimeout(() => {
+        this.loadingModel = true;
+      }, 1000);
     },
     DeleteUsers(value, index) {
       this.$swal({

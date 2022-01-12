@@ -5753,6 +5753,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       setTimeout(function () {
+        _this3.loadingModel = true;
         _this3.productNumber = 0;
       }, 1000);
     },
@@ -6173,6 +6174,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6199,7 +6209,8 @@ __webpack_require__.r(__webpack_exports__);
         Pclass: "",
         Pimage: ""
       },
-      file_photo_add: ""
+      file_photo_add: "",
+      loadingModel: true
     };
   },
   mounted: function mounted() {
@@ -6229,6 +6240,8 @@ __webpack_require__.r(__webpack_exports__);
           Pclass: res.data.Pclass
         };
         _this2.file_photo_edit = "http://127.0.0.1:8000/" + res.data.Pimage; // console.log(this.DataEdit);
+
+        _this2.loadingModel = false;
       })["catch"](function (error) {
         console.log("error");
       });
@@ -6304,6 +6317,13 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log("error");
       });
+    },
+    clockClose: function clockClose() {
+      var _this5 = this;
+
+      setTimeout(function () {
+        _this5.loadingModel = true;
+      }, 1000);
     },
     onAddFileImageChange: function onAddFileImageChange(e) {
       var file = e.target.files[0];
@@ -8136,6 +8156,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8163,7 +8192,8 @@ __webpack_require__.r(__webpack_exports__);
         password_confirmation: "",
         image: ""
       },
-      file_photo_add: "https://www.kpsq.org/wp-content/uploads/2019/07/Community-hour-blank-face.jpg"
+      file_photo_add: "https://www.kpsq.org/wp-content/uploads/2019/07/Community-hour-blank-face.jpg",
+      loadingModel: true
     };
   },
   mounted: function mounted() {
@@ -8197,6 +8227,8 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           _this2.file_photo_edit = "https://www.kpsq.org/wp-content/uploads/2019/07/Community-hour-blank-face.jpg";
         }
+
+        _this2.loadingModel = false;
       })["catch"](function (error) {
         console.log("error");
       });
@@ -8236,8 +8268,15 @@ __webpack_require__.r(__webpack_exports__);
         _this3.error = "Error!!";
       });
     },
-    DeleteUsers: function DeleteUsers(value, index) {
+    clockClose: function clockClose() {
       var _this4 = this;
+
+      setTimeout(function () {
+        _this4.loadingModel = true;
+      }, 1000);
+    },
+    DeleteUsers: function DeleteUsers(value, index) {
+      var _this5 = this;
 
       this.$swal({
         title: "Are you sure?",
@@ -8251,9 +8290,9 @@ __webpack_require__.r(__webpack_exports__);
         if (result.value) {
           // API Delete
           axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/delete/" + value).then(function (response) {
-            _this4.$swal("Deleted!", "Your file has been deleted.", "success");
+            _this5.$swal("Deleted!", "Your file has been deleted.", "success");
 
-            _this4.DataList.splice(index, 1);
+            _this5.DataList.splice(index, 1);
           })["catch"](function (error) {
             console.log("error");
           });
@@ -8404,6 +8443,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/product/" + value + "/delete").then(function (res) {
         _this2.infoUserProduct.splice(index, 1);
+
+        _this2.total = 0;
+
+        for (var i = 0; i < _this2.infoUserProduct.length; i++) {
+          _this2.total += _this2.infoUserProduct[i].Pprice * _this2.infoUserProduct[i].number;
+        }
       })["catch"](function (error) {
         console.log("error!");
       });
@@ -60167,259 +60212,327 @@ var render = function () {
                 },
               },
               [
-                _vm._m(3),
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" },
+                    },
+                    [_vm._v("Edit Product")]
+                  ),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "fas fa-times",
+                    attrs: {
+                      type: "button",
+                      "data-bs-dismiss": "modal",
+                      "aria-label": "Close",
+                    },
+                    on: { click: _vm.clockClose },
+                  }),
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-control",
-                            attrs: { for: "NameProducts" },
-                          },
-                          [_vm._v("Name")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.DataEdit.Pname,
-                              expression: "DataEdit.Pname",
-                            },
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            name: "Pname",
-                            id: "NameProducts",
-                            placeholder: "Name Product .......",
-                            required: "",
-                          },
-                          domProps: { value: _vm.DataEdit.Pname },
-                          on: {
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.DataEdit,
-                                "Pname",
-                                $event.target.value
-                              )
-                            },
-                          },
-                        }),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-control",
-                            attrs: { for: "PriceProduct" },
-                          },
-                          [_vm._v("Price")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.DataEdit.Pprice,
-                              expression: "DataEdit.Pprice",
-                            },
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            name: "Pprice",
-                            id: "PriceProduct",
-                            placeholder: "Price Product .......",
-                            required: "",
-                          },
-                          domProps: { value: _vm.DataEdit.Pprice },
-                          on: {
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.DataEdit,
-                                "Pprice",
-                                $event.target.value
-                              )
-                            },
-                          },
-                        }),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "label-control",
-                        attrs: { for: "PriceProduct" },
-                      },
-                      [_vm._v("Detail")]
-                    ),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
+                  _vm.loadingModel
+                    ? _c(
+                        "div",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.DataEdit.Pdetail,
-                          expression: "DataEdit.Pdetail",
+                          staticClass: "spinner-border",
+                          attrs: { role: "status" },
                         },
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "Pdetail",
-                        id: "DetailProduct",
-                        placeholder: "Detail Product .......",
-                        required: "",
-                      },
-                      domProps: { value: _vm.DataEdit.Pdetail },
-                      on: {
-                        input: function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.DataEdit, "Pdetail", $event.target.value)
-                        },
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-control",
-                            attrs: { for: "PriceProduct" },
-                          },
-                          [_vm._v("Class")]
-                        ),
+                        [
+                          _c("span", { staticClass: "visually-hidden" }, [
+                            _vm._v("Loading..."),
+                          ]),
+                        ]
+                      )
+                    : _c("div", [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-control",
+                                  attrs: { for: "NameProducts" },
+                                },
+                                [_vm._v("Name")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.DataEdit.Pname,
+                                    expression: "DataEdit.Pname",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  name: "Pname",
+                                  id: "NameProducts",
+                                  placeholder: "Name Product .......",
+                                  required: "",
+                                },
+                                domProps: { value: _vm.DataEdit.Pname },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.DataEdit,
+                                      "Pname",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-control",
+                                  attrs: { for: "PriceProduct" },
+                                },
+                                [_vm._v("Price")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.DataEdit.Pprice,
+                                    expression: "DataEdit.Pprice",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "number",
+                                  name: "Pprice",
+                                  id: "PriceProduct",
+                                  placeholder: "Price Product .......",
+                                  required: "",
+                                },
+                                domProps: { value: _vm.DataEdit.Pprice },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.DataEdit,
+                                      "Pprice",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                          ]),
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "select",
-                          {
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "label-control",
+                              attrs: { for: "PriceProduct" },
+                            },
+                            [_vm._v("Detail")]
+                          ),
+                          _vm._v(" "),
+                          _c("textarea", {
                             directives: [
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.DataEdit.Pclass,
-                                expression: "DataEdit.Pclass",
+                                value: _vm.DataEdit.Pdetail,
+                                expression: "DataEdit.Pdetail",
                               },
                             ],
-                            staticClass: "form-control dropdown",
-                            attrs: { name: "Pclass", required: "" },
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "Pdetail",
+                              id: "DetailProduct",
+                              placeholder: "Detail Product .......",
+                              required: "",
+                            },
+                            domProps: { value: _vm.DataEdit.Pdetail },
                             on: {
-                              change: function ($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function (o) {
-                                    return o.selected
-                                  })
-                                  .map(function (o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
                                 _vm.$set(
                                   _vm.DataEdit,
-                                  "Pclass",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
+                                  "Pdetail",
+                                  $event.target.value
                                 )
                               },
                             },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-control",
+                                  attrs: { for: "PriceProduct" },
+                                },
+                                [_vm._v("Class")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.DataEdit.Pclass,
+                                      expression: "DataEdit.Pclass",
+                                    },
+                                  ],
+                                  staticClass: "form-control dropdown",
+                                  attrs: { name: "Pclass", required: "" },
+                                  on: {
+                                    change: function ($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call(
+                                          $event.target.options,
+                                          function (o) {
+                                            return o.selected
+                                          }
+                                        )
+                                        .map(function (o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.DataEdit,
+                                        "Pclass",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("Select Class ........."),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "1" } }, [
+                                    _vm._v("Bag"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "2" } }, [
+                                    _vm._v("Shirt"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "3" } }, [
+                                    _vm._v("Scarf"),
+                                  ]),
+                                ]
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-control",
+                                  attrs: { for: "PriceProduct" },
+                                },
+                                [_vm._v("Image")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "file",
+                                  name: "user_photo",
+                                  accept: "image/jpeg, image/png",
+                                  multiple: "",
+                                },
+                                on: { change: _vm.onEditFileImageChange },
+                              }),
+                            ]),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "mx-auto",
+                            staticStyle: { width: "140px" },
                           },
                           [
-                            _c("option", { attrs: { value: "" } }, [
-                              _vm._v("Select Class ........."),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v("Bag"),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v("Shirt"),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "3" } }, [
-                              _vm._v("Scarf"),
-                            ]),
+                            _vm.file_photo_edit
+                              ? _c("img", {
+                                  staticClass: "rounded-circle",
+                                  attrs: {
+                                    src: _vm.file_photo_edit,
+                                    alt: "",
+                                    width: "auto",
+                                    height: "140px;",
+                                  },
+                                })
+                              : _c("img", {
+                                  staticClass: "rounded-circle",
+                                  attrs: {
+                                    src: "",
+                                    alt: "",
+                                    width: "100%",
+                                    height: "140px;",
+                                  },
+                                }),
                           ]
                         ),
                       ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-control",
-                            attrs: { for: "PriceProduct" },
-                          },
-                          [_vm._v("Image")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "file",
-                            name: "user_photo",
-                            accept: "image/jpeg, image/png",
-                            multiple: "",
-                          },
-                          on: { change: _vm.onEditFileImageChange },
-                        }),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "mx-auto", staticStyle: { width: "140px" } },
-                    [
-                      _vm.file_photo_edit
-                        ? _c("img", {
-                            staticClass: "rounded-circle",
-                            attrs: {
-                              src: _vm.file_photo_edit,
-                              alt: "",
-                              width: "auto",
-                              height: "140px;",
-                            },
-                          })
-                        : _c("img", {
-                            staticClass: "rounded-circle",
-                            attrs: {
-                              src: "",
-                              alt: "",
-                              width: "100%",
-                              height: "140px;",
-                            },
-                          }),
-                    ]
-                  ),
                 ]),
                 _vm._v(" "),
-                _vm._m(4),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: {
+                        id: "closeModal",
+                        type: "button",
+                        "data-bs-dismiss": "modal",
+                      },
+                      on: { click: _vm.clockClose },
+                    },
+                    [_vm._v("\n              Close\n            ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit", "data-dismiss": "modal" },
+                    },
+                    [_vm._v("\n              Submit\n            ")]
+                  ),
+                ]),
               ]
             ),
           ]),
@@ -60453,7 +60566,7 @@ var render = function () {
                 },
               },
               [
-                _vm._m(5),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", { staticClass: "row" }, [
@@ -60705,7 +60818,7 @@ var render = function () {
                   ),
                 ]),
                 _vm._v(" "),
-                _vm._m(6),
+                _vm._m(4),
               ]
             ),
           ]),
@@ -60794,55 +60907,6 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Edit Product")]
-      ),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fas fa-times",
-        attrs: {
-          type: "button",
-          "data-bs-dismiss": "modal",
-          "aria-label": "Close",
-        },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: {
-            id: "closeModal",
-            type: "button",
-            "data-bs-dismiss": "modal",
-          },
-        },
-        [_vm._v("\n              Close\n            ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { type: "submit", "data-dismiss": "modal" },
-        },
-        [_vm._v("\n              Submit\n            ")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
         [_vm._v("Add Product")]
       ),
       _vm._v(" "),
@@ -60866,7 +60930,7 @@ var staticRenderFns = [
         {
           staticClass: "btn btn-secondary",
           attrs: {
-            id: "closeModalEdit",
+            id: "closeModalAdd",
             type: "button",
             "data-bs-dismiss": "modal",
           },
@@ -64223,293 +64287,365 @@ var render = function () {
                 },
               },
               [
-                _vm._m(3),
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" },
+                    },
+                    [_vm._v("Edit Users")]
+                  ),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "fas fa-times",
+                    attrs: {
+                      type: "button",
+                      "data-bs-dismiss": "modal",
+                      "aria-label": "Close",
+                    },
+                    on: { click: _vm.clockClose },
+                  }),
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "label-control",
-                        attrs: { for: "NameUsers" },
-                      },
-                      [_vm._v("Name")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
+                  _vm.loadingModel
+                    ? _c(
+                        "div",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.InfoEdit.name,
-                          expression: "InfoEdit.name",
+                          staticClass: "spinner-border",
+                          attrs: { role: "status" },
                         },
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "name",
-                        id: "NameUsers",
-                        placeholder: "First name - Last name  .......... ",
-                        required: "",
-                      },
-                      domProps: { value: _vm.InfoEdit.name },
-                      on: {
-                        input: function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.InfoEdit, "name", $event.target.value)
-                        },
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "label-control",
-                        attrs: { for: "UsersEmail" },
-                      },
-                      [_vm._v("Email")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.InfoEdit.email,
-                          expression: "InfoEdit.email",
-                        },
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "email",
-                        id: "UsersEmail",
-                        placeholder: "Eamil .......... ",
-                        required: "",
-                      },
-                      domProps: { value: _vm.InfoEdit.email },
-                      on: {
-                        input: function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.InfoEdit, "email", $event.target.value)
-                        },
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-control",
-                            attrs: { for: "password" },
-                          },
-                          [_vm._v("Password")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
+                        [
+                          _c("span", { staticClass: "visually-hidden" }, [
+                            _vm._v("Loading..."),
+                          ]),
+                        ]
+                      )
+                    : _c("div", [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
                             {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.InfoEdit.password,
-                              expression: "InfoEdit.password",
+                              staticClass: "label-control",
+                              attrs: { for: "NameUsers" },
                             },
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            id: "password",
-                            type: "password",
-                            name: "password",
-                            placeholder: "password ..........",
-                          },
-                          domProps: { value: _vm.InfoEdit.password },
-                          on: {
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.InfoEdit,
-                                "password",
-                                $event.target.value
-                              )
-                            },
-                          },
-                        }),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-control",
-                            attrs: { for: "password_confirmation" },
-                          },
-                          [_vm._v("Password confirm")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.InfoEdit.password_confirmation,
-                              expression: "InfoEdit.password_confirmation",
-                            },
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            id: "password_confirmation",
-                            type: "password",
-                            name: "password_confirmation",
-                            placeholder: "password confirmation ..........",
-                          },
-                          domProps: {
-                            value: _vm.InfoEdit.password_confirmation,
-                          },
-                          on: {
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.InfoEdit,
-                                "password_confirmation",
-                                $event.target.value
-                              )
-                            },
-                          },
-                        }),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-control",
-                            attrs: { for: "UsersStatus" },
-                          },
-                          [_vm._v("Usage status")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
+                            [_vm._v("Name")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
                             directives: [
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.InfoEdit.status,
-                                expression: "InfoEdit.status",
+                                value: _vm.InfoEdit.name,
+                                expression: "InfoEdit.name",
                               },
                             ],
-                            staticClass: "form-control dropdown",
+                            staticClass: "form-control",
                             attrs: {
-                              id: "UsersStatus",
-                              name: "status",
+                              type: "text",
+                              name: "name",
+                              id: "NameUsers",
+                              placeholder:
+                                "First name - Last name  .......... ",
                               required: "",
                             },
+                            domProps: { value: _vm.InfoEdit.name },
                             on: {
-                              change: function ($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function (o) {
-                                    return o.selected
-                                  })
-                                  .map(function (o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
                                 _vm.$set(
                                   _vm.InfoEdit,
-                                  "status",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
+                                  "name",
+                                  $event.target.value
                                 )
                               },
                             },
-                          },
-                          [
-                            _c("option", { attrs: { value: "" } }, [
-                              _vm._v("Select status .........."),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v("Active"),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "0" } }, [
-                              _vm._v("Inactive"),
-                            ]),
-                          ]
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-control",
-                            attrs: { for: "UsersFileImage" },
-                          },
-                          [_vm._v("Image")]
-                        ),
+                          }),
+                        ]),
                         _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "file",
-                            id: "UsersFileImage",
-                            accept: "image/jpeg, image/png",
-                            multiple: "",
-                          },
-                          on: { change: _vm.onEditFileImageChange },
-                        }),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "label-control",
+                              attrs: { for: "UsersEmail" },
+                            },
+                            [_vm._v("Email")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.InfoEdit.email,
+                                expression: "InfoEdit.email",
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "email",
+                              id: "UsersEmail",
+                              placeholder: "Eamil .......... ",
+                              required: "",
+                            },
+                            domProps: { value: _vm.InfoEdit.email },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.InfoEdit,
+                                  "email",
+                                  $event.target.value
+                                )
+                              },
+                            },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-control",
+                                  attrs: { for: "password" },
+                                },
+                                [_vm._v("Password")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.InfoEdit.password,
+                                    expression: "InfoEdit.password",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  id: "password",
+                                  type: "password",
+                                  name: "password",
+                                  placeholder: "password ..........",
+                                },
+                                domProps: { value: _vm.InfoEdit.password },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.InfoEdit,
+                                      "password",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-control",
+                                  attrs: { for: "password_confirmation" },
+                                },
+                                [_vm._v("Password confirm")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.InfoEdit.password_confirmation,
+                                    expression:
+                                      "InfoEdit.password_confirmation",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  id: "password_confirmation",
+                                  type: "password",
+                                  name: "password_confirmation",
+                                  placeholder:
+                                    "password confirmation ..........",
+                                },
+                                domProps: {
+                                  value: _vm.InfoEdit.password_confirmation,
+                                },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.InfoEdit,
+                                      "password_confirmation",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-control",
+                                  attrs: { for: "UsersStatus" },
+                                },
+                                [_vm._v("Usage status")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.InfoEdit.status,
+                                      expression: "InfoEdit.status",
+                                    },
+                                  ],
+                                  staticClass: "form-control dropdown",
+                                  attrs: {
+                                    id: "UsersStatus",
+                                    name: "status",
+                                    required: "",
+                                  },
+                                  on: {
+                                    change: function ($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call(
+                                          $event.target.options,
+                                          function (o) {
+                                            return o.selected
+                                          }
+                                        )
+                                        .map(function (o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.InfoEdit,
+                                        "status",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("Select status .........."),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "1" } }, [
+                                    _vm._v("Active"),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "0" } }, [
+                                    _vm._v("Inactive"),
+                                  ]),
+                                ]
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-control",
+                                  attrs: { for: "UsersFileImage" },
+                                },
+                                [_vm._v("Image")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "file",
+                                  id: "UsersFileImage",
+                                  accept: "image/jpeg, image/png",
+                                  multiple: "",
+                                },
+                                on: { change: _vm.onEditFileImageChange },
+                              }),
+                            ]),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "image-show" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "mx-auto",
+                              staticStyle: { width: "140px" },
+                            },
+                            [
+                              _c("img", {
+                                staticClass: "rounded-circle",
+                                attrs: {
+                                  src: _vm.file_photo_edit,
+                                  alt: "",
+                                  width: "100%",
+                                  height: "140px;",
+                                },
+                              }),
+                            ]
+                          ),
+                        ]),
                       ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "image-show" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "mx-auto",
-                        staticStyle: { width: "140px" },
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "rounded-circle",
-                          attrs: {
-                            src: _vm.file_photo_edit,
-                            alt: "",
-                            width: "100%",
-                            height: "140px;",
-                          },
-                        }),
-                      ]
-                    ),
-                  ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(4),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: {
+                        id: "closeModalEdit",
+                        type: "button",
+                        "data-bs-dismiss": "modal",
+                      },
+                      on: { click: _vm.clockClose },
+                    },
+                    [_vm._v("\n              Close\n            ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit" },
+                    },
+                    [_vm._v("Submit")]
+                  ),
+                ]),
               ]
             ),
           ]),
@@ -64547,7 +64683,7 @@ var render = function () {
                 },
               },
               [
-                _vm._m(5),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", { staticClass: "form-group" }, [
@@ -64766,7 +64902,7 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(6),
+                _vm._m(4),
               ]
             ),
           ]),
@@ -64841,52 +64977,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Tool")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Edit Users")]
-      ),
-      _vm._v(" "),
-      _c("i", {
-        staticClass: "fas fa-times",
-        attrs: {
-          type: "button",
-          "data-bs-dismiss": "modal",
-          "aria-label": "Close",
-        },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: {
-            id: "closeModalEdit",
-            type: "button",
-            "data-bs-dismiss": "modal",
-          },
-        },
-        [_vm._v("\n              Close\n            ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
-      ),
     ])
   },
   function () {
