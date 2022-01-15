@@ -10,7 +10,14 @@
             <table class="table table-bordered table-hover text-center">
               <thead>
                 <tr>
-                  <th scope="col">No.</th>
+                  <th scope="col">
+                    <input
+                      id="SelectAll"
+                      @change="toggleSelect"
+                      type="checkbox"
+                      :checked="selectAll"
+                    />
+                  </th>
                   <th scope="col">Image</th>
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
@@ -20,7 +27,14 @@
               </thead>
               <tbody>
                 <tr v-for="(data, index) in infoUserProduct" :key="index">
-                  <th scope="row">{{ index + 1 }}</th>
+                  <th scope="row">
+                    <input
+                      @click="clickSelect"
+                      type="checkbox"
+                      v-model="data.checked"
+                      :checked="data.checked"
+                    />
+                  </th>
                   <td><img width="50px" :src="data.Pimage" alt="" /></td>
                   <td>{{ data.Pname }}</td>
                   <td>{{ data.Pprice * data.number }}</td>
@@ -59,7 +73,9 @@
           <div class="text-center">
             <span class="badge bg-secondary mb-2">Total = {{ total }} $</span
             ><br />
-            <button class="btn btn-success">Pay Money</button>
+            <button class="btn btn-success" @click="clickPayMoney">
+              Pay Money
+            </button>
           </div>
         </div>
       </div>
@@ -81,16 +97,19 @@ export default {
   mounted() {
     this.getProducts();
   },
+  computed: {
+    selectAll() {
+      return this.infoUserProduct.every(function (data) {
+        return data.checked;
+      });
+    },
+  },
   methods: {
     getProducts() {
       axios
         .get("/api/users/product/" + this.auth_user.id + "/index")
         .then((res) => {
           this.infoUserProduct = res.data;
-          for (let i = 0; i < this.infoUserProduct.length; i++) {
-            this.total +=
-              this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
-          }
         })
         .catch((error) => {
           console.log("error");
@@ -111,6 +130,32 @@ export default {
           console.log("error!");
         });
     },
+    clickPayMoney() {
+      alert(this.total);
+    },
+    clickSelect() {
+      //price total
+      this.total = 0;
+      for (let i = 0; i < this.infoUserProduct.length; i++) {
+        if (this.infoUserProduct[i].checked = true) {
+          this.total +=
+            this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+        }
+      }
+    },
+    toggleSelect() {
+      var select = this.selectAll;
+      this.infoUserProduct.forEach(function (data) {
+        data.checked = !select;
+      });
+      //   this.selectAll = !select;
+      //price total
+      this.total = 0;
+      for (let i = 0; i < this.infoUserProduct.length; i++) {
+        this.total +=
+          this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+      }
+    },
     clickPlus(value, index) {
       axios
         .post("/api/users/product/" + value + "/plus", {
@@ -120,8 +165,10 @@ export default {
           this.infoUserProduct[index].number++;
           this.total = 0;
           for (let i = 0; i < this.infoUserProduct.length; i++) {
-            this.total +=
-              this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+            if (this.infoUserProduct[i].checked == true) {
+              this.total +=
+                this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+            }
           }
         })
         .catch((error) => {
@@ -138,8 +185,11 @@ export default {
             this.infoUserProduct[index].number--;
             this.total = 0;
             for (let i = 0; i < this.infoUserProduct.length; i++) {
-              this.total +=
-                this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+              if (this.infoUserProduct[i].checked == true) {
+                this.total +=
+                  this.infoUserProduct[i].Pprice *
+                  this.infoUserProduct[i].number;
+              }
             }
           })
           .catch((error) => {

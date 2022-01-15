@@ -17,7 +17,9 @@ class UsersProductsController extends Controller
      */
     public function index($id)
     {
-        $Products = Products::join('user_products', 'user_products.product_id', '=', 'products.id')->get();
+        $Products = Products::join('user_products', 'user_products.product_id', '=', 'products.id')
+            ->where('user_id', $id)
+            ->get();
 
         return response()->json($Products, 200);
     }

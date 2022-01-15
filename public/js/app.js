@@ -8411,6 +8411,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index",
@@ -8424,16 +8440,19 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getProducts();
   },
+  computed: {
+    selectAll: function selectAll() {
+      return this.infoUserProduct.every(function (data) {
+        return data.checked;
+      });
+    }
+  },
   methods: {
     getProducts: function getProducts() {
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/product/" + this.auth_user.id + "/index").then(function (res) {
         _this.infoUserProduct = res.data;
-
-        for (var i = 0; i < _this.infoUserProduct.length; i++) {
-          _this.total += _this.infoUserProduct[i].Pprice * _this.infoUserProduct[i].number;
-        }
       })["catch"](function (error) {
         console.log("error");
       });
@@ -8453,6 +8472,32 @@ __webpack_require__.r(__webpack_exports__);
         console.log("error!");
       });
     },
+    clickPayMoney: function clickPayMoney() {
+      alert(this.total);
+    },
+    clickSelect: function clickSelect() {
+      //price total
+      this.total = 0;
+
+      for (var i = 0; i < this.infoUserProduct.length; i++) {
+        if (this.infoUserProduct[i].checked = true) {
+          this.total += this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+        }
+      }
+    },
+    toggleSelect: function toggleSelect() {
+      var select = this.selectAll;
+      this.infoUserProduct.forEach(function (data) {
+        data.checked = !select;
+      }); //   this.selectAll = !select;
+      //price total
+
+      this.total = 0;
+
+      for (var i = 0; i < this.infoUserProduct.length; i++) {
+        this.total += this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+      }
+    },
     clickPlus: function clickPlus(value, index) {
       var _this3 = this;
 
@@ -8463,7 +8508,9 @@ __webpack_require__.r(__webpack_exports__);
         _this3.total = 0;
 
         for (var i = 0; i < _this3.infoUserProduct.length; i++) {
-          _this3.total += _this3.infoUserProduct[i].Pprice * _this3.infoUserProduct[i].number;
+          if (_this3.infoUserProduct[i].checked == true) {
+            _this3.total += _this3.infoUserProduct[i].Pprice * _this3.infoUserProduct[i].number;
+          }
         }
       })["catch"](function (error) {
         console.log("error!");
@@ -8480,7 +8527,9 @@ __webpack_require__.r(__webpack_exports__);
           _this4.total = 0;
 
           for (var i = 0; i < _this4.infoUserProduct.length; i++) {
-            _this4.total += _this4.infoUserProduct[i].Pprice * _this4.infoUserProduct[i].number;
+            if (_this4.infoUserProduct[i].checked == true) {
+              _this4.total += _this4.infoUserProduct[i].Pprice * _this4.infoUserProduct[i].number;
+            }
           }
         })["catch"](function (error) {
           console.log("error!");
@@ -65059,14 +65108,77 @@ var render = function () {
               "table",
               { staticClass: "table table-bordered table-hover text-center" },
               [
-                _vm._m(1),
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _c("input", {
+                        attrs: { id: "SelectAll", type: "checkbox" },
+                        domProps: { checked: _vm.selectAll },
+                        on: { change: _vm.toggleSelect },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Image")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Number")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Tool")]),
+                  ]),
+                ]),
                 _vm._v(" "),
                 _c(
                   "tbody",
                   _vm._l(_vm.infoUserProduct, function (data, index) {
                     return _c("tr", { key: index }, [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v(_vm._s(index + 1)),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: data.checked,
+                              expression: "data.checked",
+                            },
+                          ],
+                          attrs: { type: "checkbox" },
+                          domProps: {
+                            checked: data.checked,
+                            checked: Array.isArray(data.checked)
+                              ? _vm._i(data.checked, null) > -1
+                              : data.checked,
+                          },
+                          on: {
+                            click: _vm.clickSelect,
+                            change: function ($event) {
+                              var $$a = data.checked,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = null,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(data, "checked", $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      data,
+                                      "checked",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(data, "checked", $$c)
+                              }
+                            },
+                          },
+                        }),
                       ]),
                       _vm._v(" "),
                       _c("td", [
@@ -65146,9 +65258,14 @@ var render = function () {
             ]),
             _c("br"),
             _vm._v(" "),
-            _c("button", { staticClass: "btn btn-success" }, [
-              _vm._v("Pay Money"),
-            ]),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                on: { click: _vm.clickPayMoney },
+              },
+              [_vm._v("\n            Pay Money\n          ")]
+            ),
           ]),
         ]),
       ]),
@@ -65162,26 +65279,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center mb-3" }, [
       _c("h3", [_vm._v("My Product")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("No.")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Image")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Number")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tool")]),
-      ]),
     ])
   },
 ]

@@ -161,6 +161,7 @@
                                 <h6 class="collapse-header">Custom Products:</h6>
                                 <a class="collapse-item {{ request()->routeIs('myProducts') ? 'active' : '' }}"
                                     href="{{ url('/my-products') }}">Products</a>
+                                <a class="collapse-item" href="#">Order History</a>
                             </div>
                         </div>
                     </li>
@@ -367,7 +368,7 @@
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                             <a class="btn btn-primary" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

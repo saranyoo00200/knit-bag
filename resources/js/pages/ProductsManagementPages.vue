@@ -533,7 +533,6 @@ export default {
     onEditFileImageChange(e) {
       const file = e.target.files[0];
       this.file_photo_edit = URL.createObjectURL(file);
-
       this.DataEdit.Pimage = e.target.files[0];
       //   console.log(this.file_photo_edit);
     },

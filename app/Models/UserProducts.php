@@ -9,5 +9,5 @@ class UserProducts extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['number', 'user_id', 'product_id'];
+    protected $fillable = ['select_check', 'number', 'user_id', 'product_id'];
 }
