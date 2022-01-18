@@ -70,4 +70,22 @@ class HomeController extends Controller
     {
         return view('pages.dashboard.usersProducts')->with('auth_user', auth()->user());
     }
+
+    public function orderHistorys()
+    {
+        return view('pages.dashboard.orderHistory')->with('auth_user', auth()->user());
+    }
+
+    public function checkSales()
+    {
+        if (
+            auth()
+                ->user()
+                ->hasRole('admin')
+        ) {
+            return view('pages.dashboard.checkSales')->with('auth_user', auth()->user());
+        } else {
+            return view('errors.404');
+        }
+    }
 }

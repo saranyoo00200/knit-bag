@@ -17,8 +17,7 @@ class CreateUserProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->string('number', 191)->nullable();
-            $table->boolean('checked')->default(false);
+            $table->string('number', 20)->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();

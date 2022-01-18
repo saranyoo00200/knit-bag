@@ -10,14 +10,7 @@
             <table class="table table-bordered table-hover text-center">
               <thead>
                 <tr>
-                  <th scope="col">
-                    <input
-                      id="SelectAll"
-                      @change="toggleSelect"
-                      type="checkbox"
-                      :checked="selectAll"
-                    />
-                  </th>
+                  <th scope="col">No.</th>
                   <th scope="col">Image</th>
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
@@ -28,12 +21,7 @@
               <tbody>
                 <tr v-for="(data, index) in infoUserProduct" :key="index">
                   <th scope="row">
-                    <input
-                      @click="clickSelect"
-                      type="checkbox"
-                      v-model="data.checked"
-                      :checked="data.checked"
-                    />
+                    {{ index + 1 }}
                   </th>
                   <td><img width="50px" :src="data.Pimage" alt="" /></td>
                   <td>{{ data.Pname }}</td>
@@ -97,19 +85,17 @@ export default {
   mounted() {
     this.getProducts();
   },
-  computed: {
-    selectAll() {
-      return this.infoUserProduct.every(function (data) {
-        return data.checked;
-      });
-    },
-  },
   methods: {
     getProducts() {
       axios
         .get("/api/users/product/" + this.auth_user.id + "/index")
         .then((res) => {
           this.infoUserProduct = res.data;
+          this.total = 0;
+          for (let i = 0; i < this.infoUserProduct.length; i++) {
+            this.total +=
+              this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
+          }
         })
         .catch((error) => {
           console.log("error");
@@ -137,21 +123,6 @@ export default {
       //price total
       this.total = 0;
       for (let i = 0; i < this.infoUserProduct.length; i++) {
-        if (this.infoUserProduct[i].checked = true) {
-          this.total +=
-            this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
-        }
-      }
-    },
-    toggleSelect() {
-      var select = this.selectAll;
-      this.infoUserProduct.forEach(function (data) {
-        data.checked = !select;
-      });
-      //   this.selectAll = !select;
-      //price total
-      this.total = 0;
-      for (let i = 0; i < this.infoUserProduct.length; i++) {
         this.total +=
           this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
       }
@@ -165,10 +136,8 @@ export default {
           this.infoUserProduct[index].number++;
           this.total = 0;
           for (let i = 0; i < this.infoUserProduct.length; i++) {
-            if (this.infoUserProduct[i].checked == true) {
-              this.total +=
-                this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
-            }
+            this.total +=
+              this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
           }
         })
         .catch((error) => {
@@ -185,11 +154,8 @@ export default {
             this.infoUserProduct[index].number--;
             this.total = 0;
             for (let i = 0; i < this.infoUserProduct.length; i++) {
-              if (this.infoUserProduct[i].checked == true) {
-                this.total +=
-                  this.infoUserProduct[i].Pprice *
-                  this.infoUserProduct[i].number;
-              }
+              this.total +=
+                this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
             }
           })
           .catch((error) => {

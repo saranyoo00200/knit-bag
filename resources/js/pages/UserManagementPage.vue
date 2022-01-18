@@ -68,6 +68,9 @@
                 <td>{{ data.email }}</td>
                 <td>Active</td>
                 <td>
+                  <button class="btn btn-secondary">
+                    <i class="fas fa-history"></i>
+                  </button>
                   <button
                     @click="getEditUsers(data.id)"
                     class="btn btn-warning"

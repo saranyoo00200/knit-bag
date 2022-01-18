@@ -28,6 +28,8 @@ Vue.component("reviews", require("./pages/ReviewsPage.vue").default);
 Vue.component("contact", require("./pages/ContactPage.vue").default);
 Vue.component("profile", require("./pages/profile.vue").default);
 Vue.component("my-product", require("./pages/UserProductPage.vue").default);
+Vue.component("order-history", require("./pages/OrderHistoryPage.vue").default);
+Vue.component("check-sales", require("./pages/CheckSalesPage.vue").default);
 Vue.component(
     "admin-dashboard",
     require("./pages/AdminsHomePages.vue").default

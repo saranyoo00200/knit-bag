@@ -109,8 +109,8 @@
                         </div>
 
                         <li class="nav-item {{ request()->routeIs('products') ? 'active' : '' }}">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Products"
-                                aria-expanded="true" aria-controls="Products">
+                            <a class="nav-link {{ request()->routeIs('products') ? '' : 'collapsed' }}" href="#"
+                                data-toggle="collapse" data-target="#Products" aria-expanded="true" aria-controls="Products">
                                 <i class="fab fa-product-hunt"></i>
                                 <span>Products</span>
                             </a>
@@ -125,8 +125,8 @@
                         </li>
 
                         <li class="nav-item {{ request()->routeIs('users') ? 'active' : '' }}">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Users"
-                                aria-expanded="true" aria-controls="Users">
+                            <a class="nav-link {{ request()->routeIs('users') ? '' : 'collapsed' }}" href="#"
+                                data-toggle="collapse" data-target="#Users" aria-expanded="true" aria-controls="Users">
                                 <i class="fas fa-user-tag"></i>
                                 <span>Users</span>
                             </a>
@@ -140,6 +140,22 @@
                             </div>
                         </li>
 
+                        <li class="nav-item {{ request()->routeIs('checkSales') ? 'active' : '' }}">
+                            <a class="nav-link {{ request()->routeIs('checkSales') ? '' : 'collapsed' }}" href="#"
+                                data-toggle="collapse" data-target="#CheckSales" aria-expanded="true" aria-controls="Users">
+                                <i class="fas fa-search-dollar"></i>
+                                <span>Check sales</span>
+                            </a>
+                            <div id="CheckSales" class="collapse {{ request()->routeIs('checkSales') ? 'show' : '' }}"
+                                aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <h6 class="collapse-header">check sales:</h6>
+                                    <a class="collapse-item {{ request()->routeIs('checkSales') ? 'active' : '' }}" href="
+                                                        /check-sales">Sales</a>
+                                </div>
+                            </div>
+                        </li>
+
                         <!-- Divider -->
                         <hr class="sidebar-divider d-none d-md-block">
                     @endrole
@@ -149,19 +165,22 @@
                         my selected product
                     </div>
 
-                    <li class="nav-item {{ request()->routeIs('myProducts') ? 'active' : '' }}">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#myProducts"
-                            aria-expanded="true" aria-controls="Products">
+                    <li class="nav-item {{ request()->routeIs('myProducts', 'orderHistory') ? 'active' : '' }}">
+                        <a class="nav-link {{ request()->routeIs('myProducts', 'orderHistory') ? '' : 'collapsed' }}"
+                            href="#" data-toggle="collapse" data-target="#myProducts" aria-expanded="true"
+                            aria-controls="Products">
                             <i class="fas fa-shopping-cart"></i>
                             <span>My Products</span>
                         </a>
-                        <div id="myProducts" class="collapse {{ request()->routeIs('myProducts') ? 'show' : '' }}"
+                        <div id="myProducts"
+                            class="collapse {{ request()->routeIs('myProducts', 'orderHistory') ? 'show' : '' }}"
                             aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">Custom Products:</h6>
                                 <a class="collapse-item {{ request()->routeIs('myProducts') ? 'active' : '' }}"
                                     href="{{ url('/my-products') }}">Products</a>
-                                <a class="collapse-item" href="#">Order History</a>
+                                <a class="collapse-item {{ request()->routeIs('orderHistory') ? 'active' : '' }}"
+                                    href="/order-historys">Order Historys</a>
                             </div>
                         </div>
                     </li>
@@ -368,7 +387,7 @@
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                             <a class="btn btn-primary" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
