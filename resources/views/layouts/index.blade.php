@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>KNIT BAG</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -62,8 +62,8 @@
                                         ->count();
                                 @endphp
                                 <li class="nav-item">
-                                    <a class="nav-link mx-1 position-relative" href="#">
-                                        <i class="fas fa-heart"></i>
+                                    <a class="nav-link mx-1 position-relative" href="{{ url('/order-historys') }}">
+                                        <i class="fas fa-history"></i>
                                         <span class="position-absolute translate-middle-x badge bg-danger"
                                             style="font-size: 9px">
                                             0
@@ -93,7 +93,7 @@
                                         @endif
                                     </a>
                                     <!-- Dropdown - User Information -->
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in position-absolute"
                                         aria-labelledby="userDropdown">
                                         <a class="dropdown-item" href="{{ url('/home') }}">
                                             <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -186,7 +186,7 @@
                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

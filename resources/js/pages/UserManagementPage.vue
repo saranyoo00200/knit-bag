@@ -26,7 +26,7 @@
         <div class="table-responsive">
           <table
             id="myTable"
-            class="table table-striped table-bordered table-hover"
+            class="table table-striped table-bordered table-hover text-center"
             style="width: 100%"
           >
             <thead>
@@ -55,13 +55,21 @@
                 <td>
                   <div v-if="data.image == null">
                     <img
-                      src="https://prinnie333.com/assets/img/unknow.jpg"
-                      width="50px"
+                      class="img-profile rounded-circle"
+                      src="https://image.shutterstock.com/mosaic_250/169412572/1040084344/stock-vector-man-icon-vector-1040084344.jpg"
+                      width="35px"
+                      height="35px"
                       alt=""
                     />
                   </div>
                   <div v-else>
-                    <img :src="data.image" width="50px" alt="" />
+                    <img
+                      class="img-profile rounded-circle"
+                      :src="data.image"
+                      width="35px"
+                      height="35px"
+                      alt=""
+                    />
                   </div>
                 </td>
                 <td>{{ data.name }}</td>
@@ -371,11 +379,13 @@
 </template>
 
 <script>
-import axios from "axios";
+//Bootstrap and jQuery libraries
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+//Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
+import axios from "axios";
 import $ from "jquery";
 
 export default {

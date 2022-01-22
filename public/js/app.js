@@ -5862,14 +5862,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery/dist/jquery.min.js */ "./node_modules/jquery/dist/jquery.min.js");
-/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! datatables.net-dt/js/dataTables.dataTables */ "./node_modules/datatables.net-dt/js/dataTables.dataTables.js");
-/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var datatables_net_dt_css_jquery_dataTables_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! datatables.net-dt/css/jquery.dataTables.min.css */ "./node_modules/datatables.net-dt/css/jquery.dataTables.min.css");
+/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery/dist/jquery.min.js */ "./node_modules/jquery/dist/jquery.min.js");
+/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! datatables.net-dt/js/dataTables.dataTables */ "./node_modules/datatables.net-dt/js/dataTables.dataTables.js");
+/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var datatables_net_dt_css_jquery_dataTables_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! datatables.net-dt/css/jquery.dataTables.min.css */ "./node_modules/datatables.net-dt/css/jquery.dataTables.min.css");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
 //
@@ -6243,7 +6243,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//Bootstrap and jQuery libraries
 
+ //Datatable Modules
 
 
 
@@ -6280,7 +6290,7 @@ __webpack_require__.r(__webpack_exports__);
     getProducts: function getProducts() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/products/index/list").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/products/index/list").then(function (res) {
         _this.DataList = res.data; //   console.log(this.DataList);
 
         _this.UseDataTable();
@@ -6291,7 +6301,7 @@ __webpack_require__.r(__webpack_exports__);
     getEditProduct: function getEditProduct(value) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/products/edit/" + value).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/products/edit/" + value).then(function (res) {
         _this2.DataEdit = {
           id: res.data.id,
           Pname: res.data.Pname,
@@ -6329,7 +6339,7 @@ __webpack_require__.r(__webpack_exports__);
       } // update original!
 
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/products/update/" + this.DataEdit.id, formData).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/products/update/" + this.DataEdit.id, formData).then(function (res) {
         // close
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#closeModal").click(); // refresh
 
@@ -6352,7 +6362,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           // API Delete
-          axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/products/delete/" + value).then(function (response) {
+          axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/products/delete/" + value).then(function (response) {
             _this4.$swal("Deleted!", "Your file has been deleted.", "success");
 
             _this4.DataList.splice(index, 1);
@@ -6369,7 +6379,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("Pdetail", this.DataAdd.Pdetail);
       formData.append("Pclass", this.DataAdd.Pclass);
       formData.append("Pprice", this.DataAdd.Pprice);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/products/addProduct/store", formData).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/products/addProduct/store", formData).then(function (response) {
         // close
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#closeModalEdit").click(); //refresh
 
@@ -7846,14 +7856,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery/dist/jquery.min.js */ "./node_modules/jquery/dist/jquery.min.js");
-/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! datatables.net-dt/js/dataTables.dataTables */ "./node_modules/datatables.net-dt/js/dataTables.dataTables.js");
-/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var datatables_net_dt_css_jquery_dataTables_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! datatables.net-dt/css/jquery.dataTables.min.css */ "./node_modules/datatables.net-dt/css/jquery.dataTables.min.css");
+/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery/dist/jquery.min.js */ "./node_modules/jquery/dist/jquery.min.js");
+/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! datatables.net-dt/js/dataTables.dataTables */ "./node_modules/datatables.net-dt/js/dataTables.dataTables.js");
+/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var datatables_net_dt_css_jquery_dataTables_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! datatables.net-dt/css/jquery.dataTables.min.css */ "./node_modules/datatables.net-dt/css/jquery.dataTables.min.css");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
 //
@@ -8228,7 +8238,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//Bootstrap and jQuery libraries
 
+ //Datatable Modules
 
 
 
@@ -8266,7 +8286,7 @@ __webpack_require__.r(__webpack_exports__);
     getUsers: function getUsers() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/index/list").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/users/index/list").then(function (res) {
         _this.DataList = res.data;
 
         _this.UseDataTable();
@@ -8277,7 +8297,7 @@ __webpack_require__.r(__webpack_exports__);
     getEditUsers: function getEditUsers(value) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/edit/" + value).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/users/edit/" + value).then(function (res) {
         _this2.InfoEdit = {
           id: res.data.id,
           name: res.data.name,
@@ -8322,7 +8342,7 @@ __webpack_require__.r(__webpack_exports__);
       } // update original!
 
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/users/update/" + this.InfoEdit.id, formData).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/users/update/" + this.InfoEdit.id, formData).then(function (res) {
         // close
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#closeModal").click(); // refresh
 
@@ -8352,7 +8372,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.value) {
           // API Delete
-          axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/delete/" + value).then(function (response) {
+          axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/users/delete/" + value).then(function (response) {
             _this5.$swal("Deleted!", "Your file has been deleted.", "success");
 
             _this5.DataList.splice(index, 1);
@@ -8368,7 +8388,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("email", this.InfoAdd.email);
       formData.append("password", this.InfoAdd.password);
       formData.append("image", this.InfoAdd.image);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/users/addUsers/create", formData).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/users/addUsers/create", formData).then(function (response) {
         // close
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#closeModalAdd").click(); //refresh
 
@@ -8403,8 +8423,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery/dist/jquery.min.js */ "./node_modules/jquery/dist/jquery.min.js");
+/* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! datatables.net-dt/js/dataTables.dataTables */ "./node_modules/datatables.net-dt/js/dataTables.dataTables.js");
+/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var datatables_net_dt_css_jquery_dataTables_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! datatables.net-dt/css/jquery.dataTables.min.css */ "./node_modules/datatables.net-dt/css/jquery.dataTables.min.css");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
 //
 //
 //
@@ -8478,6 +8506,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//Bootstrap and jQuery libraries
+
+ //Datatable Modules
+
+
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index",
@@ -8495,8 +8543,11 @@ __webpack_require__.r(__webpack_exports__);
     getProducts: function getProducts() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/product/" + this.auth_user.id + "/index").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/users/product/" + this.auth_user.id + "/index").then(function (res) {
         _this.infoUserProduct = res.data;
+
+        _this.ProductDataTable();
+
         _this.total = 0;
 
         for (var i = 0; i < _this.infoUserProduct.length; i++) {
@@ -8506,10 +8557,19 @@ __webpack_require__.r(__webpack_exports__);
         console.log("error");
       });
     },
+    ProductDataTable: function ProductDataTable() {
+      // use data tables
+      setTimeout(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_5___default()("#myTable").DataTable({
+          lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+          pageLength: 5
+        });
+      });
+    },
     DeleteProduct: function DeleteProduct(value, index) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/product/" + value + "/delete").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/users/product/" + value + "/delete").then(function (res) {
         _this2.infoUserProduct.splice(index, 1);
 
         _this2.total = 0;
@@ -8535,7 +8595,7 @@ __webpack_require__.r(__webpack_exports__);
     clickPlus: function clickPlus(value, index) {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/users/product/" + value + "/plus", {
+      axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/users/product/" + value + "/plus", {
         user_id: this.auth_user.id
       }).then(function (res) {
         _this3.infoUserProduct[index].number++;
@@ -8552,7 +8612,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       if (this.infoUserProduct[index].number > 1) {
-        axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/users/product/" + value + "/minus", {
+        axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/users/product/" + value + "/minus", {
           user_id: this.auth_user.id
         }).then(function (res) {
           _this4.infoUserProduct[index].number--;
@@ -60417,7 +60477,8 @@ var render = function () {
           _c(
             "table",
             {
-              staticClass: "table table-striped table-bordered table-hover",
+              staticClass:
+                "table table-striped table-bordered table-hover text-center",
               staticStyle: { width: "100%" },
               attrs: { id: "myTable" },
             },
@@ -60434,7 +60495,13 @@ var render = function () {
                     _vm._v(" "),
                     _c("td", [
                       _c("img", {
-                        attrs: { src: data.Pimage, width: "50px", alt: "" },
+                        staticClass: "img-profile rounded-circle",
+                        attrs: {
+                          src: data.Pimage,
+                          width: "35px",
+                          height: "35px",
+                          alt: "",
+                        },
                       }),
                     ]),
                     _vm._v(" "),
@@ -64478,7 +64545,8 @@ var render = function () {
           _c(
             "table",
             {
-              staticClass: "table table-striped table-bordered table-hover",
+              staticClass:
+                "table table-striped table-bordered table-hover text-center",
               staticStyle: { width: "100%" },
               attrs: { id: "myTable" },
             },
@@ -64497,18 +64565,22 @@ var render = function () {
                       data.image == null
                         ? _c("div", [
                             _c("img", {
+                              staticClass: "img-profile rounded-circle",
                               attrs: {
-                                src: "https://prinnie333.com/assets/img/unknow.jpg",
-                                width: "50px",
+                                src: "https://image.shutterstock.com/mosaic_250/169412572/1040084344/stock-vector-man-icon-vector-1040084344.jpg",
+                                width: "35px",
+                                height: "35px",
                                 alt: "",
                               },
                             }),
                           ])
                         : _c("div", [
                             _c("img", {
+                              staticClass: "img-profile rounded-circle",
                               attrs: {
                                 src: data.image,
-                                width: "50px",
+                                width: "35px",
+                                height: "35px",
                                 alt: "",
                               },
                             }),
@@ -65372,7 +65444,11 @@ var render = function () {
           _c("div", { staticClass: "table-responsive-md" }, [
             _c(
               "table",
-              { staticClass: "table table-bordered table-hover text-center" },
+              {
+                staticClass: "table table-bordered table-hover text-center",
+                staticStyle: { width: "100%" },
+                attrs: { id: "myTable" },
+              },
               [
                 _vm._m(1),
                 _vm._v(" "),
@@ -65390,7 +65466,13 @@ var render = function () {
                       _vm._v(" "),
                       _c("td", [
                         _c("img", {
-                          attrs: { width: "50px", src: data.Pimage, alt: "" },
+                          staticClass: "img-profile rounded-circle",
+                          attrs: {
+                            width: "35px",
+                            height: "35px",
+                            src: data.Pimage,
+                            alt: "",
+                          },
                         }),
                       ]),
                       _vm._v(" "),
@@ -65446,7 +65528,7 @@ var render = function () {
                               },
                             },
                           },
-                          [_vm._v("Delete")]
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
                         ),
                       ]),
                     ])

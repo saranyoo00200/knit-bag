@@ -7,7 +7,11 @@
             <h3>My Product</h3>
           </div>
           <div class="table-responsive-md">
-            <table class="table table-bordered table-hover text-center">
+            <table
+              id="myTable"
+              class="table table-bordered table-hover text-center"
+              style="width: 100%"
+            >
               <thead>
                 <tr>
                   <th scope="col">No.</th>
@@ -23,7 +27,15 @@
                   <th scope="row">
                     {{ index + 1 }}
                   </th>
-                  <td><img width="50px" :src="data.Pimage" alt="" /></td>
+                  <td>
+                    <img
+                      class="img-profile rounded-circle"
+                      width="35px"
+                      height="35px"
+                      :src="data.Pimage"
+                      alt=""
+                    />
+                  </td>
                   <td>{{ data.Pname }}</td>
                   <td>{{ data.Pprice * data.number }}</td>
                   <td>
@@ -50,8 +62,9 @@
                       class="btn btn-danger"
                       @click="DeleteProduct(data.id, index)"
                       href="#"
-                      >Delete</a
                     >
+                      <i class="fas fa-trash-alt"></i
+                    ></a>
                   </td>
                 </tr>
               </tbody>
@@ -72,7 +85,15 @@
 </template>
 
 <script>
+//Bootstrap and jQuery libraries
+import "jquery/dist/jquery.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
 import axios from "axios";
+import $ from "jquery";
+
 export default {
   name: "index",
   data() {
@@ -91,6 +112,7 @@ export default {
         .get("/api/users/product/" + this.auth_user.id + "/index")
         .then((res) => {
           this.infoUserProduct = res.data;
+          this.ProductDataTable();
           this.total = 0;
           for (let i = 0; i < this.infoUserProduct.length; i++) {
             this.total +=
@@ -100,6 +122,18 @@ export default {
         .catch((error) => {
           console.log("error");
         });
+    },
+    ProductDataTable() {
+      // use data tables
+      setTimeout(() => {
+        $("#myTable").DataTable({
+          lengthMenu: [
+            [5, 10, 25, 50, -1],
+            [5, 10, 25, 50, "All"],
+          ],
+          pageLength: 5,
+        });
+      });
     },
     DeleteProduct(value, index) {
       axios

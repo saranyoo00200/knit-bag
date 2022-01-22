@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>KNIT BAG</title>
 
 
     <!-- Fonts -->
@@ -151,7 +151,7 @@
                                 <div class="bg-white py-2 collapse-inner rounded">
                                     <h6 class="collapse-header">check sales:</h6>
                                     <a class="collapse-item {{ request()->routeIs('checkSales') ? 'active' : '' }}" href="
-                                                        /check-sales">Sales</a>
+                                                                                /check-sales">Sales</a>
                                 </div>
                             </div>
                         </li>
@@ -165,22 +165,22 @@
                         my selected product
                     </div>
 
-                    <li class="nav-item {{ request()->routeIs('myProducts', 'orderHistory') ? 'active' : '' }}">
-                        <a class="nav-link {{ request()->routeIs('myProducts', 'orderHistory') ? '' : 'collapsed' }}"
+                    <li class="nav-item {{ request()->routeIs('myProducts', 'orderHistorys') ? 'active' : '' }}">
+                        <a class="nav-link {{ request()->routeIs('myProducts', 'orderHistorys') ? '' : 'collapsed' }}"
                             href="#" data-toggle="collapse" data-target="#myProducts" aria-expanded="true"
                             aria-controls="Products">
                             <i class="fas fa-shopping-cart"></i>
                             <span>My Products</span>
                         </a>
                         <div id="myProducts"
-                            class="collapse {{ request()->routeIs('myProducts', 'orderHistory') ? 'show' : '' }}"
+                            class="collapse {{ request()->routeIs('myProducts', 'orderHistorys') ? 'show' : '' }}"
                             aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">Custom Products:</h6>
                                 <a class="collapse-item {{ request()->routeIs('myProducts') ? 'active' : '' }}"
                                     href="{{ url('/my-products') }}">Products</a>
-                                <a class="collapse-item {{ request()->routeIs('orderHistory') ? 'active' : '' }}"
-                                    href="/order-historys">Order Historys</a>
+                                <a class="collapse-item {{ request()->routeIs('orderHistorys') ? 'active' : '' }}"
+                                    href="{{ url('/order-historys') }}">Order Historys</a>
                             </div>
                         </div>
                     </li>
@@ -253,8 +253,8 @@
 
                                 <!-- Nav Item - heart -->
                                 <li class="nav-item mx-1">
-                                    <a class="nav-link" href="#">
-                                        <i class="fas fa-heart"></i>
+                                    <a class="nav-link" href="{{ url('/order-historys') }}">
+                                        <i class="fas fa-history"></i>
                                         <span class="badge badge-danger badge-counter">0</span>
                                     </a>
                                 </li>
@@ -387,7 +387,7 @@
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                             <a class="btn btn-primary" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

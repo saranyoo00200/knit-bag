@@ -26,7 +26,7 @@
         <div class="table-responsive">
           <table
             id="myTable"
-            class="table table-striped table-bordered table-hover"
+            class="table table-striped table-bordered table-hover text-center"
             style="width: 100%"
           >
             <thead>
@@ -54,7 +54,15 @@
             <tbody>
               <tr v-for="(data, index) in DataList" :key="index">
                 <td>{{ index + 1 }}</td>
-                <td><img :src="data.Pimage" width="50px" alt="" /></td>
+                <td>
+                  <img
+                    class="img-profile rounded-circle"
+                    :src="data.Pimage"
+                    width="35px"
+                    height="35px"
+                    alt=""
+                  />
+                </td>
                 <td>{{ data.Pname }}</td>
                 <td>{{ data.Pprice }}</td>
                 <td :inner-html.prop="data.Pdetail | truncate(25)"></td>
@@ -370,11 +378,13 @@
 </template>
 
 <script>
-import axios from "axios";
-import "jquery/dist/jquery.min.js";
-import "bootstrap/dist/css/bootstrap.min.css";
+//Bootstrap and jQuery libraries
+import 'jquery/dist/jquery.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+//Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
+import axios from "axios";
 import $ from "jquery";
 
 export default {
