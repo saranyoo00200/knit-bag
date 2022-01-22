@@ -2,13 +2,17 @@
   <section>
     <div id="contact">
       <div class="container-fluid">
-        <div class="bg-white shadow-lg my-3 p-3">
+        <div
+          v-if="this.loading"
+          id="load"
+          class="d-flex align-items-center"
+        ></div>
+        <div v-else class="bg-white shadow-lg my-3 p-3">
           <div class="text-center mb-3">
             <h3>My Product</h3>
           </div>
           <div class="table-responsive-md">
             <table
-              id="myTable"
               class="table table-bordered table-hover text-center"
               style="width: 100%"
             >
@@ -22,7 +26,12 @@
                   <th scope="col">Tool</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody v-if="infoUserProduct == ''">
+                <tr>
+                  <th scope="row" colspan="6">ไม่มีรายการสินค้า</th>
+                </tr>
+              </tbody>
+              <tbody v-else>
                 <tr v-for="(data, index) in infoUserProduct" :key="index">
                   <th scope="row">
                     {{ index + 1 }}
@@ -69,14 +78,14 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-          <hr />
-          <div class="text-center">
-            <span class="badge bg-secondary mb-2">Total = {{ total }} $</span
-            ><br />
-            <button class="btn btn-success" @click="clickPayMoney">
-              Pay Money
-            </button>
+            <hr />
+            <div class="text-center">
+              <span class="badge bg-secondary mb-2">Total = {{ total }} $</span
+              ><br />
+              <button class="btn btn-success" @click="clickPayMoney">
+                Pay Money
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -85,14 +94,7 @@
 </template>
 
 <script>
-//Bootstrap and jQuery libraries
-import "jquery/dist/jquery.min.js";
-import "bootstrap/dist/css/bootstrap.min.css";
-//Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
 import axios from "axios";
-import $ from "jquery";
 
 export default {
   name: "index",
@@ -100,6 +102,7 @@ export default {
     return {
       infoUserProduct: [],
       total: 0,
+      loading: true,
     };
   },
   props: ["auth_user"],
@@ -112,7 +115,7 @@ export default {
         .get("/api/users/product/" + this.auth_user.id + "/index")
         .then((res) => {
           this.infoUserProduct = res.data;
-          this.ProductDataTable();
+          this.loading = false;
           this.total = 0;
           for (let i = 0; i < this.infoUserProduct.length; i++) {
             this.total +=
@@ -122,18 +125,6 @@ export default {
         .catch((error) => {
           console.log("error");
         });
-    },
-    ProductDataTable() {
-      // use data tables
-      setTimeout(() => {
-        $("#myTable").DataTable({
-          lengthMenu: [
-            [5, 10, 25, 50, -1],
-            [5, 10, 25, 50, "All"],
-          ],
-          pageLength: 5,
-        });
-      });
     },
     DeleteProduct(value, index) {
       axios
@@ -151,7 +142,15 @@ export default {
         });
     },
     clickPayMoney() {
-      alert(this.total);
+      if (this.total == 0) {
+        this.$swal(
+          "Warning!",
+          "Unable to pay due to lack of product information.",
+          "warning"
+        );
+      } else {
+        alert("Amount: " + this.total + " baht.");
+      }
     },
     clickSelect() {
       //price total
@@ -202,4 +201,15 @@ export default {
 </script>
 
 <style>
+#load {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url("https://cdn.discordapp.com/attachments/841562172697477130/901000684172877824/unnamed.gif")
+    50% 50% no-repeat rgb(249, 249, 249);
+  background-size: 100px;
+}
 </style>

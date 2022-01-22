@@ -29,16 +29,18 @@
                   <img
                     v-if="file_photo"
                     :src="file_photo"
-                    class="rounded-circle mt-5"
+                    class="rounded-circle shadow mt-5"
                     alt=""
-                    width="90"
+                    width="60%"
+                    height="140px"
                   />
                   <img
                     v-else
                     :src="infoProfile.image"
-                    class="rounded-circle mt-5"
+                    class="rounded-circle shadow mt-5"
                     alt=""
-                    width="90"
+                    width="60%"
+                    height="140px"
                   /><span class="font-weight-bold">{{ nameShow }}</span
                   ><span class="text-black-50">{{ emailShow }}</span
                   ><span>Thailand</span>
