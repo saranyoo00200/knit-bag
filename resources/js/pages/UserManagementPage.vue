@@ -410,7 +410,7 @@ export default {
         image: "",
       },
       file_photo_add:
-        "https://www.kpsq.org/wp-content/uploads/2019/07/Community-hour-blank-face.jpg",
+        "https://image.shutterstock.com/mosaic_250/169412572/1040084344/stock-vector-man-icon-vector-1040084344.jpg",
       loadingModel: true,
     };
   },
@@ -443,7 +443,7 @@ export default {
             this.file_photo_edit = res.data.image;
           } else {
             this.file_photo_edit =
-              "https://www.kpsq.org/wp-content/uploads/2019/07/Community-hour-blank-face.jpg";
+              "https://image.shutterstock.com/mosaic_250/169412572/1040084344/stock-vector-man-icon-vector-1040084344.jpg";
           }
           this.loadingModel = false;
         })

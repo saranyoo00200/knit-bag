@@ -203,7 +203,7 @@
                     :src="file_photo_edit"
                     class="rounded-circle"
                     alt=""
-                    width="auto"
+                    width="100%"
                     height="140px;"
                   />
                   <img
@@ -346,7 +346,7 @@
                   :src="file_photo_add"
                   class="rounded-circle"
                   alt=""
-                  width="auto"
+                  width="100%"
                   height="140px;"
                 />
                 <img
@@ -407,7 +407,7 @@ export default {
         Pclass: "",
         Pimage: "",
       },
-      file_photo_add: "",
+      file_photo_add: "https://lh5.googleusercontent.com/CIP8OEfWdWTNAoTj9NCBAqSlXPI9A2g8v_2j1LdtmC6qsFggALnLJvYJZBDo9ZgZ5hxc1fF4K4WCvgUi4BVp45sChByA9CoWLw_RMfeMQ72DYgreThWffUAwA9nNhKt47YHuOGcK",
       loadingModel: true,
     };
   },
