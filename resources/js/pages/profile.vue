@@ -1,190 +1,193 @@
 <template>
   <section class="bg-light">
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Profile</h1>
-    <p class="mb-4">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit itaque
-      in eaque harum ratione consequatur, deleniti quisquam inventore, dolore
-      error facere illum perspiciatis? Excepturi, rem cupiditate accusantium
-      esse maxime quaerat.
-    </p>
+    <div v-if="this.loading" id="load"></div>
+    <div v-else>
+      <!-- Page Heading -->
+      <h1 class="h3 mb-2 text-gray-800">Profile</h1>
+      <p class="mb-4">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit
+        itaque in eaque harum ratione consequatur, deleniti quisquam inventore,
+        dolore error facere illum perspiciatis? Excepturi, rem cupiditate
+        accusantium esse maxime quaerat.
+      </p>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-      <div class="card-body">
-        <div class="container rounded bg-white mt-5">
-          <form v-on:submit.prevent="updateProfile" method="post">
-            <div class="row">
-              <div class="col-md-4 border-right">
-                <div
-                  class="
-                    d-flex
-                    flex-column
-                    align-items-center
-                    text-center
-                    p-3
-                    py-5
-                  "
-                >
-                  <img
-                    v-if="file_photo"
-                    :src="file_photo"
-                    class="rounded-circle shadow mt-5"
-                    alt=""
-                    width="60%"
-                    height="140px"
-                  />
-                  <img
-                    v-else
-                    :src="infoProfile.image"
-                    class="rounded-circle shadow mt-5"
-                    alt=""
-                    width="60%"
-                    height="140px"
-                  /><span class="font-weight-bold">{{ nameShow }}</span
-                  ><span class="text-black-50">{{ emailShow }}</span
-                  ><span>Thailand</span>
-                  <div class="form-group mt-2">
-                    <input
-                      type="file"
-                      @change="onAddFileImageChange"
-                      name="user_photo"
-                      accept="image/jpeg, image/png"
-                      class="form-control"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-8">
-                <div class="p-3 py-5">
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-body">
+          <div class="container rounded bg-white mt-5">
+            <form v-on:submit.prevent="updateProfile" method="post">
+              <div class="row">
+                <div class="col-md-4 border-right">
                   <div
                     class="
                       d-flex
-                      justify-content-between
+                      flex-column
                       align-items-center
-                      mb-3
+                      text-center
+                      p-3
+                      py-5
                     "
                   >
-                    <div class="d-flex flex-row align-items-center back">
-                      <a
-                        href="/home"
-                        class="text-decoration-none text-dark text-muted"
-                        ><i class="fas fa-long-arrow-alt-left mr-1 mb-1"></i>
-                        Back to home</a
-                      >
-                    </div>
-                    <h6 class="text-right">Edit Profile</h6>
-                  </div>
-                  <div class="form-group">
-                    <div class="row mt-2">
-                      <div class="col-md-6 mb-2">
-                        <input
-                          v-model="infoProfile.name"
-                          type="text"
-                          class="form-control"
-                          placeholder="ชื่อ - นามสกุล ..."
-                        />
-                      </div>
-                      <div class="col-md-6 mb-2">
-                        <input
-                          v-model="infoProfile.email"
-                          type="text"
-                          class="form-control"
-                          placeholder="อีเมล ..."
-                        />
-                      </div>
+                    <img
+                      v-if="file_photo"
+                      :src="file_photo"
+                      class="rounded-circle shadow mt-5"
+                      alt=""
+                      width="60%"
+                      height="140px"
+                    />
+                    <img
+                      v-else
+                      :src="infoProfile.image"
+                      class="rounded-circle shadow mt-5"
+                      alt=""
+                      width="60%"
+                      height="140px"
+                    /><span class="font-weight-bold">{{ nameShow }}</span
+                    ><span class="text-black-50">{{ emailShow }}</span
+                    ><span>Thailand</span>
+                    <div class="form-group mt-2">
+                      <input
+                        type="file"
+                        @change="onAddFileImageChange"
+                        name="user_photo"
+                        accept="image/jpeg, image/png"
+                        class="form-control"
+                      />
                     </div>
                   </div>
-                  <div class="form-group">
-                    <textarea
-                      class="form-control"
-                      name=""
-                      id=""
-                      placeholder="ที่อยู่ ..."
-                      readonly
-                    ></textarea>
-                  </div>
-                  <div class="form-group">
-                    <div class="row mt-3">
-                      <div class="col-md-6 mb-2">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="เบอร์โทร ..."
-                          readonly
-                        />
+                </div>
+                <div class="col-md-8">
+                  <div class="p-3 py-5">
+                    <div
+                      class="
+                        d-flex
+                        justify-content-between
+                        align-items-center
+                        mb-3
+                      "
+                    >
+                      <div class="d-flex flex-row align-items-center back">
+                        <a
+                          href="/home"
+                          class="text-decoration-none text-dark text-muted"
+                          ><i class="fas fa-long-arrow-alt-left mr-1 mb-1"></i>
+                          Back to home</a
+                        >
                       </div>
-                      <div class="col-md-6 mb-2">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="ตำบล/แขวง ..."
-                          readonly
-                        />
+                      <h6 class="text-right">Edit Profile</h6>
+                    </div>
+                    <div class="form-group">
+                      <div class="row mt-2">
+                        <div class="col-md-6 mb-2">
+                          <input
+                            v-model="infoProfile.name"
+                            type="text"
+                            class="form-control"
+                            placeholder="ชื่อ - นามสกุล ..."
+                          />
+                        </div>
+                        <div class="col-md-6 mb-2">
+                          <input
+                            v-model="infoProfile.email"
+                            type="text"
+                            class="form-control"
+                            placeholder="อีเมล ..."
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row mt-3">
-                      <div class="col-md-6 mb-2">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="อำเภอ/เขต"
-                          readonly
-                        />
-                      </div>
-                      <div class="col-md-6 mb-2">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="จังหวัด ..."
-                          readonly
-                        />
+                    <div class="form-group">
+                      <textarea
+                        class="form-control"
+                        name=""
+                        id=""
+                        placeholder="ที่อยู่ ..."
+                        readonly
+                      ></textarea>
+                    </div>
+                    <div class="form-group">
+                      <div class="row mt-3">
+                        <div class="col-md-6 mb-2">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="เบอร์โทร ..."
+                            readonly
+                          />
+                        </div>
+                        <div class="col-md-6 mb-2">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="ตำบล/แขวง ..."
+                            readonly
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row mt-3">
-                      <div class="col-md-6 mb-2">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="รหัสไปรษณีย์ ..."
-                          readonly
-                        />
+                    <div class="form-group">
+                      <div class="row mt-3">
+                        <div class="col-md-6 mb-2">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="อำเภอ/เขต"
+                            readonly
+                          />
+                        </div>
+                        <div class="col-md-6 mb-2">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="จังหวัด ..."
+                            readonly
+                          />
+                        </div>
                       </div>
-                      <div class="col-md-6 mb-2">
+                    </div>
+                    <div class="form-group">
+                      <div class="row mt-3">
+                        <div class="col-md-6 mb-2">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="รหัสไปรษณีย์ ..."
+                            readonly
+                          />
+                        </div>
+                        <div class="col-md-6 mb-2">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#CurrentPassword"
+                          >
+                            เปลี่ยนรหัสผ่าน (Change password)
+                          </button>
+                        </div>
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          id="ShowFormNewPassword"
+                          class="d-none"
                           data-bs-toggle="modal"
-                          data-bs-target="#CurrentPassword"
-                        >
-                          เปลี่ยนรหัสผ่าน (Change password)
-                        </button>
+                          data-bs-target="#NewPassword"
+                        ></button>
                       </div>
-                      <button
-                        type="button"
-                        id="ShowFormNewPassword"
-                        class="d-none"
-                        data-bs-toggle="modal"
-                        data-bs-target="#NewPassword"
-                      ></button>
                     </div>
-                  </div>
-                  <div class="mt-5 text-right">
-                    <button
-                      class="btn btn-primary profile-button"
-                      type="submit"
-                    >
-                      Save Profile
-                    </button>
+                    <div class="mt-5 text-right">
+                      <button
+                        class="btn btn-primary profile-button"
+                        type="submit"
+                      >
+                        Save Profile
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -325,6 +328,7 @@ export default {
       nameShow: "",
       emailShow: "",
       imageNull: "",
+      loading: true,
     };
   },
   mounted() {
@@ -349,6 +353,7 @@ export default {
             this.infoProfile.image =
               "https://image.shutterstock.com/mosaic_250/169412572/1040084344/stock-vector-man-icon-vector-1040084344.jpg";
           }
+          this.loading = false;
         })
         .catch((errors) => {
           console.log(errors);
@@ -433,4 +438,13 @@ export default {
 </script>
 
 <style>
+#load {
+  position: fixed;
+  width: 81%;
+  height: 81%;
+  z-index: 9999;
+  background: url("https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif")
+    50% 50% no-repeat rgb(249, 249, 249);
+  background-size: 100px;
+}
 </style>

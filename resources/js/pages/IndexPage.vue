@@ -32,7 +32,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="https://st4.depositphotos.com/36458286/38379/i/450/depositphotos_383791554-stock-photo-string-bag-process-knitting-turquoise.jpg"
+              src="https://cdn.discordapp.com/attachments/773251194344570923/934489702990483466/271407417_347288056986686_618822836729769351_n.jpg"
               height="530px"
               class="d-block w-100"
               alt="..."
@@ -46,7 +46,7 @@
           </div>
           <div class="carousel-item">
             <img
-              src="https://images.squarespace-cdn.com/content/v1/572f6d87b654f90629116055/1558368557143-OIT26EVR2YUK9GJ7TE92/Thistle+Market+Bag+pattern+by+Two+of+Wands"
+              src="https://cdn.discordapp.com/attachments/773251194344570923/934489703246344242/271591661_1332710613807773_3246559653038667427_n.jpg"
               height="530px"
               class="d-block w-100"
               alt="..."
@@ -60,7 +60,7 @@
           </div>
           <div class="carousel-item">
             <img
-              src="https://cdn.discordapp.com/attachments/773251194344570923/927151883389370378/262211449_1013796819182245_3280536133553709503_n.jpg"
+              src="https://cdn.discordapp.com/attachments/773251194344570923/934489703581904926/271781371_4658030667579084_968520632802453409_n.jpg"
               height="530px"
               class="d-block w-100"
               alt="..."

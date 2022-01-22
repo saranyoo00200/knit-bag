@@ -1,13 +1,9 @@
 <template>
   <section>
-    <div id="contact">
+    <div v-if="this.loading" id="load"></div>
+    <div v-else id="contact">
       <div class="container-fluid">
-        <div
-          v-if="this.loading"
-          id="load"
-          class="d-flex align-items-center"
-        ></div>
-        <div v-else class="bg-white shadow-lg my-3 p-3">
+        <div class="bg-white shadow-lg my-3 p-3">
           <div class="text-center mb-3">
             <h3>My Product</h3>
           </div>
@@ -115,12 +111,12 @@ export default {
         .get("/api/users/product/" + this.auth_user.id + "/index")
         .then((res) => {
           this.infoUserProduct = res.data;
-          this.loading = false;
           this.total = 0;
           for (let i = 0; i < this.infoUserProduct.length; i++) {
             this.total +=
               this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
           }
+          this.loading = false;
         })
         .catch((error) => {
           console.log("error");
@@ -203,12 +199,10 @@ export default {
 <style>
 #load {
   position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
+  width: 81%;
+  height: 81%;
   z-index: 9999;
-  background: url("https://cdn.discordapp.com/attachments/841562172697477130/901000684172877824/unnamed.gif")
+  background: url("https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif")
     50% 50% no-repeat rgb(249, 249, 249);
   background-size: 100px;
 }

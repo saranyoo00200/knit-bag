@@ -1,91 +1,94 @@
 <template>
   <section class="bg-light">
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Products Manage</h1>
-    <p class="mb-4">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit itaque
-      in eaque harum ratione consequatur, deleniti quisquam inventore, dolore
-      error facere illum perspiciatis? Excepturi, rem cupiditate accusantium
-      esse maxime quaerat.
-    </p>
+    <div v-if="this.loading" id="load"></div>
+    <div v-else>
+      <!-- Page Heading -->
+      <h1 class="h3 mb-2 text-gray-800">Products Manage</h1>
+      <p class="mb-4">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit
+        itaque in eaque harum ratione consequatur, deleniti quisquam inventore,
+        dolore error facere illum perspiciatis? Excepturi, rem cupiditate
+        accusantium esse maxime quaerat.
+      </p>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-      <div class="card-header py-3 d-flex justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Products Tables</h6>
-        <button
-          type="button"
-          class="btn btn-success"
-          data-bs-toggle="modal"
-          data-bs-target="#AddProducts"
-        >
-          +
-        </button>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table
-            id="myTable"
-            class="table table-striped table-bordered table-hover text-center"
-            style="width: 100%"
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Products Tables</h6>
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#AddProducts"
           >
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Detail</th>
-                <th>Class</th>
-                <th>Tool</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>No.</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Detail</th>
-                <th>Class</th>
-                <th>Tool</th>
-              </tr>
-            </tfoot>
-            <tbody>
-              <tr v-for="(data, index) in DataList" :key="index">
-                <td>{{ index + 1 }}</td>
-                <td>
-                  <img
-                    class="img-profile rounded-circle"
-                    :src="data.Pimage"
-                    width="35px"
-                    height="35px"
-                    alt=""
-                  />
-                </td>
-                <td>{{ data.Pname }}</td>
-                <td>{{ data.Pprice }}</td>
-                <td :inner-html.prop="data.Pdetail | truncate(25)"></td>
-                <td>{{ data.Pclass }}</td>
-                <td>
-                  <button
-                    @click="getEditProduct(data.id)"
-                    class="btn btn-warning"
-                    data-bs-toggle="modal"
-                    data-bs-target="#EditProducts"
-                  >
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <button
-                    @click="DeleteProduct(data.id, index)"
-                    class="btn btn-danger"
-                  >
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            +
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table
+              id="myTable"
+              class="table table-striped table-bordered table-hover text-center"
+              style="width: 100%"
+            >
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Detail</th>
+                  <th>Class</th>
+                  <th>Tool</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>No.</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Detail</th>
+                  <th>Class</th>
+                  <th>Tool</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                <tr v-for="(data, index) in DataList" :key="index">
+                  <td>{{ index + 1 }}</td>
+                  <td>
+                    <img
+                      class="img-profile rounded-circle"
+                      :src="data.Pimage"
+                      width="35px"
+                      height="35px"
+                      alt=""
+                    />
+                  </td>
+                  <td>{{ data.Pname }}</td>
+                  <td>{{ data.Pprice }}</td>
+                  <td :inner-html.prop="data.Pdetail | truncate(25)"></td>
+                  <td>{{ data.Pclass }}</td>
+                  <td>
+                    <button
+                      @click="getEditProduct(data.id)"
+                      class="btn btn-warning"
+                      data-bs-toggle="modal"
+                      data-bs-target="#EditProducts"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      @click="DeleteProduct(data.id, index)"
+                      class="btn btn-danger"
+                    >
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -379,8 +382,8 @@
 
 <script>
 //Bootstrap and jQuery libraries
-import 'jquery/dist/jquery.min.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "jquery/dist/jquery.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
@@ -407,8 +410,10 @@ export default {
         Pclass: "",
         Pimage: "",
       },
-      file_photo_add: "https://lh5.googleusercontent.com/CIP8OEfWdWTNAoTj9NCBAqSlXPI9A2g8v_2j1LdtmC6qsFggALnLJvYJZBDo9ZgZ5hxc1fF4K4WCvgUi4BVp45sChByA9CoWLw_RMfeMQ72DYgreThWffUAwA9nNhKt47YHuOGcK",
+      file_photo_add:
+        "https://lh5.googleusercontent.com/CIP8OEfWdWTNAoTj9NCBAqSlXPI9A2g8v_2j1LdtmC6qsFggALnLJvYJZBDo9ZgZ5hxc1fF4K4WCvgUi4BVp45sChByA9CoWLw_RMfeMQ72DYgreThWffUAwA9nNhKt47YHuOGcK",
       loadingModel: true,
+      loading: true,
     };
   },
   mounted() {
@@ -456,6 +461,7 @@ export default {
           ],
           pageLength: 5,
         });
+        this.loading = false;
       });
     },
     updateProduct() {
@@ -561,4 +567,13 @@ Vue.filter("truncate", function (value, length) {
 </script>
 
 <style>
+#load {
+  position: fixed;
+  width: 81%;
+  height: 81%;
+  z-index: 9999;
+  background: url("https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif")
+    50% 50% no-repeat rgb(249, 249, 249);
+  background-size: 100px;
+}
 </style>
