@@ -1,14 +1,15 @@
 <template>
   <div class="container">
     <div v-if="this.loading" id="load"></div>
-    <div v-else class="card card-default">
-      <div class="card-header">Admin Dashboard</div>
-      <div class="card-body">Bienvenue sur votre dashboard administrateur.</div>
+    <div v-else class="card card-default my-3">
+      <div class="card-header">Payment Form</div>
+      <div class="card-body">Bienvenue sur votre Payment Form.</div>
     </div>
   </div>
 </template>
 <script>
 export default {
+  name: "paymentForm",
   data() {
     return {
       loading: true,

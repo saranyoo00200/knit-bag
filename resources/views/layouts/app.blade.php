@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>KNIT BAG</title>
+    <title>KNOMPUNG</title>
     <link rel="shortcut icon" href="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/271586309_3849771325247301_4125587798937102478_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEsrxK0BqFhdkhMNaDWXhDUv94aP7t75Ze_3ho_u3vll6lVhhMAOSr1L035Ph7fHMMohlldUwgfun3Ju_Y3MHCA&_nc_ohc=VGvjauG0Ab8AX8XIqag&_nc_ht=scontent.fbkk14-1.fna&oh=03_AVKq60aRglxyxia9HoW7pIRfYXQ-BQI_SU-Y8W76why4SQ&oe=6212D9A0" type="image/x-icon" />
 
 
@@ -36,7 +36,7 @@
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        KNIT BAG
+                        KNOMPUNG
                         {{-- {{ config('app.name', 'Laravel') }} --}}
                     </a>
                     <div>

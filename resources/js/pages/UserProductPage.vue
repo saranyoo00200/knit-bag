@@ -145,7 +145,7 @@ export default {
           "warning"
         );
       } else {
-        alert("Amount: " + this.total + " baht.");
+        window.location.assign("/payment-form/checkout");
       }
     },
     clickSelect() {
