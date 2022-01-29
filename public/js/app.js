@@ -5907,6 +5907,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "paymentForm",
   data: function data() {
@@ -14571,7 +14660,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load {\n  position: fixed;\n  width: 81%;\n  height: 81%;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    50% 50% no-repeat rgb(249, 249, 249);\n  background-size: 100px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load {\n  position: fixed;\n  width: 81%;\n  height: 81%;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    50% 50% no-repeat rgb(249, 249, 249);\n  background-size: 100px;\n}\n#regForm {\n  background-color: #ffffff;\n  margin: 100px auto;\n  font-family: Raleway;\n  padding: 40px;\n  width: 70%;\n  min-width: 300px;\n}\nh1 {\n  text-align: center;\n}\ninput {\n  padding: 10px;\n  width: 100%;\n  font-size: 17px;\n  font-family: Raleway;\n  border: 1px solid #aaaaaa;\n}\ninput.invalid {\n  background-color: #ffdddd;\n}\n.tab {\n  /* display: none; */\n  display: inline;\n}\n.step {\n  height: 15px;\n  width: 15px;\n  margin: 0 2px;\n  background-color: #bbbbbb;\n  border: none;\n  border-radius: 50%;\n  display: inline-block;\n  opacity: 0.5;\n}\n.step.active {\n  opacity: 1;\n}\n.step.finish {\n  background-color: #04aa6d;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -61249,13 +61338,156 @@ var render = function () {
       : _c("div", { staticClass: "card card-default my-3" }, [
           _c("div", { staticClass: "card-header" }, [_vm._v("Payment Form")]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _vm._v("Bienvenue sur votre Payment Form."),
-          ]),
+          _vm._m(0),
         ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _vm._v("\n      Bienvenue sur votre Payment Form.\n      "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("form", { attrs: { id: "regForm", action: "/action_page.php" } }, [
+        _c("h1", [_vm._v("Payment Form")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tab" }, [
+          _c("div", { staticClass: "text-center" }, [
+            _c("i", { staticClass: "fas fa-3x fa-map-marker-alt" }),
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "label-control", attrs: { for: "" } }, [
+            _vm._v("Name:"),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                placeholder: "First name...",
+                oninput: "this.className = ''",
+                name: "fname",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                placeholder: "Last name...",
+                oninput: "this.className = ''",
+                name: "lname",
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tab" }, [
+          _c("div", { staticClass: "text-center" }, [
+            _c("i", { staticClass: "fas fa-3x fa-piggy-bank" }),
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "label-control", attrs: { for: "" } }, [
+            _vm._v("Contact Info:"),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                placeholder: "E-mail...",
+                oninput: "this.className = ''",
+                name: "email",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                placeholder: "Phone...",
+                oninput: "this.className = ''",
+                name: "phone",
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tab" }, [
+          _c("div", { staticClass: "text-center" }, [
+            _c("i", { staticClass: "fab fa-3x fa-angellist" }),
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "label-control", attrs: { for: "" } }, [
+            _vm._v("Login Info:"),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                placeholder: "Username...",
+                oninput: "this.className = ''",
+                name: "uname",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                placeholder: "Password...",
+                oninput: "this.className = ''",
+                name: "pword",
+                type: "password",
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { overflow: "auto" } }, [
+          _c("div", { staticStyle: { float: "right" } }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button", id: "prevBtn" },
+              },
+              [_vm._v("\n              Previous\n            ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button", id: "nextBtn" },
+              },
+              [_vm._v("\n              Next\n            ")]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticStyle: { "text-align": "center", "margin-top": "40px" } },
+          [
+            _c("span", { staticClass: "step" }),
+            _vm._v(" "),
+            _c("span", { staticClass: "step" }),
+            _vm._v(" "),
+            _c("span", { staticClass: "step" }),
+          ]
+        ),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
