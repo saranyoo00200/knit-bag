@@ -1,7 +1,7 @@
 <template>
   <section>
     <div v-if="this.loading" id="load"></div>
-    <div v-else id="contact">
+    <div id="contact">
       <div class="container-fluid">
         <div class="bg-white shadow-lg my-3 p-3">
           <div class="text-center mb-3">

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="this.loading" id="load"></div>
-    <div v-else class="card card-default">
+    <div class="card card-default">
       <div class="card-header">Check sales</div>
       <div class="card-body">Welcome to check the sale.</div>
     </div>

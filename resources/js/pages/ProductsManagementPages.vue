@@ -1,7 +1,7 @@
 <template>
   <section class="bg-light">
     <div v-if="this.loading" id="load"></div>
-    <div v-else>
+    <div>
       <!-- Page Heading -->
       <h1 class="h3 mb-2 text-gray-800">Products Manage</h1>
       <p class="mb-4">
