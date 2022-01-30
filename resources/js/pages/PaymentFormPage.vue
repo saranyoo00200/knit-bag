@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div>
     <div v-if="this.loading" id="load"></div>
-    <div class="bg-white shadow p-5 mb-4">
+    <div class="container bg-white shadow p-5 mb-4">
       <h1>Payment Form</h1>
-      <form id="regForm" action="/action_page.php">
-        <div class="tab">
+      <form id="regForm">
+        <div class="tab mb-3">
           <div class="text-center p-3">
             <i class="fas fa-3x fa-map-marker-alt"></i>
           </div>
@@ -98,8 +98,8 @@
             </div>
           </div>
         </div>
-        <div class="tab">
-          <div class="text-center p-3">
+        <div class="tab mb-3">
+          <div class="text-center">
             <i class="fas fa-3x fa-piggy-bank"></i>
           </div>
           <div class="form-check text-center">
@@ -111,11 +111,10 @@
                   id="KrungThaiBank"
                   value="ธนาคารกรุงไทย"
                   class="ng-valid ng-dirty ng-touched ng-empty"
-                  style=""
                 />
                 <label for="KrungThaiBank">
                   <img
-                    class="w-100 mb-3"
+                    class="w-100 h-75"
                     src="https://cdn.discordapp.com/attachments/773251194344570923/937320316043165796/png-clipart-krung-thai-bank-money-credit-kasikornbank-bank-blue-text-depositphotos-bgremover.png"
                     alt=""
                   />
@@ -130,11 +129,10 @@
                   id="KasikornBank"
                   value="ธนาคารกสิการไทย"
                   class="ng-valid ng-dirty ng-touched ng-empty"
-                  style=""
                 />
                 <label for="KasikornBank">
                   <img
-                    class="w-100 mb-3"
+                    class="w-100 h-75"
                     src="https://cdn.discordapp.com/attachments/773251194344570923/937320315858608158/png-clipart-kasikornbank-money-payment-credit-card-wavy-lines-leaf-text-depositphotos-bgremover.png"
                     alt=""
                   />
@@ -144,7 +142,7 @@
             </div>
           </div>
         </div>
-        <div class="tab">
+        <div class="tab mb-3">
           <div class="text-center p-3">
             <i class="fas fa-3x fa-check-circle"></i>
           </div>
@@ -211,7 +209,6 @@
               id="paymentProofSlibCode4"
               class="form-control"
               type="number"
-              max="4"
             />
           </div>
         </div>
@@ -255,7 +252,7 @@ export default {
     return {
       form: {
         location: {
-          fname: "Saranyoo",
+          fname: "",
           lname: "Khunkham",
           address: "-",
           tel: "0958493654",
@@ -272,8 +269,10 @@ export default {
       paymentProofOption2: "",
     };
   },
+  props: ["auth_user"],
   mounted() {
     setTimeout(() => {
+      this.form.location.fname = this.auth_user.name;
       this.showTab(this.currentTab);
       this.loading = false;
     }, 1000);
@@ -296,13 +295,32 @@ export default {
     },
 
     nextPrev(n) {
+      console.log(n);
       var x = document.getElementsByClassName("tab");
       if (n == 1 && !this.validateForm()) return false;
-      x[this.currentTab].style.display = "none";
-      this.currentTab = this.currentTab + n;
-      if (this.currentTab >= x.length) {
-        document.getElementById("regForm").submit();
-        return false;
+      if (this.currentTab < x.length - 1) {
+        x[this.currentTab].style.display = "none";
+        this.currentTab = this.currentTab + n;
+      } else {
+        if (n === 1) {
+          this.$swal({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes",
+          }).then((result) => {
+            if (result.value) {
+              window.location.assign("/order-historys");
+            }
+          });
+          return false;
+        } else {
+          x[this.currentTab].style.display = "none";
+          this.currentTab = this.currentTab + n;
+        }
       }
       this.showTab(this.currentTab);
     },
@@ -355,14 +373,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #load {
   position: fixed;
-  width: 81%;
-  height: 81%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   z-index: 9999;
   background: url("https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif")
-    50% 50% no-repeat rgb(249, 249, 249);
+    no-repeat rgb(249, 249, 249);
+  background-position: center;
   background-size: 100px;
 }
 
@@ -411,10 +432,10 @@ div.radio-with-Icon {
 }
 div.radio-with-Icon p.radioOption-Item {
   display: inline-block;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   box-sizing: border-box;
-  margin: 25px 15px;
+  /* margin: 25px 15px; */
   border: none;
 }
 div.radio-with-Icon p.radioOption-Item label {

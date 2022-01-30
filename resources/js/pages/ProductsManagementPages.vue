@@ -566,14 +566,17 @@ Vue.filter("truncate", function (value, length) {
 });
 </script>
 
-<style>
+<style scoped>
 #load {
   position: fixed;
-  width: 81%;
-  height: 81%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   z-index: 9999;
   background: url("https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif")
-    50% 50% no-repeat rgb(249, 249, 249);
+    no-repeat rgb(249, 249, 249);
+  background-position: center;
   background-size: 100px;
 }
 </style>

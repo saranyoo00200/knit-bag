@@ -91,6 +91,6 @@ class HomeController extends Controller
 
     public function paymentForm()
     {
-        return view('pages.dashboard.paymentForm');
+        return view('pages.dashboard.paymentForm')->with('auth_user', auth()->user());
     }
 }
