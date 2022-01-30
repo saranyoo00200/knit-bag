@@ -61625,10 +61625,10 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container " }, [
     this.loading ? _c("div", { attrs: { id: "load" } }) : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "container bg-white shadow p-5 mb-4" }, [
+    _c("div", { staticClass: "bg-white shadow p-5 mb-4" }, [
       _c("h1", [_vm._v("Payment Form")]),
       _vm._v(" "),
       _c("form", { attrs: { id: "regForm" } }, [

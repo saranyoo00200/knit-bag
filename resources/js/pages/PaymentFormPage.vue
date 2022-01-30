@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container ">
     <div v-if="this.loading" id="load"></div>
-    <div class="container bg-white shadow p-5 mb-4">
+    <div class="bg-white shadow p-5 mb-4">
       <h1>Payment Form</h1>
       <form id="regForm">
         <div class="tab mb-3">
