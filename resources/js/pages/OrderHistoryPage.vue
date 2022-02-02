@@ -3,7 +3,40 @@
     <div v-if="this.loading" id="load"></div>
     <div class="card card-default">
       <div class="card-header">Order History</div>
-      <div class="card-body">Bienvenue sur votre trading history.</div>
+      <div class="card-body">
+        <p>Bienvenue sur votre trading history.</p>
+        <div class="table-responsive p-3">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col" class="w-100">Date</th>
+                <th scope="col">Tool</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>date and time...</td>
+                <td>
+                  <button class="btn btn-primary">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>date and time...</td>
+                <td>
+                  <button class="btn btn-primary">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </template>

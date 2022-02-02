@@ -5869,6 +5869,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -14910,7 +14943,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-80e327c4] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-80e327c4] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -61598,7 +61631,49 @@ var staticRenderFns = [
       _c("div", { staticClass: "card-header" }, [_vm._v("Order History")]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _vm._v("Bienvenue sur votre trading history."),
+        _c("p", [_vm._v("Bienvenue sur votre trading history.")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "table-responsive p-3" }, [
+          _c("table", { staticClass: "table table-hover" }, [
+            _c("thead", [
+              _c("tr", [
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("No.")]),
+                _vm._v(" "),
+                _c("th", { staticClass: "w-100", attrs: { scope: "col" } }, [
+                  _vm._v("Date"),
+                ]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("Tool")]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("date and time...")]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("button", { staticClass: "btn btn-primary" }, [
+                    _c("i", { staticClass: "fas fa-eye" }),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("date and time...")]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("button", { staticClass: "btn btn-primary" }, [
+                    _c("i", { staticClass: "fas fa-eye" }),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
       ]),
     ])
   },
