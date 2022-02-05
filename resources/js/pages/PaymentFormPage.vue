@@ -37,6 +37,7 @@
               class="form-control"
               name="address"
               placeholder="ที่อยู่ ..."
+              readonly
             ></textarea>
           </div>
           <div class="form-group">
@@ -49,6 +50,7 @@
                   name="tel"
                   pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                   placeholder="เบอร์โทร ..."
+                  readonly
                 />
               </div>
               <div class="col-md-6 mb-2">
@@ -58,6 +60,7 @@
                   class="form-control"
                   name="subdistrict"
                   placeholder="ตำบล/แขวง ..."
+                  readonly
                 />
               </div>
             </div>
@@ -71,6 +74,7 @@
                   class="form-control"
                   name="district"
                   placeholder="อำเภอ/เขต"
+                  readonly
                 />
               </div>
               <div class="col-md-6 mb-2">
@@ -80,6 +84,7 @@
                   class="form-control"
                   name="province"
                   placeholder="จังหวัด ..."
+                  readonly
                 />
               </div>
             </div>
@@ -93,6 +98,7 @@
                   class="form-control"
                   name="zip"
                   placeholder="รหัสไปรษณีย์ ..."
+                  readonly
                 />
               </div>
             </div>
@@ -177,9 +183,13 @@
               class="custom-select"
               name="paymentProofOption1"
             >
-              <option selected disabled value="">เลือก...</option>
+              <option selected value="">เลือก...</option>
               <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
               <option value="ธนาคารกสิการไทย">ธนาคารกสิการไทย</option>
+              <option value="ธนาคารออมสิน">ธนาคารออมสิน</option>
+              <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
+              <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
+              <option value="ธนาคารกรุงศรี">ธนาคารกรุงศรี</option>
             </select>
           </div>
           <div class="form-group mb-3">
@@ -190,7 +200,7 @@
               class="custom-select"
               name="paymentProofOption2"
             >
-              <option selected disabled value="">เลือก...</option>
+              <option selected value="">เลือก...</option>
               <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
               <option value="ธนาคารกสิการไทย">ธนาคารกสิการไทย</option>
             </select>
@@ -295,7 +305,6 @@ export default {
     },
 
     nextPrev(n) {
-      console.log(n);
       var x = document.getElementsByClassName("tab");
       if (n == 1 && !this.validateForm()) return false;
       if (this.currentTab < x.length - 1) {
