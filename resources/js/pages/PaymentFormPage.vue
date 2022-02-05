@@ -1,5 +1,5 @@
 <template>
-  <div class="container ">
+  <div class="container">
     <div v-if="this.loading" id="load"></div>
     <div class="bg-white shadow p-5 mb-4">
       <h1>Payment Form</h1>
@@ -94,9 +94,9 @@
               <div class="col-md-6 mb-2">
                 <input
                   type="number"
-                  v-model="form.location.zip"
+                  v-model="form.location.code_zip"
                   class="form-control"
-                  name="zip"
+                  name="code_zip"
                   placeholder="รหัสไปรษณีย์ ..."
                   readonly
                 />
@@ -112,6 +112,7 @@
             <div class="radio-with-Icon">
               <p class="radioOption-Item">
                 <input
+                  v-model="form.bank"
                   type="radio"
                   name="bank"
                   id="KrungThaiBank"
@@ -130,6 +131,7 @@
 
               <p class="radioOption-Item">
                 <input
+                  v-model="form.bank"
                   type="radio"
                   name="bank"
                   id="KasikornBank"
@@ -157,6 +159,7 @@
               >อัพโหลดหลักฐานการซำระเงิน</label
             >
             <input
+              @change="onFilePaymentImage"
               id="paymentProof"
               class="form-control"
               type="file"
@@ -167,18 +170,28 @@
             <label class="label-control" for="paymentProofDate"
               >วันที่โอนเงินตามหลักฐานการซำระเงิน</label
             >
-            <input id="paymentProofDate" class="form-control" type="date" />
+            <input
+              v-model="form.payment_slip.paymentDate"
+              id="paymentProofDate"
+              class="form-control"
+              type="date"
+            />
           </div>
           <div class="form-group">
             <label class="label-control" for="paymentProofTime"
               >เวลาที่โอนเงินตามหลักฐานการซำระเงิน</label
             >
-            <input id="paymentProofTime" class="form-control" type="time" />
+            <input
+              v-model="form.payment_slip.paymentTime"
+              id="paymentProofTime"
+              class="form-control"
+              type="time"
+            />
           </div>
           <div class="form-group">
             <label for="paymentProofOption1">โอนจากธนาคาร</label>
             <select
-              v-model="paymentProofOption1"
+              v-model="form.payment_slip.paymentProofOption1"
               id="paymentProofOption1"
               class="custom-select"
               name="paymentProofOption1"
@@ -195,7 +208,7 @@
           <div class="form-group mb-3">
             <label for="paymentProofOption2">ไปยังธนาคาร</label>
             <select
-              v-model="paymentProofOption2"
+              v-model="form.payment_slip.paymentProofOption2"
               id="paymentProofOption2"
               class="custom-select"
               name="paymentProofOption2"
@@ -209,13 +222,19 @@
             <label class="label-control" for="paymentProofPrice"
               >จำนวนเงินถูกโอนแล้ว (฿)</label
             >
-            <input id="paymentProofPrice" class="form-control" type="number" />
+            <input
+              v-model="form.payment_slip.paymentPrice"
+              id="paymentProofPrice"
+              class="form-control"
+              type="number"
+            />
           </div>
           <div class="form-group">
             <label class="label-control" for="paymentProofSlibCode4"
               >โอนจากบัญชีธนาคารเลขที่ 4 หลักสุดท้าย</label
             >
             <input
+              v-model="form.payment_slip.paymentCode"
               id="paymentProofSlibCode4"
               class="form-control"
               type="number"
@@ -269,14 +288,21 @@ export default {
           subdistrict: "-",
           district: "San Sai",
           province: "Chiang Mai",
-          zip: "50210",
+          code_zip: "50210",
         },
         bank: "",
+        payment_slip: {
+          paymentImage: "",
+          paymentDate: "",
+          paymentTime: "",
+          paymentProofOption1: "",
+          paymentProofOption2: "",
+          paymentPrice: "",
+          paymentCode: "",
+        },
       },
       loading: true,
       currentTab: 0,
-      paymentProofOption1: "",
-      paymentProofOption2: "",
     };
   },
   props: ["auth_user"],
@@ -322,7 +348,8 @@ export default {
             confirmButtonText: "Yes",
           }).then((result) => {
             if (result.value) {
-              window.location.assign("/order-historys");
+              alert(this.form.payment_slip.paymentImage);
+              // window.location.assign("/order-historys");
             }
           });
           return false;
@@ -377,6 +404,12 @@ export default {
         x[i].className = x[i].className.replace(" active", "");
       }
       x[n].className += " active";
+    },
+
+    onFilePaymentImage(e) {
+      //   const file = e.target.files[0];
+      //   this.file_photo = URL.createObjectURL(file);
+      this.form.payment_slip.paymentImage = e.target.files[0];
     },
   },
 };

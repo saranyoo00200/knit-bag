@@ -109,7 +109,7 @@
       class="modal fade"
       id="EditUsers"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="ModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
@@ -120,7 +120,7 @@
             oninput='password_confirmation.setCustomValidity(password_confirmation.value != password.value ? "Passwords do not match." : "")'
           >
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit Users</h5>
+              <h5 class="modal-title" id="ModalLabel">Edit Users</h5>
               <i
                 @click="clockClose"
                 type="button"
@@ -260,7 +260,7 @@
       class="modal fade"
       id="AddUsers"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="ModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
@@ -271,7 +271,7 @@
             oninput='password_confirmation.setCustomValidity(password_confirmation.value != password.value ? "Passwords do not match." : "")'
           >
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+              <h5 class="modal-title" id="ModalLabel">Add Product</h5>
               <i
                 type="button"
                 class="fas fa-times"

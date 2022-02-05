@@ -88,9 +88,4 @@ class HomeController extends Controller
             return view('errors.404');
         }
     }
-
-    public function paymentForm()
-    {
-        return view('pages.dashboard.paymentForm')->with('auth_user', auth()->user());
-    }
 }

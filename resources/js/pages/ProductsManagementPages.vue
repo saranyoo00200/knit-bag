@@ -98,14 +98,14 @@
       class="modal fade"
       id="EditProducts"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="ModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <form v-on:submit.prevent="updateProduct" method="post">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+              <h5 class="modal-title" id="ModalLabel">Edit Product</h5>
               <i
                 @click="clockClose"
                 type="button"
@@ -248,14 +248,14 @@
       class="modal fade"
       id="AddProducts"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="ModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <form v-on:submit.prevent="AddProduct" method="post">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+              <h5 class="modal-title" id="ModalLabel">Add Product</h5>
               <i
                 type="button"
                 class="fas fa-times"
