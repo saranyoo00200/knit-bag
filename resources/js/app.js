@@ -30,6 +30,7 @@ Vue.component("profile", require("./pages/profile.vue").default);
 Vue.component("my-product", require("./pages/UserProductPage.vue").default);
 Vue.component("order-history", require("./pages/OrderHistoryPage.vue").default);
 Vue.component("check-sales", require("./pages/CheckSalesPage.vue").default);
+Vue.component("order-approval", require("./pages/OrderApprovelPage.vue").default);
 Vue.component(
     "admin-dashboard",
     require("./pages/AdminsHomePages.vue").default

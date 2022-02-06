@@ -75,8 +75,9 @@
               </tbody>
             </table>
             <hr />
-            <div class="text-center">
-              <span class="badge bg-secondary mb-2">Total = {{ total }} $</span
+            <div v-show="infoUserProduct != ''" class="text-center">
+              <span class="badge bg-secondary mb-2"
+                >amount_money = {{ amount_money }} $</span
               ><br />
               <button
                 type="button"
@@ -217,7 +218,18 @@
               </div>
               <div class="tab mb-3">
                 <div class="text-center">
-                  <i class="fas fa-3x fa-piggy-bank"></i>
+                  <i class="fas fa-3x fa-piggy-bank mb-3"></i>
+                  <h4>เลือกโอนเงินไปยังธนาคารที่ต้องการ</h4>
+                  <div v-if="form.bank == 'กสิการไทย'">
+                    <p>ธนาคาร: {{ form.bank }}</p>
+                    <p>นางสาว xxxxxxxxx xxxxxxx</p>
+                    <p>เลขบัญชี xxxx xxxx xxx</p>
+                  </div>
+                  <div v-if="form.bank == 'กรุงไทย'">
+                    <p>ธนาคาร: {{ form.bank }}</p>
+                    <p>นางสาว xxxxxxxxx xxxxxxx</p>
+                    <p>เลขบัญชี xxxx xxxx xxx</p>
+                  </div>
                 </div>
                 <div class="radio-with-Icon">
                   <div class="radioOption-Item">
@@ -226,7 +238,7 @@
                       type="radio"
                       name="bank"
                       id="KrungThaiBank"
-                      value="ธนาคารกรุงไทย"
+                      value="กรุงไทย"
                     />
                     <label for="KrungThaiBank">
                       <img
@@ -244,7 +256,7 @@
                       type="radio"
                       name="bank"
                       id="KasikornBank"
-                      value="ธนาคารกสิการไทย"
+                      value="กสิการไทย"
                     />
                     <label for="KasikornBank">
                       <img
@@ -260,6 +272,9 @@
               <div class="tab mb-3">
                 <div class="text-center p-3">
                   <i class="fas fa-3x fa-check-circle"></i>
+                  <div class="mt-3">
+                    <img :src="file_photo" class="shadow rounded w-25" alt="" />
+                  </div>
                 </div>
                 <div class="form-group">
                   <label class="label-control" for="paymentProof"
@@ -296,33 +311,33 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="paymentProofOption1">โอนจากธนาคาร</label>
+                  <label for="bankTransfer">โอนเงินผ่านธนาคาร</label>
                   <select
-                    v-model="form.payment_slip.paymentProofOption1"
-                    id="paymentProofOption1"
+                    v-model="form.payment_slip.bankTransfer"
+                    id="bankTransfer"
                     class="custom-select"
-                    name="paymentProofOption1"
+                    name="bankTransfer"
                   >
                     <option selected value="">เลือก...</option>
-                    <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
-                    <option value="ธนาคารกสิการไทย">ธนาคารกสิการไทย</option>
-                    <option value="ธนาคารออมสิน">ธนาคารออมสิน</option>
-                    <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
-                    <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
-                    <option value="ธนาคารกรุงศรี">ธนาคารกรุงศรี</option>
+                    <option value="กรุงไทย">ธนาคารกรุงไทย</option>
+                    <option value="กสิการไทย">ธนาคารกสิการไทย</option>
+                    <option value="ออมสิน">ธนาคารออมสิน</option>
+                    <option value="ไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
+                    <option value="กรุงเทพ">ธนาคารกรุงเทพ</option>
+                    <option value="กรุงศรี">ธนาคารกรุงศรี</option>
                   </select>
                 </div>
                 <div class="form-group mb-3">
-                  <label for="paymentProofOption2">ไปยังธนาคาร</label>
+                  <label for="toBank">ไปยังธนาคาร</label>
                   <select
-                    v-model="form.payment_slip.paymentProofOption2"
-                    id="paymentProofOption2"
+                    v-model="form.payment_slip.toBank"
+                    id="toBank"
                     class="custom-select"
-                    name="paymentProofOption2"
+                    name="toBank"
                   >
                     <option selected value="">เลือก...</option>
-                    <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
-                    <option value="ธนาคารกสิการไทย">ธนาคารกสิการไทย</option>
+                    <option value="กรุงไทย">ธนาคารกรุงไทย</option>
+                    <option value="กสิการไทย">ธนาคารกสิการไทย</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -330,21 +345,25 @@
                     >จำนวนเงินถูกโอนแล้ว (฿)</label
                   >
                   <input
-                    v-model="form.payment_slip.paymentPrice"
+                    v-model="amount_money"
                     id="paymentProofPrice"
                     class="form-control"
                     type="number"
+                    readonly
                   />
                 </div>
                 <div class="form-group">
                   <label class="label-control" for="paymentProofSlibCode4"
-                    >โอนจากบัญชีธนาคารเลขที่ 4 หลักสุดท้าย</label
+                    >โอนจากบัญชีธนาคาร<span class="text-danger"
+                      >เลขที่ 4 หลักสุดท้าย</span
+                    ></label
                   >
                   <input
                     v-model="form.payment_slip.paymentCode"
                     id="paymentProofSlibCode4"
                     class="form-control"
                     type="number"
+                    placeholder="1234"
                   />
                 </div>
               </div>
@@ -388,7 +407,7 @@ export default {
   data() {
     return {
       infoUserProduct: [],
-      total: 0,
+      amount_money: 0,
       form: {
         location: {
           fname: "Saranyoo",
@@ -405,13 +424,13 @@ export default {
           paymentImage: "",
           paymentDate: "",
           paymentTime: "",
-          paymentProofOption1: "",
-          paymentProofOption2: "",
-          paymentPrice: "",
+          bankTransfer: "",
+          toBank: "",
           paymentCode: "",
         },
       },
       currentTab: 0,
+      file_photo: "",
       loading: true,
     };
   },
@@ -426,9 +445,9 @@ export default {
         .get("/api/users/product/" + this.auth_user.id + "/index")
         .then((res) => {
           this.infoUserProduct = res.data;
-          this.total = 0;
+          this.amount_money = 0;
           for (let i = 0; i < this.infoUserProduct.length; i++) {
-            this.total +=
+            this.amount_money +=
               this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
           }
           this.loading = false;
@@ -442,9 +461,9 @@ export default {
         .get("/api/users/product/" + value + "/delete")
         .then((res) => {
           this.infoUserProduct.splice(index, 1);
-          this.total = 0;
+          this.amount_money = 0;
           for (let i = 0; i < this.infoUserProduct.length; i++) {
-            this.total +=
+            this.amount_money +=
               this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
           }
         })
@@ -453,7 +472,7 @@ export default {
         });
     },
     clickPayMoney() {
-      if (this.total == 0) {
+      if (this.amount_money == 0) {
         this.$swal(
           "Warning!",
           "Unable to pay due to lack of product information.",
@@ -464,10 +483,10 @@ export default {
       }
     },
     clickSelect() {
-      //price total
-      this.total = 0;
+      //price amount_money
+      this.amount_money = 0;
       for (let i = 0; i < this.infoUserProduct.length; i++) {
-        this.total +=
+        this.amount_money +=
           this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
       }
     },
@@ -478,9 +497,9 @@ export default {
         })
         .then((res) => {
           this.infoUserProduct[index].number++;
-          this.total = 0;
+          this.amount_money = 0;
           for (let i = 0; i < this.infoUserProduct.length; i++) {
-            this.total +=
+            this.amount_money +=
               this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
           }
         })
@@ -496,9 +515,9 @@ export default {
           })
           .then((res) => {
             this.infoUserProduct[index].number--;
-            this.total = 0;
+            this.amount_money = 0;
             for (let i = 0; i < this.infoUserProduct.length; i++) {
-              this.total +=
+              this.amount_money +=
                 this.infoUserProduct[i].Pprice * this.infoUserProduct[i].number;
             }
           })
@@ -542,7 +561,56 @@ export default {
             confirmButtonText: "Yes",
           }).then((result) => {
             if (result.value) {
-              alert(this.form.payment_slip.paymentImage);
+              this.arrProduct_id = [];
+              for (let i = 0; i < this.infoUserProduct.length; i++) {
+                this.arrProduct_id.push(this.infoUserProduct[i].product_id);
+              }
+              let formData = new FormData();
+              formData.append("fname", this.form.location.fname);
+              formData.append("lname", this.form.location.lname);
+              formData.append("address", this.form.location.address);
+              formData.append("tel", this.form.location.tel);
+              formData.append("subdistrict", this.form.location.subdistrict);
+              formData.append("district", this.form.location.district);
+              formData.append("province", this.form.location.province);
+              formData.append("code_zip", this.form.location.code_zip);
+              formData.append("bank", this.form.bank);
+              formData.append(
+                "PaymentImage",
+                this.form.payment_slip.paymentImage
+              );
+              formData.append(
+                "paymentDate",
+                this.form.payment_slip.paymentDate
+              );
+              formData.append(
+                "paymentTime",
+                this.form.payment_slip.paymentTime
+              );
+              formData.append(
+                "bankTransfer",
+                this.form.payment_slip.bankTransfer
+              );
+              formData.append("toBank", this.form.payment_slip.toBank);
+              formData.append("amount_money", this.amount_money);
+              formData.append(
+                "paymentCode",
+                this.form.payment_slip.paymentCode
+              );
+              formData.append("product_id", this.arrProduct_id);
+
+              axios
+                .post(
+                  "/api/users/products/" + this.auth_user.id + "/order-approve",
+                  formData
+                )
+                .then((res) => {
+                  console.log(this.product_id);
+                })
+                .catch((error) => {
+                  console.log("error!");
+                });
+
               // window.location.assign("/order-historys");
             }
           });
@@ -569,16 +637,10 @@ export default {
         textArea.className += " invalid";
         valid = false;
       }
-      if (
-        this.currentTab == 2 &&
-        this.form.payment_slip.paymentProofOption1 == ""
-      ) {
+      if (this.currentTab == 2 && this.form.payment_slip.bankTransfer == "") {
         select[0].className += " invalid";
       }
-      if (
-        this.currentTab == 2 &&
-        this.form.payment_slip.paymentProofOption2 == ""
-      ) {
+      if (this.currentTab == 2 && this.form.payment_slip.toBank == "") {
         select[1].className += " invalid";
       }
       for (i = 0; i < y.length; i++) {
@@ -607,8 +669,8 @@ export default {
     },
 
     onFilePaymentImage(e) {
-      //   const file = e.target.files[0];
-      //   this.file_photo = URL.createObjectURL(file);
+      const file = e.target.files[0];
+      this.file_photo = URL.createObjectURL(file);
       this.form.payment_slip.paymentImage = e.target.files[0];
     },
   },
@@ -678,7 +740,7 @@ div.radio-with-Icon div.radioOption-Item {
   width: 150px;
   height: 150px;
   box-sizing: border-box;
-  margin: 15px 15px;
+  margin: 0px 15px;
   border: none;
 }
 div.radio-with-Icon div.radioOption-Item label {

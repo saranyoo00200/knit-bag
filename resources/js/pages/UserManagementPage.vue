@@ -21,7 +21,7 @@
             data-bs-toggle="modal"
             data-bs-target="#AddUsers"
           >
-            +
+            <i class="fas fa-user-plus"></i>
           </button>
         </div>
         <div class="card-body">

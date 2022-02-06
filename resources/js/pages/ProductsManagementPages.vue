@@ -21,7 +21,7 @@
             data-bs-toggle="modal"
             data-bs-target="#AddProducts"
           >
-            +
+            <i class="fas fa-plus"></i>
           </button>
         </div>
         <div class="card-body">

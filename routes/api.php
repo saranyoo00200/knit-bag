@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 // routes/api.php
 use App\Http\Controllers\api\UsersManageController;
 use App\Http\Controllers\api\UsersProductsController;
+use App\Http\Controllers\api\ApprovalManageController;
 use App\Http\Controllers\api\ProductsController;
 use App\Http\Controllers\api\ProfileController;
 use App\Http\Controllers\api\AuthController;
@@ -50,6 +51,18 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/users/product/{id}/delete', [UsersProductsController::class, 'destroy']);
     Route::post('/users/product/{id}/plus', [UsersProductsController::class, 'plus']);
     Route::post('/users/product/{id}/minus', [UsersProductsController::class, 'minus']);
+    Route::post('/users/products/{id}/order-approve', [UsersProductsController::class, 'orderApprove']);
+    // Route::post('/users/products/{id}/order', [UsersProductsController::class, 'order']);
+});
+
+// Approval
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/order/approval/index', [ApprovalManageController::class, 'index']);
+    // Route::post('/users/addProduct/create', [ApprovalManageController::class, 'create']);
+    // Route::get('/users/product/{id}/delete', [ApprovalManageController::class, 'destroy']);
+    // Route::post('/users/product/{id}/plus', [ApprovalManageController::class, 'plus']);
+    // Route::post('/users/product/{id}/minus', [ApprovalManageController::class, 'minus']);
+    // Route::post('/users/products/{id}/order-approve', [ApprovalManageController::class, 'orderApprove']);
 });
 
 // product

@@ -9,7 +9,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>KNOMPUNG</title>
-    <link rel="shortcut icon" href="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/271586309_3849771325247301_4125587798937102478_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEsrxK0BqFhdkhMNaDWXhDUv94aP7t75Ze_3ho_u3vll6lVhhMAOSr1L035Ph7fHMMohlldUwgfun3Ju_Y3MHCA&_nc_ohc=VGvjauG0Ab8AX8XIqag&_nc_ht=scontent.fbkk14-1.fna&oh=03_AVKq60aRglxyxia9HoW7pIRfYXQ-BQI_SU-Y8W76why4SQ&oe=6212D9A0" type="image/x-icon" />
+    <link rel="shortcut icon"
+        href="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/271586309_3849771325247301_4125587798937102478_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEsrxK0BqFhdkhMNaDWXhDUv94aP7t75Ze_3ho_u3vll6lVhhMAOSr1L035Ph7fHMMohlldUwgfun3Ju_Y3MHCA&_nc_ohc=VGvjauG0Ab8AX8XIqag&_nc_ht=scontent.fbkk14-1.fna&oh=03_AVKq60aRglxyxia9HoW7pIRfYXQ-BQI_SU-Y8W76why4SQ&oe=6212D9A0"
+        type="image/x-icon" />
 
 
     <!-- Fonts -->
@@ -151,8 +153,24 @@
                                 aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div class="bg-white py-2 collapse-inner rounded">
                                     <h6 class="collapse-header">check sales:</h6>
-                                    <a class="collapse-item {{ request()->routeIs('checkSales') ? 'active' : '' }}" href="
-                                                                                /check-sales">Sales</a>
+                                    <a class="collapse-item {{ request()->routeIs('checkSales') ? 'active' : '' }}"
+                                        href="/check-sales">Sales</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item {{ request()->routeIs('orderApproval') ? 'active' : '' }}">
+                            <a class="nav-link {{ request()->routeIs('orderApproval') ? '' : 'collapsed' }}" href="#"
+                                data-toggle="collapse" data-target="#orderApproval" aria-expanded="true" aria-controls="Users">
+                                <i class="far fa-edit"></i>
+                                <span>Order approval</span>
+                            </a>
+                            <div id="orderApproval" class="collapse {{ request()->routeIs('orderApproval') ? 'show' : '' }}"
+                                aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <h6 class="collapse-header">Product order:</h6>
+                                    <a class="collapse-item {{ request()->routeIs('orderApproval') ? 'active' : '' }}"
+                                        href="/order-approval">Order</a>
                                 </div>
                             </div>
                         </li>
@@ -388,7 +406,7 @@
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                             <a class="btn btn-primary" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

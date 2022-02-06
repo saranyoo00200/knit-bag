@@ -88,4 +88,17 @@ class HomeController extends Controller
             return view('errors.404');
         }
     }
+    
+    public function orderApproval()
+    {
+        if (
+            auth()
+                ->user()
+                ->hasRole('admin')
+        ) {
+            return view('pages.dashboard.orderApproval');
+        } else {
+            return view('errors.404');
+        }
+    }
 }

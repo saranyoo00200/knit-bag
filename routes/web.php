@@ -29,6 +29,7 @@ Route::get('/management/users', [App\Http\Controllers\HomeController::class, 'us
 Route::get('/my-products', [App\Http\Controllers\HomeController::class, 'myProducts'])->name('myProducts');
 Route::get('/order-historys', [App\Http\Controllers\HomeController::class, 'orderHistorys'])->name('orderHistorys');
 Route::get('/check-sales', [App\Http\Controllers\HomeController::class, 'checkSales'])->name('checkSales');
+Route::get('/order-approval', [App\Http\Controllers\HomeController::class, 'orderApproval'])->name('orderApproval');
 
 // Route::get('/{any?}', function () {
 //     return view('index');

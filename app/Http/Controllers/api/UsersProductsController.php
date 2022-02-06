@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\UserProducts;
+use App\Models\OrderApproves;
+use App\Models\Order;
 
 class UsersProductsController extends Controller
 {
@@ -105,6 +108,58 @@ class UsersProductsController extends Controller
         UserProducts::find($id)->update($input);
 
         return response()->json(['success' => 'Updated successfull!'], 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function orderApprove(Request $request, $id)
+    {
+        $input['fname'] = $request->fname;
+        $input['lname'] = $request->lname;
+        $input['address'] = $request->address;
+        $input['tel'] = $request->tel;
+        $input['subdistrict'] = $request->subdistrict;
+        $input['district'] = $request->district;
+        $input['province'] = $request->province;
+        $input['code_zip'] = $request->code_zip;
+        $input['bank'] = $request->bank;
+        $input['paymentDate'] = $request->paymentDate;
+        $input['paymentTime'] = $request->paymentTime;
+        $input['bankTransfer'] = $request->bankTransfer;
+        $input['toBank'] = $request->toBank;
+        $input['amount_money'] = $request->amount_money;
+        $input['paymentCode'] = $request->paymentCode;
+        $input['product_id'] = $request->product_id;
+        $input['user_id'] = $id;
+
+        if ($image = $request->file('PaymentImage')) {
+            $name_gen = hexdec(uniqid());
+            $img_ext = strtolower($image->getClientOriginalExtension());
+            $img_name = $name_gen . '.' . $img_ext;
+            $upload_location = 'images/order_approvel/';
+            $full_path = $upload_location . $img_name;
+            $input['PaymentImage'] = $full_path;
+            OrderApproves::create($input);
+            $image->move(public_path($upload_location), $img_name);
+            // create orders
+            $idArray = explode(',', $request->product_id);
+            $idProducts = DB::table('products')->whereIn('id', $idArray)->get();
+            foreach ($idProducts as  $value) {
+                Order::create([
+                    'amount_products' => $request->amount_products,
+                    'paymentCode' => $request->paymentCode,
+                    'user_id' => $id,
+                    'product_id' => $value->id
+                ]);
+                // delete UserProducts 
+                UserProducts::where('product_id', $value->id)->where('user_id', $id)->delete();
+            }
+            return response()->json(['msg' => 'Successfull!'], 200);
+        }
     }
 
     /**
