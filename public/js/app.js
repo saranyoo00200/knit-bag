@@ -5913,12 +5913,105 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       datas: [],
-      loading: true
+      modelProducts: [],
+      modelOrderDetails: [],
+      loading: true,
+      ModelLoading: true
     };
   },
   props: ["auth_user"],
@@ -5931,6 +6024,19 @@ __webpack_require__.r(__webpack_exports__);
     setTimeout(function () {
       _this.loading = false;
     }, 1000);
+  },
+  methods: {
+    ClickModel: function ClickModel(id, product_id, date, time) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/order/approval/" + id + "/" + product_id + "/" + date + "/" + time + "/get/products").then(function (res) {
+        _this2.modelProducts = res.data.Products;
+        _this2.modelOrderDetails = res.data.Order[0];
+        _this2.ModelLoading = false;
+      })["catch"](function (error) {
+        console.log("Error!");
+      });
+    }
   }
 });
 
@@ -8990,12 +9096,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index",
@@ -9180,10 +9280,10 @@ __webpack_require__.r(__webpack_exports__);
               formData.append("paymentCode", _this5.form.payment_slip.paymentCode);
               formData.append("product_id", _this5.arrProduct_id);
               axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/users/products/" + _this5.auth_user.id + "/order-approve", formData).then(function (res) {
-                console.log(_this5.product_id);
+                window.location.assign('/order-approval');
               })["catch"](function (error) {
                 console.log("error!");
-              }); // window.location.assign("/order-historys");
+              });
             }
           });
           return false;
@@ -15099,7 +15199,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-51eb4823] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-51eb4823] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15123,7 +15223,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-80e327c4] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-80e327c4] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15219,7 +15319,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-44526b5a] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\n#regForm[data-v-44526b5a] {\r\n  padding: 15px 15px;\n}\ninput.invalid[data-v-44526b5a] {\r\n  background-color: #ffdddd;\n}\ntextarea.invalid[data-v-44526b5a] {\r\n  background-color: #ffdddd;\n}\nselect.invalid[data-v-44526b5a] {\r\n  background-color: #ffdddd;\n}\n.tab[data-v-44526b5a] {\r\n  display: none;\n}\n.step[data-v-44526b5a] {\r\n  height: 15px;\r\n  width: 15px;\r\n  margin: 0 2px;\r\n  background-color: #bbbbbb;\r\n  border: none;\r\n  border-radius: 50%;\r\n  display: inline-block;\r\n  opacity: 0.3;\n}\n.step.active[data-v-44526b5a] {\r\n  opacity: 1;\n}\n.step.finish[data-v-44526b5a] {\r\n  background-color: #04aa6d;\n}\r\n\r\n/* radio image */\ndiv.radio-with-Icon[data-v-44526b5a] {\r\n  display: block;\r\n  text-align: center;\n}\ndiv.radio-with-Icon div.radioOption-Item[data-v-44526b5a] {\r\n  display: inline-block;\r\n  width: 150px;\r\n  height: 150px;\r\n  box-sizing: border-box;\r\n  margin: 0px 15px;\r\n  border: none;\n}\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a] {\r\n  display: block;\r\n  height: 100%;\r\n  width: 100%;\r\n  padding: 10px;\r\n  border-radius: 10px;\r\n  border: 1px solid #de1831;\r\n  color: #de1831;\r\n  cursor: pointer;\r\n  opacity: 0.8;\r\n  transition: none;\r\n  font-size: 13px;\r\n  padding-top: 25px;\r\n  text-align: center;\r\n  margin: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:hover,\r\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:focus,\r\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:active {\r\n  opacity: 0.5;\r\n  background-color: #de1831;\r\n  color: #fff;\r\n  margin: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]::after,\r\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:after,\r\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]::before,\r\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:before {\r\n  opacity: 0 !important;\r\n  width: 0 !important;\r\n  height: 0 !important;\r\n  margin: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item label i.fa[data-v-44526b5a] {\r\n  display: block;\r\n  font-size: 50px;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"][data-v-44526b5a] {\r\n  opacity: 0 !important;\r\n  width: 0 !important;\r\n  height: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"]:active ~ label[data-v-44526b5a] {\r\n  opacity: 1;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"]:checked ~ label[data-v-44526b5a] {\r\n  opacity: 1;\r\n  border: none;\r\n  background-color: #de1831;\r\n  color: #fff;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"][data-v-44526b5a]:hover,\r\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"][data-v-44526b5a]:focus,\r\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"][data-v-44526b5a]:active {\r\n  margin: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"] + label[data-v-44526b5a]:before,\r\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"] + label[data-v-44526b5a]:after {\r\n  margin: 0 !important;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-44526b5a] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n#regForm[data-v-44526b5a] {\n  padding: 15px 15px;\n}\ninput.invalid[data-v-44526b5a] {\n  background-color: #ffdddd;\n}\ntextarea.invalid[data-v-44526b5a] {\n  background-color: #ffdddd;\n}\nselect.invalid[data-v-44526b5a] {\n  background-color: #ffdddd;\n}\n.tab[data-v-44526b5a] {\n  display: none;\n}\n.step[data-v-44526b5a] {\n  height: 15px;\n  width: 15px;\n  margin: 0 2px;\n  background-color: #bbbbbb;\n  border: none;\n  border-radius: 50%;\n  display: inline-block;\n  opacity: 0.3;\n}\n.step.active[data-v-44526b5a] {\n  opacity: 1;\n}\n.step.finish[data-v-44526b5a] {\n  background-color: #04aa6d;\n}\n\n/* radio image */\ndiv.radio-with-Icon[data-v-44526b5a] {\n  display: block;\n  text-align: center;\n}\ndiv.radio-with-Icon div.radioOption-Item[data-v-44526b5a] {\n  display: inline-block;\n  width: 150px;\n  height: 150px;\n  box-sizing: border-box;\n  margin: 0px 15px;\n  border: none;\n}\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a] {\n  display: block;\n  height: 100%;\n  width: 100%;\n  padding: 10px;\n  border-radius: 10px;\n  border: 1px solid #de1831;\n  color: #de1831;\n  cursor: pointer;\n  opacity: 0.8;\n  transition: none;\n  font-size: 13px;\n  padding-top: 25px;\n  text-align: center;\n  margin: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:hover,\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:focus,\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:active {\n  opacity: 0.5;\n  background-color: #de1831;\n  color: #fff;\n  margin: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]::after,\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:after,\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]::before,\ndiv.radio-with-Icon div.radioOption-Item label[data-v-44526b5a]:before {\n  opacity: 0 !important;\n  width: 0 !important;\n  height: 0 !important;\n  margin: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item label i.fa[data-v-44526b5a] {\n  display: block;\n  font-size: 50px;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"][data-v-44526b5a] {\n  opacity: 0 !important;\n  width: 0 !important;\n  height: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"]:active ~ label[data-v-44526b5a] {\n  opacity: 1;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"]:checked ~ label[data-v-44526b5a] {\n  opacity: 1;\n  border: none;\n  background-color: #de1831;\n  color: #fff;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"][data-v-44526b5a]:hover,\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"][data-v-44526b5a]:focus,\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"][data-v-44526b5a]:active {\n  margin: 0 !important;\n}\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"] + label[data-v-44526b5a]:before,\ndiv.radio-with-Icon div.radioOption-Item input[type=\"radio\"] + label[data-v-44526b5a]:after {\n  margin: 0 !important;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -61785,54 +61885,175 @@ var render = function () {
           _c("table", { staticClass: "table table-hover" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.datas, function (data, index) {
-                return _c("tr", { key: index }, [
-                  _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("img", {
-                      attrs: {
-                        width: "35px",
-                        height: "35px",
-                        src: data.PaymentImage,
-                        alt: "",
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(_vm._s(data.fname) + " " + _vm._s(data.lname)),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(data.amount_money) + " บาท($)")]),
-                  _vm._v(" "),
-                  data.approvel == true
-                    ? _c("td", [
-                        _c("span", { staticClass: "badge badge-success" }, [
-                          _vm._v("อนุมัติแล้ว"),
-                        ]),
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  data.approvel == false
-                    ? _c("td", [
-                        _c("span", { staticClass: "badge badge-danger" }, [
-                          _vm._v("ยังไม่ได้อนุมัติ"),
-                        ]),
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm._m(1, true),
-                ])
-              }),
-              0
-            ),
+            _vm.datas == ""
+              ? _c("tbody", { staticClass: "text-center" }, [_vm._m(1)])
+              : _c(
+                  "tbody",
+                  _vm._l(_vm.datas, function (data, index) {
+                    return _c("tr", { key: index }, [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v(_vm._s(index + 1)),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("img", {
+                          attrs: {
+                            width: "37px",
+                            height: "50px",
+                            src: data.PaymentImage,
+                            alt: "",
+                          },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(data.fname) + " " + _vm._s(data.lname)),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(data.amount_money) + " บาท($)")]),
+                      _vm._v(" "),
+                      data.approvel == true
+                        ? _c("td", [
+                            _c("span", { staticClass: "badge badge-success" }, [
+                              _vm._v("อนุมัติแล้ว"),
+                            ]),
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      data.approvel == false
+                        ? _c("td", [
+                            _c("span", { staticClass: "badge badge-danger" }, [
+                              _vm._v("ยังไม่ได้อนุมัติ"),
+                            ]),
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: {
+                              "data-bs-toggle": "modal",
+                              "data-bs-target": "#modelApprove",
+                            },
+                            on: {
+                              click: function ($event) {
+                                return _vm.ClickModel(
+                                  data.user_id,
+                                  data.product_id,
+                                  data.paymentDate,
+                                  data.paymentTime
+                                )
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "fas fa-eye" })]
+                        ),
+                      ]),
+                    ])
+                  }),
+                  0
+                ),
           ]),
         ]),
       ]),
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modelApprove",
+          tabindex: "-1",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _vm.ModelLoading
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "spinner-border",
+                      attrs: { role: "status" },
+                    },
+                    [
+                      _c("span", { staticClass: "sr-only" }, [
+                        _vm._v("Loading..."),
+                      ]),
+                    ]
+                  )
+                : _c("div", [
+                    _c("h3", [_vm._v("Order product")]),
+                    _vm._v(" "),
+                    _c(
+                      "table",
+                      { staticClass: "table table-bordered text-center" },
+                      [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.modelProducts, function (data, index) {
+                            return _c("tr", { key: index }, [
+                              _c("th", { attrs: { scope: "row" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    width: "35px",
+                                    height: "35px",
+                                    src: data.Pimage,
+                                    alt: "",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(data.Pname))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(data.amount_products))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "$" +
+                                    _vm._s(data.Pprice * data.amount_products)
+                                ),
+                              ]),
+                            ])
+                          }),
+                          0
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "d-flex justify-content-center" },
+                      [
+                        _c("p", [_vm._v("Total Amount")]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "ms-auto" }, [
+                          _c("span", { staticClass: "fas fa-dollar-sign" }),
+                          _vm._v(
+                            _vm._s(_vm.modelOrderDetails.amount_money) +
+                              "\n              "
+                          ),
+                        ]),
+                      ]
+                    ),
+                  ]),
+            ]),
+            _vm._v(" "),
+            _vm._m(4),
+          ]),
+        ]),
+      ]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -61860,10 +62081,70 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-primary" }, [
-        _c("i", { staticClass: "fas fa-eye" }),
+    return _c("tr", [
+      _c("th", { attrs: { scope: "row", colspan: "6" } }, [
+        _vm._v("ไม่มีรายการสินค้า"),
       ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Modal title")]
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [
+          _c("i", { staticClass: "fas fa-images" }),
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Number")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("\n            Close\n          ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "button" } },
+        [_vm._v("Save changes")]
+      ),
     ])
   },
 ]
@@ -67200,7 +67481,6 @@ var render = function () {
                         id: "textArea",
                         name: "address",
                         placeholder: "ที่อยู่ ...",
-                        readonly: "",
                       },
                       domProps: { value: _vm.form.location.address },
                       on: {
@@ -67236,7 +67516,6 @@ var render = function () {
                             name: "tel",
                             pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}",
                             placeholder: "เบอร์โทร ...",
-                            readonly: "",
                           },
                           domProps: { value: _vm.form.location.tel },
                           on: {
@@ -67269,7 +67548,6 @@ var render = function () {
                             type: "text",
                             name: "subdistrict",
                             placeholder: "ตำบล/แขวง ...",
-                            readonly: "",
                           },
                           domProps: { value: _vm.form.location.subdistrict },
                           on: {
@@ -67306,7 +67584,6 @@ var render = function () {
                             type: "text",
                             name: "district",
                             placeholder: "อำเภอ/เขต",
-                            readonly: "",
                           },
                           domProps: { value: _vm.form.location.district },
                           on: {
@@ -67339,7 +67616,6 @@ var render = function () {
                             type: "text",
                             name: "province",
                             placeholder: "จังหวัด ...",
-                            readonly: "",
                           },
                           domProps: { value: _vm.form.location.province },
                           on: {
@@ -67376,7 +67652,6 @@ var render = function () {
                             type: "number",
                             name: "code_zip",
                             placeholder: "รหัสไปรษณีย์ ...",
-                            readonly: "",
                           },
                           domProps: { value: _vm.form.location.code_zip },
                           on: {

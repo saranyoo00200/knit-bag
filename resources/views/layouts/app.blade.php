@@ -77,6 +77,10 @@
                 $count_cart = DB::table('user_products')
                     ->where('user_id', Auth()->user()->id)
                     ->count();
+
+                $count_bell = DB::table('order_approves')
+                    ->where('approvel', 0)
+                    ->count();
             @endphp
             <!-- Page Wrapper -->
             <div id="wrapper">
@@ -154,7 +158,7 @@
                                 <div class="bg-white py-2 collapse-inner rounded">
                                     <h6 class="collapse-header">check sales:</h6>
                                     <a class="collapse-item {{ request()->routeIs('checkSales') ? 'active' : '' }}"
-                                        href="/check-sales">Sales</a>
+                                        href="{{ url('/check-sales') }}">Sales</a>
                                 </div>
                             </div>
                         </li>
@@ -170,7 +174,7 @@
                                 <div class="bg-white py-2 collapse-inner rounded">
                                     <h6 class="collapse-header">Product order:</h6>
                                     <a class="collapse-item {{ request()->routeIs('orderApproval') ? 'active' : '' }}"
-                                        href="/order-approval">Order</a>
+                                        href="{{ url('/order-approval') }}">Order</a>
                                 </div>
                             </div>
                         </li>
@@ -285,6 +289,16 @@
                                         <span class="badge badge-danger badge-counter">{{ $count_cart }}</span>
                                     </a>
                                 </li>
+
+                                @role('admin')
+                                    <!-- Nav Item - bell -->
+                                    <li class="nav-item mx-1">
+                                        <a class="nav-link" href="{{ url('/order-approval') }}">
+                                            <i class=" fas fa-bell"></i>
+                                            <span class="badge badge-danger badge-counter">{{ $count_bell }}</span>
+                                        </a>
+                                    </li>
+                                @endrole
 
                                 <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -406,7 +420,7 @@
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                             <a class="btn btn-primary" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

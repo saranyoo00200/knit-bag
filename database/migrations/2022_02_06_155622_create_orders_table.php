@@ -16,7 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('amount_products')->nullable()->comment('จำนวนสินค้า');
-            $table->string('paymentCode')->nullable()->comment('โอนเงินผ่านบัญชีธนาคารเลข 4 หลักสุดท้าย');
+            $table->date('paymentDate')->nullable()->comment('วันที่ซำระเงิน');
+            $table->time('paymentTime')->nullable()->comment('เวลาซำระเงิน');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

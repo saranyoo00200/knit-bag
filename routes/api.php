@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 // Approval
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/order/approval/index', [ApprovalManageController::class, 'index']);
+    Route::get('/order/approval/{id}/{product_id}/{date}/{time}/get/products', [ApprovalManageController::class, 'getProducts']);
     // Route::post('/users/addProduct/create', [ApprovalManageController::class, 'create']);
     // Route::get('/users/product/{id}/delete', [ApprovalManageController::class, 'destroy']);
     // Route::post('/users/product/{id}/plus', [ApprovalManageController::class, 'plus']);

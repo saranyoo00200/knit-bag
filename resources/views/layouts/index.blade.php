@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>KNOMPUNG</title>
-    <link rel="shortcut icon" href="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/271586309_3849771325247301_4125587798937102478_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEsrxK0BqFhdkhMNaDWXhDUv94aP7t75Ze_3ho_u3vll6lVhhMAOSr1L035Ph7fHMMohlldUwgfun3Ju_Y3MHCA&_nc_ohc=VGvjauG0Ab8AX8XIqag&_nc_ht=scontent.fbkk14-1.fna&oh=03_AVKq60aRglxyxia9HoW7pIRfYXQ-BQI_SU-Y8W76why4SQ&oe=6212D9A0" type="image/x-icon" />
+    <link rel="shortcut icon"
+        href="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/271586309_3849771325247301_4125587798937102478_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEsrxK0BqFhdkhMNaDWXhDUv94aP7t75Ze_3ho_u3vll6lVhhMAOSr1L035Ph7fHMMohlldUwgfun3Ju_Y3MHCA&_nc_ohc=VGvjauG0Ab8AX8XIqag&_nc_ht=scontent.fbkk14-1.fna&oh=03_AVKq60aRglxyxia9HoW7pIRfYXQ-BQI_SU-Y8W76why4SQ&oe=6212D9A0"
+        type="image/x-icon" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -61,6 +63,9 @@
                                     $count_cart = DB::table('user_products')
                                         ->where('user_id', Auth()->user()->id)
                                         ->count();
+                                    $count_bell = DB::table('order_approves')
+                                        ->where('approvel', 0)
+                                        ->count();
                                 @endphp
                                 <li class="nav-item">
                                     <a class="nav-link mx-1 position-relative" href="{{ url('/order-historys') }}">
@@ -80,6 +85,16 @@
                                         </span>
                                     </a>
                                 </li>
+                                @role('admin')
+                                    <!-- Nav Item - bell -->
+                                    <li class="nav-item mx-1">
+                                        <a class="nav-link" href="{{ url('/order-approval') }}">
+                                            <i class=" fas fa-bell"></i>
+                                            <span class="position-absolute translate-middle-x badge bg-danger"
+                                                style="font-size: 9px">{{ $count_bell }}</span>
+                                        </a>
+                                    </li>
+                                @endrole
                                 <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -187,7 +202,7 @@
                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

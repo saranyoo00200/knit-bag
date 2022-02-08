@@ -17,13 +17,18 @@
                 <th scope="col">Tool</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody v-if="datas == ''" class="text-center">
+              <tr>
+                <th scope="row" colspan="6">ไม่มีรายการสินค้า</th>
+              </tr>
+            </tbody>
+            <tbody v-else>
               <tr v-for="(data, index) in datas" :key="index">
-                <th scope="row">1</th>
+                <th scope="row">{{ index + 1 }}</th>
                 <td>
                   <img
-                    width="35px"
-                    height="35px"
+                    width="37px"
+                    height="50px"
                     :src="data.PaymentImage"
                     alt=""
                   />
@@ -37,13 +42,98 @@
                   <span class="badge badge-danger">ยังไม่ได้อนุมัติ</span>
                 </td>
                 <td>
-                  <button class="btn btn-primary">
+                  <button
+                    @click="
+                      ClickModel(
+                        data.user_id,
+                        data.product_id,
+                        data.paymentDate,
+                        data.paymentTime
+                      )
+                    "
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modelApprove"
+                  >
                     <i class="fas fa-eye"></i>
                   </button>
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- model approve -->
+    <div
+      class="modal fade"
+      id="modelApprove"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div v-if="ModelLoading" class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div v-else>
+              <h3>Order product</h3>
+              <table class="table table-bordered text-center">
+                <thead>
+                  <tr>
+                    <th scope="col"><i class="fas fa-images"></i></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(data, index) in modelProducts" :key="index">
+                    <th scope="row">
+                      <img
+                        width="35px"
+                        height="35px"
+                        :src="data.Pimage"
+                        alt=""
+                      />
+                    </th>
+                    <td>{{ data.Pname }}</td>
+                    <td>{{ data.amount_products }}</td>
+                    <td>${{ data.Pprice * data.amount_products }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-center">
+                <p>Total Amount</p>
+                <p class="ms-auto">
+                  <span class="fas fa-dollar-sign"></span
+                  >{{ modelOrderDetails.amount_money }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
       </div>
     </div>
@@ -55,7 +145,10 @@ export default {
   data() {
     return {
       datas: [],
+      modelProducts: [],
+      modelOrderDetails: [],
       loading: true,
+      ModelLoading: true,
     };
   },
   props: ["auth_user"],
@@ -66,6 +159,30 @@ export default {
     setTimeout(() => {
       this.loading = false;
     }, 1000);
+  },
+  methods: {
+    ClickModel(id, product_id, date, time) {
+      axios
+        .get(
+          "/api/order/approval/" +
+            id +
+            "/" +
+            product_id +
+            "/" +
+            date +
+            "/" +
+            time +
+            "/get/products"
+        )
+        .then((res) => {
+          this.modelProducts = res.data.Products;
+          this.modelOrderDetails = res.data.Order[0];
+          this.ModelLoading = false;
+        })
+        .catch((error) => {
+          console.log("Error!");
+        });
+    },
   },
 };
 </script>

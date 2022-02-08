@@ -149,7 +149,6 @@
                     class="form-control"
                     name="address"
                     placeholder="ที่อยู่ ..."
-                    readonly
                   ></textarea>
                 </div>
                 <div class="form-group">
@@ -162,7 +161,6 @@
                         name="tel"
                         pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                         placeholder="เบอร์โทร ..."
-                        readonly
                       />
                     </div>
                     <div class="col-md-6 mb-2">
@@ -172,7 +170,6 @@
                         class="form-control"
                         name="subdistrict"
                         placeholder="ตำบล/แขวง ..."
-                        readonly
                       />
                     </div>
                   </div>
@@ -186,7 +183,6 @@
                         class="form-control"
                         name="district"
                         placeholder="อำเภอ/เขต"
-                        readonly
                       />
                     </div>
                     <div class="col-md-6 mb-2">
@@ -196,7 +192,6 @@
                         class="form-control"
                         name="province"
                         placeholder="จังหวัด ..."
-                        readonly
                       />
                     </div>
                   </div>
@@ -210,7 +205,6 @@
                         class="form-control"
                         name="code_zip"
                         placeholder="รหัสไปรษณีย์ ..."
-                        readonly
                       />
                     </div>
                   </div>
@@ -605,13 +599,11 @@ export default {
                   formData
                 )
                 .then((res) => {
-                  console.log(this.product_id);
+                  window.location.assign('/order-approval');
                 })
                 .catch((error) => {
                   console.log("error!");
                 });
-
-              // window.location.assign("/order-historys");
             }
           });
           return false;

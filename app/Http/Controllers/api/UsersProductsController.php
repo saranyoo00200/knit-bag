@@ -147,16 +147,23 @@ class UsersProductsController extends Controller
             $image->move(public_path($upload_location), $img_name);
             // create orders
             $idArray = explode(',', $request->product_id);
-            $idProducts = DB::table('products')->whereIn('id', $idArray)->get();
-            foreach ($idProducts as  $value) {
+            $idProducts = DB::table('user_products')
+                ->whereIn('product_id', $idArray)
+                ->where('user_id', $id)
+                ->get();
+            // dd($nunber);
+            foreach ($idProducts as $value) {
                 Order::create([
-                    'amount_products' => $request->amount_products,
-                    'paymentCode' => $request->paymentCode,
+                    'amount_products' => $value->number,
+                    'paymentDate' => $request->paymentDate,
+                    'paymentTime' => $request->paymentTime,
                     'user_id' => $id,
-                    'product_id' => $value->id
+                    'product_id' => $value->product_id,
                 ]);
-                // delete UserProducts 
-                UserProducts::where('product_id', $value->id)->where('user_id', $id)->delete();
+                // delete UserProducts
+                UserProducts::where('product_id', $value->product_id)
+                    ->where('user_id', $id)
+                    ->delete();
             }
             return response()->json(['msg' => 'Successfull!'], 200);
         }
