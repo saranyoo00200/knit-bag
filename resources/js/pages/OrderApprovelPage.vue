@@ -13,13 +13,14 @@
                 <th scope="col">Image</th>
                 <th scope="col">Name-surname</th>
                 <th scope="col">Amount money</th>
+                <th scope="col">Created_at</th>
                 <th scope="col">Approvel</th>
                 <th scope="col">Tool</th>
               </tr>
             </thead>
             <tbody v-if="datas == ''" class="text-center">
               <tr>
-                <th scope="row" colspan="6">ไม่มีรายการสินค้า</th>
+                <th scope="row" colspan="7">ไม่มีรายการสั่งสินค้า</th>
               </tr>
             </tbody>
             <tbody v-else>
@@ -34,7 +35,8 @@
                   />
                 </td>
                 <td>{{ data.fname }} {{ data.lname }}</td>
-                <td>{{ data.amount_money }} บาท($)</td>
+                <td>${{ data.amount_money }} บาท</td>
+                <td>{{ format_date(data.created_at) }}</td>
                 <td v-if="data.approvel == true">
                   <span class="badge badge-success">อนุมัติแล้ว</span>
                 </td>
@@ -56,6 +58,12 @@
                     data-bs-target="#modelApprove"
                   >
                     <i class="fas fa-eye"></i>
+                  </button>
+                  <button
+                    @click="deleteOrder(data.id, index)"
+                    class="btn btn-danger"
+                  >
+                    <i class="fas fa-trash"></i>
                   </button>
                 </td>
               </tr>
@@ -89,7 +97,15 @@
               <span class="sr-only">Loading...</span>
             </div>
             <div v-else>
-              <h3>Order product</h3>
+              <div class="d-flex justify-content-between mb-2">
+                <h3>Order product</h3>
+                <button
+                  v-show="modelOrderDetails.approvel == 1"
+                  class="btn btn-outline-secondary btn-floating m-1"
+                >
+                  <i class="fas fa-print"></i>
+                </button>
+              </div>
               <table class="table table-bordered text-center">
                 <thead>
                   <tr>
@@ -116,12 +132,115 @@
                 </tbody>
               </table>
               <div class="d-flex justify-content-center">
-                <p>Total Amount</p>
+                <p class="font-weight-bold">Total Amount</p>
                 <p class="ms-auto">
                   <span class="fas fa-dollar-sign"></span
                   >{{ modelOrderDetails.amount_money }}
                 </p>
               </div>
+              <hr />
+              <div>
+                <p class="font-weight-bold">
+                  Address:
+                  <span class="font-weight-normal">{{
+                    modelOrderDetails.address
+                  }}</span>
+                </p>
+                <p class="font-weight-normal">
+                  Subdistrict: {{ modelOrderDetails.subdistrict }}, district:
+                  {{ modelOrderDetails.district }}, province:
+                  {{ modelOrderDetails.province }}, code_zip:
+                  {{ modelOrderDetails.code_zip }}
+                </p>
+                <p class="font-weight-bold">
+                  Tel:
+                  <span class="font-weight-normal">{{
+                    modelOrderDetails.tel
+                  }}</span>
+                </p>
+                <p class="font-weight-bold">Slib:</p>
+                <div class="text-center">
+                  <img
+                    class="border-custom01 mb-3"
+                    :src="modelOrderDetails.PaymentImage"
+                    width="250px"
+                    alt=""
+                  />
+                  <p class="font-weight-bold">
+                    Date:
+                    <span class="font-weight-normal">{{
+                      modelOrderDetails.paymentDate
+                    }}</span>
+                  </p>
+                  <p class="font-weight-bold">
+                    Time:
+                    <span class="font-weight-normal">{{
+                      modelOrderDetails.paymentTime
+                    }}</span>
+                  </p>
+                  <p class="font-weight-bold">
+                    Bank transfer 4:
+                    <span class="font-weight-normal"
+                      >ธนาคาร{{ modelOrderDetails.bankTransfer }}</span
+                    >
+                  </p>
+                  <p class="font-weight-bold">
+                    To bank:
+                    <span class="font-weight-normal"
+                      >ธนาคาร{{ modelOrderDetails.toBank }}</span
+                    >
+                  </p>
+                  <p class="font-weight-bold">
+                    Code 4:
+                    <span class="font-weight-normal">{{
+                      modelOrderDetails.paymentCode
+                    }}</span>
+                  </p>
+                </div>
+              </div>
+              <form action="">
+                <div class="form-group">
+                  <label for="approve" class="label-control"
+                    >อนุมัติคำสั่งซื้อสินค้า</label
+                  >
+                  <select
+                    v-model="modelOrderDetails.approvel"
+                    id="approve"
+                    class="custom-select"
+                    name="approve"
+                  >
+                    <option
+                      value="1"
+                      :selected="modelOrderDetails.approvel == 1"
+                    >
+                      อนุมัติ
+                    </option>
+                    <option
+                      value="0"
+                      :selected="modelOrderDetails.approvel == 0"
+                    >
+                      ยังไม่อนุมัติ
+                    </option>
+                  </select>
+                </div>
+                <div
+                  v-show="modelOrderDetails.approvel == 1"
+                  class="form-group"
+                >
+                  <label for="alert_code" class="label-control"
+                    >เลขพัสดุ
+                    <span class="text-danger"
+                      >(เมื่อได้ทำการส่งพัสดุแล้ว)</span
+                    ></label
+                  >
+                  <input
+                    v-model="modelOrderDetails.alert"
+                    type="text"
+                    class="form-control"
+                    placeholder="xxxx xxx xxxx"
+                  />
+                </div>
+              </form>
             </div>
           </div>
           <div class="modal-footer">
@@ -132,7 +251,9 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" @click="submit" class="btn btn-primary">
+              Save changes
+            </button>
           </div>
         </div>
       </div>
@@ -141,6 +262,7 @@
 </template>
 <script>
 import axios from "axios";
+import moment from "moment";
 export default {
   data() {
     return {
@@ -183,6 +305,47 @@ export default {
           console.log("Error!");
         });
     },
+    submit() {
+      axios
+        .post("/api/order/approval/" + this.modelOrderDetails.id + "/update", {
+          approval: this.modelOrderDetails.approvel,
+          alert: this.modelOrderDetails.alert,
+        })
+        .then((res) => {
+          
+          window.location.reload();
+        });
+    },
+    deleteOrder(id, index) {
+      this.$swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.value) {
+          // API Delete
+          axios
+            .get("/api/order/approval/" + id + "/delete")
+            .then((response) => {
+              this.$swal("Deleted!", "Your file has been deleted.", "success");
+              this.datas.splice(index, 1);
+            })
+            .catch((error) => {
+              console.log("error");
+            });
+        }
+      });
+    },
+    format_date(value) {
+      if (value) {
+        moment.locale("th");
+        return moment(String(value)).add(543, "years").format("DD/MMM/YYYY");
+      }
+    },
   },
 };
 </script>
@@ -199,5 +362,9 @@ export default {
     no-repeat rgb(249, 249, 249);
   background-position: center;
   background-size: 100px;
+}
+.border-custom01 {
+  border: 1px solid #444444;
+  border-radius: 15px;
 }
 </style>

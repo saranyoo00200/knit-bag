@@ -275,12 +275,12 @@
                                 </li>
 
                                 <!-- Nav Item - heart -->
-                                <li class="nav-item mx-1">
+                                {{-- <li class="nav-item mx-1">
                                     <a class="nav-link" href="{{ url('/order-historys') }}">
                                         <i class="fas fa-history"></i>
                                         <span class="badge badge-danger badge-counter">0</span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <!-- Nav Item - cart -->
                                 <li class="nav-item mx-1">

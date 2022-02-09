@@ -67,7 +67,7 @@
                                         ->where('approvel', 0)
                                         ->count();
                                 @endphp
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link mx-1 position-relative" href="{{ url('/order-historys') }}">
                                         <i class="fas fa-history"></i>
                                         <span class="position-absolute translate-middle-x badge bg-danger"
@@ -75,7 +75,7 @@
                                             0
                                         </span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a class="nav-link mx-1 position-relative" href="{{ url('/my-products') }}">
                                         <i class="fas fa-shopping-cart"></i>
@@ -202,7 +202,7 @@
                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

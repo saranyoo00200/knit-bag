@@ -10,6 +10,7 @@ use App\Models\Products;
 use App\Models\UserProducts;
 use App\Models\OrderApproves;
 use App\Models\Order;
+use App\Models\Sale;
 
 class UsersProductsController extends Controller
 {
@@ -143,7 +144,7 @@ class UsersProductsController extends Controller
             $upload_location = 'images/order_approvel/';
             $full_path = $upload_location . $img_name;
             $input['PaymentImage'] = $full_path;
-            OrderApproves::create($input);
+            $OrderApp_id = OrderApproves::create($input)->id;
             $image->move(public_path($upload_location), $img_name);
             // create orders
             $idArray = explode(',', $request->product_id);
@@ -151,6 +152,15 @@ class UsersProductsController extends Controller
                 ->whereIn('product_id', $idArray)
                 ->where('user_id', $id)
                 ->get();
+            // add to sales
+            $OrderApproves = OrderApproves::where('id', $OrderApp_id)->get();
+            foreach ($OrderApproves as $key => $value) {
+                Sale::create([
+                    'TotalPrice' => $request->amount_money,
+                    'SaleDate' =>  $value->updated_at,
+                    'OrderAppID' => $OrderApp_id,
+                ]);
+            }
             // dd($nunber);
             foreach ($idProducts as $value) {
                 Order::create([
@@ -178,6 +188,19 @@ class UsersProductsController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getMyHistorys($id)
+    {
+        $OrderApproves = OrderApproves::where('user_id', $id)->get();
+
+        return response()->json($OrderApproves, 200);
     }
 
     /**

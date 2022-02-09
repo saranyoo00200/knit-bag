@@ -599,7 +599,7 @@ export default {
                   formData
                 )
                 .then((res) => {
-                  window.location.assign('/order-approval');
+                  window.location.assign("/order-historys");
                 })
                 .catch((error) => {
                   console.log("error!");

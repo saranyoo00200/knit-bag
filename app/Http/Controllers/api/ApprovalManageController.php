@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\OrderApproves;
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\Order;
+use App\Models\Sale;
+// use Carbon\Carbon;
+use Datetime;
 
 class ApprovalManageController extends Controller
 {
@@ -16,7 +20,7 @@ class ApprovalManageController extends Controller
      */
     public function index()
     {
-        $OrderApproves = OrderApproves::orderBy('id', 'DESC')->get();
+        $OrderApproves = OrderApproves::orderBy('approvel', 'ASC')->get();
 
         foreach ($OrderApproves as $key => $value) {
             if ($value->PaymentImage != '') {
@@ -42,16 +46,19 @@ class ApprovalManageController extends Controller
             ->where('orders.paymentTime', $time)
             ->get();
 
+        foreach ($Products as $key => $value) {
+            if ($value->Pimage != '') {
+                $value->Pimage = url('/') . '/' . $value->Pimage;
+            }
+        }
         $OrderApproves = OrderApproves::where('product_id', $product_id)
             ->where('user_id', $id)
             ->where('paymentDate', $date)
             ->where('paymentTime', $time)
             ->get();
 
-        foreach ($Products as $key => $value) {
-            if ($value->Pimage != '') {
-                $value->Pimage = url('/') . '/' . $value->Pimage;
-            }
+        foreach ($OrderApproves as $key => $item) {
+            $item->paymentDate =  date('d/m/Y', strtotime($item->paymentDate));
         }
 
         return response()->json(['Products' => $Products, 'Order' => $OrderApproves], 200);
@@ -76,6 +83,25 @@ class ApprovalManageController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function approvalUpdate(Request $request, $id)
+    {
+        Sale::where('OrderAppID', $id)->update([
+            'PaymentStatus' => $request->approval
+        ]);
+        OrderApproves::find($id)->update([
+            'approvel' => $request->approval,
+            'alert' => $request->alert
+        ]);
+
+        return response()->json(['msg' => 'Successfull!'], 200);
     }
 
     /**
@@ -110,6 +136,33 @@ class ApprovalManageController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function approvalDestroy($id)
+    {
+        $get_id = OrderApproves::where('id', $id)->select('product_id', 'user_id', 'paymentDate', 'paymentTime')->get();
+        foreach ($get_id as $value) {
+            $del_id = $value->product_id;
+            $del_user = $value->user_id;
+            $del_date = $value->paymentDate;
+            $del_time = $value->paymentTime;
+        }
+        $array_id = explode(',', $del_id);
+        OrderApproves::find($id)->delete();
+        Sale::where('OrderAppID', $id)->delete();
+
+        Order::whereIn('product_id', $array_id)->where('user_id', $del_user)
+            ->where('paymentDate', $del_date)
+            ->where('paymentTime', $del_time)
+            ->delete();
+
+        return response()->json(['msg' => 'Deleted Successfull!'], 200);
     }
 
     /**

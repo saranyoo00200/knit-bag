@@ -32,6 +32,7 @@ class CreateOrderApprovesTable extends Migration
             $table->string('amount_money')->nullable()->comment('จำนวนเงิน');
             $table->string('paymentCode')->nullable()->comment('โอนเงินผ่านบัญชีธนาคารเลข 4 หลักสุดท้าย');
             $table->boolean('approvel')->default(0)->comment('อนุมัติ');
+            $table->string('alert')->nullable()->comment('เลขพัสดุ');
             $table->unsignedBigInteger('user_id');
             $table->string('product_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

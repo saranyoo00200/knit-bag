@@ -10,6 +10,7 @@ use App\Http\Controllers\api\ApprovalManageController;
 use App\Http\Controllers\api\ProductsController;
 use App\Http\Controllers\api\ProfileController;
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\SelesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,19 +53,22 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/users/product/{id}/plus', [UsersProductsController::class, 'plus']);
     Route::post('/users/product/{id}/minus', [UsersProductsController::class, 'minus']);
     Route::post('/users/products/{id}/order-approve', [UsersProductsController::class, 'orderApprove']);
-    // Route::post('/users/products/{id}/order', [UsersProductsController::class, 'order']);
+    Route::get('/user/order/{id}/get/historys', [UsersProductsController::class, 'getMyHistorys']);
 });
 
 // Approval
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/order/approval/index', [ApprovalManageController::class, 'index']);
     Route::get('/order/approval/{id}/{product_id}/{date}/{time}/get/products', [ApprovalManageController::class, 'getProducts']);
-    // Route::post('/users/addProduct/create', [ApprovalManageController::class, 'create']);
-    // Route::get('/users/product/{id}/delete', [ApprovalManageController::class, 'destroy']);
-    // Route::post('/users/product/{id}/plus', [ApprovalManageController::class, 'plus']);
-    // Route::post('/users/product/{id}/minus', [ApprovalManageController::class, 'minus']);
-    // Route::post('/users/products/{id}/order-approve', [ApprovalManageController::class, 'orderApprove']);
+    Route::post('/order/approval/{id}/update', [ApprovalManageController::class, 'approvalUpdate']);
+    Route::get('/order/approval/{id}/delete', [ApprovalManageController::class, 'approvalDestroy']);
 });
+
+// seles
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/seles/all/index', [SelesController::class, 'index']);
+});
+Route::get('/seles/{id}/get/products', [SelesController::class, 'getProducts']);
 
 // product
 Route::get('/products/show', [ProductsController::class, 'show']);
