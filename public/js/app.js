@@ -6631,6 +6631,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -15758,7 +15759,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-68cdaddc] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-68cdaddc] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15806,7 +15807,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-80e327c4] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\n.border-custom01[data-v-80e327c4] {\r\n  border: 1px solid #444444;\r\n  border-radius: 15px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-80e327c4] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n.border-custom01[data-v-80e327c4] {\n  border: 1px solid #444444;\n  border-radius: 15px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -83138,19 +83139,32 @@ var render = function () {
                     0
                   ),
               _vm._v(" "),
-              _c("tfoot", [
-                _c("tr", [
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v("Total Amount"),
+              _c(
+                "tfoot",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.info != "",
+                      expression: "info != ''",
+                    },
+                  ],
+                },
+                [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Total Amount"),
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("$" + _vm._s(_vm.Total)),
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }),
                   ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v("$" + _vm._s(_vm.Total)),
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }),
-                ]),
-              ]),
+                ]
+              ),
             ]
           ),
         ]),
@@ -84825,6 +84839,8 @@ var render = function () {
                   0
                 ),
           ]),
+          _vm._v(" "),
+          _c("hr"),
         ]),
       ]),
     ]),

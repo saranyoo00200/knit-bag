@@ -36,7 +36,7 @@
                 </td>
               </tr>
             </tbody>
-            <tfoot>
+            <tfoot v-show="info != ''">
               <tr>
                 <th scope="col">Total Amount</th>
                 <th scope="col">${{ Total }}</th>

@@ -72,6 +72,7 @@
               </tr>
             </tbody>
           </table>
+          <hr>
         </div>
       </div>
     </div>
