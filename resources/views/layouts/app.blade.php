@@ -309,10 +309,10 @@
                                         <span
                                             class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                         @if (Auth::user()->image != null)
-                                            <img class="img-profile rounded-circle"
+                                            <img class="img-profile rounded-circle" width="30px" height="30px"
                                                 src="{{ asset(Auth::user()->image) }}">
                                         @else
-                                            <img class="img-profile rounded-circle"
+                                            <img class="img-profile rounded-circle" width="30px" height="30px"
                                                 src="https://image.shutterstock.com/mosaic_250/169412572/1040084344/stock-vector-man-icon-vector-1040084344.jpg">
                                         @endif
                                     </a>
@@ -368,7 +368,12 @@
                         <section class="container p-2">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6 col-lg-8 text-md-start">
-                                    <div class="p-3 text-auto">Ecommerce for <u>KNOMPUNG</u> stores.</div>
+                                    <div class="p-3 text-auto">Copyright &copy; KNIT BAG <span>@
+                                            <script>
+                                                let currentYear = new Date().getFullYear();
+                                                document.write(currentYear);
+                                            </script>
+                                        </span></div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 ml-lg-0 text-center text-md-end">
                                     <!-- Facebook -->
@@ -420,7 +425,7 @@
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                             <a class="btn btn-primary" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

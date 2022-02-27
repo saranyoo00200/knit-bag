@@ -131,7 +131,7 @@
                         name="Pname"
                         class="form-control"
                         id="NameProducts"
-                        placeholder="Name Product ......."
+                        placeholder="Name Product "
                         required
                       />
                     </div>
@@ -147,7 +147,7 @@
                         name="Pprice"
                         class="form-control"
                         id="PriceProduct"
-                        placeholder="Price Product ......."
+                        placeholder="Price Product "
                         required
                       />
                     </div>
@@ -161,7 +161,7 @@
                     name="Pdetail"
                     class="form-control"
                     id="DetailProduct"
-                    placeholder="Detail Product ......."
+                    placeholder="Detail Product "
                     required
                   />
                 </div>
@@ -177,7 +177,7 @@
                         name="Pclass"
                         required
                       >
-                        <option value="">Select Class .........</option>
+                        <option value="">Select Class</option>
                         <option value="1">Bag</option>
                         <option value="2">Shirt</option>
                         <option value="3">Scarf</option>
@@ -274,7 +274,7 @@
                       name="Pname"
                       class="form-control"
                       id="NameProducts"
-                      placeholder="Name Product ......."
+                      placeholder="Name Product "
                       required
                     />
                   </div>
@@ -290,7 +290,7 @@
                       name="Pprice"
                       class="form-control"
                       id="PriceProduct"
-                      placeholder="Price Product ......."
+                      placeholder="Price Product "
                       required
                     />
                   </div>
@@ -304,7 +304,7 @@
                   name="Pdetail"
                   class="form-control"
                   id="DetailProduct"
-                  placeholder="Detail Product ......."
+                  placeholder="Detail Product "
                   required
                 />
               </div>
@@ -320,7 +320,7 @@
                       name="Pclass"
                       required
                     >
-                      <option value="">Select Class .........</option>
+                      <option value="">Select Class</option>
                       <option value="1">Bag</option>
                       <option value="2">Shirt</option>
                       <option value="3">Scarf</option>

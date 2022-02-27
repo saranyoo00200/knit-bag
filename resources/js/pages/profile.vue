@@ -33,7 +33,7 @@
                       :src="file_photo"
                       class="rounded-circle shadow mt-5"
                       alt=""
-                      width="60%"
+                      width="140px"
                       height="140px"
                     />
                     <img
@@ -41,7 +41,7 @@
                       :src="infoProfile.image"
                       class="rounded-circle shadow mt-5"
                       alt=""
-                      width="60%"
+                      width="140px"
                       height="140px"
                     /><span class="font-weight-bold">{{ nameShow }}</span
                     ><span class="text-black-50">{{ emailShow }}</span

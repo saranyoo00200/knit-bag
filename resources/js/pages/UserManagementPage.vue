@@ -142,7 +142,7 @@
                     name="name"
                     class="form-control"
                     id="NameUsers"
-                    placeholder="First name - Last name  .......... "
+                    placeholder="First name - Last name  "
                     required
                   />
                 </div>
@@ -154,7 +154,7 @@
                     name="email"
                     class="form-control"
                     id="UsersEmail"
-                    placeholder="Eamil .......... "
+                    placeholder="Eamil "
                     required
                   />
                 </div>
@@ -170,7 +170,7 @@
                         type="password"
                         class="form-control"
                         name="password"
-                        placeholder="password .........."
+                        placeholder="password"
                       />
                     </div>
                   </div>
@@ -185,7 +185,7 @@
                         type="password"
                         name="password_confirmation"
                         class="form-control"
-                        placeholder="password confirmation .........."
+                        placeholder="password confirmation"
                       />
                     </div>
                   </div>
@@ -203,7 +203,7 @@
                         name="status"
                         required
                       >
-                        <option value="">Select status ..........</option>
+                        <option value="">Select status.</option>
                         <option value="1">Active</option>
                         <option value="0">Inactive</option>
                       </select>
@@ -288,7 +288,7 @@
                   name="name"
                   class="form-control"
                   id="AddNameUsers"
-                  placeholder="First name - Last name  .......... "
+                  placeholder="First name - Last name"
                   required
                 />
               </div>
@@ -300,7 +300,7 @@
                   name="email"
                   class="form-control"
                   id="AddUsersEmail"
-                  placeholder="Eamil .......... "
+                  placeholder="Eamil"
                   required
                 />
               </div>
@@ -316,7 +316,7 @@
                       type="password"
                       class="form-control"
                       name="password"
-                      placeholder="password .........."
+                      placeholder="password"
                       required
                     />
                   </div>
@@ -332,7 +332,7 @@
                       type="password"
                       name="password_confirmation"
                       class="form-control"
-                      placeholder="password confirmation .........."
+                      placeholder="password confirmation"
                       required
                     />
                   </div>

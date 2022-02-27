@@ -96,146 +96,43 @@
 
     <div id="Products">
       <div class="container">
-        <div class="d-flex justify-content-center mb-2">
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link fs-5 active"
-                id="bag-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#bag"
-                type="button"
-                role="tab"
-                aria-controls="bag"
-                aria-selected="true"
-              >
-                BAG
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link fs-5"
-                id="shirt-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#shirt"
-                type="button"
-                role="tab"
-                aria-controls="shirt"
-                aria-selected="false"
-              >
-                SHIRT
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link fs-5"
-                id="contact-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#contact"
-                type="button"
-                role="tab"
-                aria-controls="contact"
-                aria-selected="false"
-              >
-                SCARF
-              </button>
-            </li>
-          </ul>
-        </div>
+        <section class="products-content">
+          <h2 class="text-center p-3">BAG</h2>
 
-        <div class="tab-content" id="myTabContent">
-          <div
-            class="tab-pane fade show active"
-            id="bag"
-            role="tabpanel"
-            aria-labelledby="bag-tab"
-          >
-            <div class="row">
-              <div
-                v-for="(data, index) in dataLists"
-                :key="index"
-                class="col-md-4 mb-3"
-              >
-                <div class="card">
-                  <img
-                    :src="data.Pimage"
-                    height="400px"
-                    class="card-img-top w-100"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">{{ data.Pname }}</h5>
-                    <p
-                      class="card-text"
-                      :inner-html.prop="data.Pdetail | truncate(70)"
-                    ></p>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-bs-toggle="modal"
-                      data-bs-target="#ClickShowInfoProduct"
-                      @click="GetClickProduct(data.id)"
-                    >
-                      เลือกสินค้า
-                    </button>
-                  </div>
+          <div class="row">
+            <div
+              v-for="(data, index) in dataLists"
+              :key="index"
+              class="col-md-4 mb-3"
+            >
+              <div class="card">
+                <img
+                  :src="data.Pimage"
+                  height="400px"
+                  class="card-img-top w-100"
+                  alt="..."
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{ data.Pname }}</h5>
+                  <p>Price: {{ data.Pprice }}</p>
+                  <p
+                    class="card-text"
+                    :inner-html.prop="data.Pdetail | truncate(70)"
+                  ></p>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ClickShowInfoProduct"
+                    @click="GetClickProduct(data.id)"
+                  >
+                    เลือกสินค้า
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            class="tab-pane fade"
-            id="shirt"
-            role="tabpanel"
-            aria-labelledby="shirt-tab"
-          >
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <div class="card">
-                  <img
-                    src="https://cf.shopee.co.th/file/9de1b6ca5b9fa7bcad2cf96f8aaccc72"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                    <a href="#" class="btn btn-primary">เลือกสินค้า</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="contact"
-            role="tabpanel"
-            aria-labelledby="contact-tab"
-          >
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <div class="card">
-                  <img
-                    src="https://cf.shopee.co.th/file/06d92961e36548efe8f4ed43c8aaeb04"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                    <a href="#" class="btn btn-primary">เลือกสินค้า</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
 

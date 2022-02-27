@@ -10,26 +10,12 @@
             <div class="col-md-6 mb-3">
               <form>
                 <div class="mb-3">
-                  <label for="exampleInputFristname" class="form-label"
-                    >Fristname</label
-                  >
+                  <label for="exampleInputName" class="form-label">Name</label>
                   <input
                     type="text"
-                    name="fristname"
+                    name="Name"
                     class="form-control"
-                    id="exampleInputFristname"
-                    required
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputLastname" class="form-label"
-                    >Lastname</label
-                  >
-                  <input
-                    type="text"
-                    name="lastname"
-                    class="form-control"
-                    id="exampleInputLastname"
+                    id="exampleInputName"
                     required
                   />
                 </div>

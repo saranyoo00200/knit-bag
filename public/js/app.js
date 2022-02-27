@@ -5591,20 +5591,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index",
   data: function data() {
@@ -5643,109 +5629,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -15831,7 +15714,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-3187c178] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-3187c178] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15879,7 +15762,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-77ed68e6] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-77ed68e6] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15951,7 +15834,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-b8380460] {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 9999;\r\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\r\n    no-repeat rgb(249, 249, 249);\r\n  background-position: center;\r\n  background-size: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#load[data-v-b8380460] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: 9999;\n  background: url(\"https://cdn.discordapp.com/attachments/773251194344570923/934464155644211210/XOsX.gif\")\n    no-repeat rgb(249, 249, 249);\n  background-position: center;\n  background-size: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -83397,38 +83280,17 @@ var staticRenderFns = [
                       "label",
                       {
                         staticClass: "form-label",
-                        attrs: { for: "exampleInputFristname" },
+                        attrs: { for: "exampleInputName" },
                       },
-                      [_vm._v("Fristname")]
+                      [_vm._v("Name")]
                     ),
                     _vm._v(" "),
                     _c("input", {
                       staticClass: "form-control",
                       attrs: {
                         type: "text",
-                        name: "fristname",
-                        id: "exampleInputFristname",
-                        required: "",
-                      },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "mb-3" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label",
-                        attrs: { for: "exampleInputLastname" },
-                      },
-                      [_vm._v("Lastname")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "lastname",
-                        id: "exampleInputLastname",
+                        name: "Name",
+                        id: "exampleInputName",
                         required: "",
                       },
                     }),
@@ -83550,89 +83412,62 @@ var render = function () {
     _vm._v(" "),
     _c("div", { attrs: { id: "Products" } }, [
       _c("div", { staticClass: "container" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "tab-content", attrs: { id: "myTabContent" } },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "tab-pane fade show active",
-                attrs: {
-                  id: "bag",
-                  role: "tabpanel",
-                  "aria-labelledby": "bag-tab",
-                },
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  _vm._l(_vm.dataLists, function (data, index) {
-                    return _c(
-                      "div",
-                      { key: index, staticClass: "col-md-4 mb-3" },
-                      [
-                        _c("div", { staticClass: "card" }, [
-                          _c("img", {
-                            staticClass: "card-img-top w-100",
-                            attrs: {
-                              src: data.Pimage,
-                              height: "400px",
-                              alt: "...",
-                            },
-                          }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("h5", { staticClass: "card-title" }, [
-                              _vm._v(_vm._s(data.Pname)),
-                            ]),
-                            _vm._v(" "),
-                            _c("p", {
-                              staticClass: "card-text",
-                              domProps: {
-                                innerHTML: _vm._f("truncate")(data.Pdetail, 70),
-                              },
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary",
-                                attrs: {
-                                  type: "button",
-                                  "data-bs-toggle": "modal",
-                                  "data-bs-target": "#ClickShowInfoProduct",
-                                },
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.GetClickProduct(data.id)
-                                  },
-                                },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                    เลือกสินค้า\n                  "
-                                ),
-                              ]
-                            ),
-                          ]),
-                        ]),
-                      ]
-                    )
+        _c("section", { staticClass: "products-content" }, [
+          _c("h2", { staticClass: "text-center p-3" }, [_vm._v("BAG")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.dataLists, function (data, index) {
+              return _c("div", { key: index, staticClass: "col-md-4 mb-3" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("img", {
+                    staticClass: "card-img-top w-100",
+                    attrs: { src: data.Pimage, height: "400px", alt: "..." },
                   }),
-                  0
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3),
-          ]
-        ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body text-center" }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(data.Pname)),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Price: " + _vm._s(data.Pprice))]),
+                    _vm._v(" "),
+                    _c("p", {
+                      staticClass: "card-text",
+                      domProps: {
+                        innerHTML: _vm._f("truncate")(data.Pdetail, 70),
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#ClickShowInfoProduct",
+                        },
+                        on: {
+                          click: function ($event) {
+                            return _vm.GetClickProduct(data.id)
+                          },
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\n                  เลือกสินค้า\n                "
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+              ])
+            }),
+            0
+          ),
+        ]),
       ]),
     ]),
     _vm._v(" "),
@@ -83933,184 +83768,6 @@ var staticRenderFns = [
         ]
       ),
     ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-center mb-2" }, [
-      _c(
-        "ul",
-        {
-          staticClass: "nav nav-tabs",
-          attrs: { id: "myTab", role: "tablist" },
-        },
-        [
-          _c(
-            "li",
-            { staticClass: "nav-item", attrs: { role: "presentation" } },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "nav-link fs-5 active",
-                  attrs: {
-                    id: "bag-tab",
-                    "data-bs-toggle": "tab",
-                    "data-bs-target": "#bag",
-                    type: "button",
-                    role: "tab",
-                    "aria-controls": "bag",
-                    "aria-selected": "true",
-                  },
-                },
-                [_vm._v("\n              BAG\n            ")]
-              ),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "nav-item", attrs: { role: "presentation" } },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "nav-link fs-5",
-                  attrs: {
-                    id: "shirt-tab",
-                    "data-bs-toggle": "tab",
-                    "data-bs-target": "#shirt",
-                    type: "button",
-                    role: "tab",
-                    "aria-controls": "shirt",
-                    "aria-selected": "false",
-                  },
-                },
-                [_vm._v("\n              SHIRT\n            ")]
-              ),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "nav-item", attrs: { role: "presentation" } },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "nav-link fs-5",
-                  attrs: {
-                    id: "contact-tab",
-                    "data-bs-toggle": "tab",
-                    "data-bs-target": "#contact",
-                    type: "button",
-                    role: "tab",
-                    "aria-controls": "contact",
-                    "aria-selected": "false",
-                  },
-                },
-                [_vm._v("\n              SCARF\n            ")]
-              ),
-            ]
-          ),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: {
-          id: "shirt",
-          role: "tabpanel",
-          "aria-labelledby": "shirt-tab",
-        },
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-4 mb-3" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: {
-                  src: "https://cf.shopee.co.th/file/9de1b6ca5b9fa7bcad2cf96f8aaccc72",
-                  alt: "...",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(
-                    "\n                    Some quick example text to build on the card title and\n                    make up the bulk of the card's content.\n                  "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                  [_vm._v("เลือกสินค้า")]
-                ),
-              ]),
-            ]),
-          ]),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: {
-          id: "contact",
-          role: "tabpanel",
-          "aria-labelledby": "contact-tab",
-        },
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-4 mb-3" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("img", {
-                staticClass: "card-img-top",
-                attrs: {
-                  src: "https://cf.shopee.co.th/file/06d92961e36548efe8f4ed43c8aaeb04",
-                  alt: "...",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(
-                    "\n                    Some quick example text to build on the card title and\n                    make up the bulk of the card's content.\n                  "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                  [_vm._v("เลือกสินค้า")]
-                ),
-              ]),
-            ]),
-          ]),
-        ]),
-      ]
-    )
   },
 ]
 render._withStripped = true
@@ -85400,7 +85057,7 @@ var render = function () {
                                   type: "text",
                                   name: "Pname",
                                   id: "NameProducts",
-                                  placeholder: "Name Product .......",
+                                  placeholder: "Name Product ",
                                   required: "",
                                 },
                                 domProps: { value: _vm.DataEdit.Pname },
@@ -85445,7 +85102,7 @@ var render = function () {
                                   type: "number",
                                   name: "Pprice",
                                   id: "PriceProduct",
-                                  placeholder: "Price Product .......",
+                                  placeholder: "Price Product ",
                                   required: "",
                                 },
                                 domProps: { value: _vm.DataEdit.Pprice },
@@ -85490,7 +85147,7 @@ var render = function () {
                               type: "text",
                               name: "Pdetail",
                               id: "DetailProduct",
-                              placeholder: "Detail Product .......",
+                              placeholder: "Detail Product ",
                               required: "",
                             },
                             domProps: { value: _vm.DataEdit.Pdetail },
@@ -85560,7 +85217,7 @@ var render = function () {
                                 },
                                 [
                                   _c("option", { attrs: { value: "" } }, [
-                                    _vm._v("Select Class ........."),
+                                    _vm._v("Select Class"),
                                   ]),
                                   _vm._v(" "),
                                   _c("option", { attrs: { value: "1" } }, [
@@ -85721,7 +85378,7 @@ var render = function () {
                             type: "text",
                             name: "Pname",
                             id: "NameProducts",
-                            placeholder: "Name Product .......",
+                            placeholder: "Name Product ",
                             required: "",
                           },
                           domProps: { value: _vm.DataAdd.Pname },
@@ -85766,7 +85423,7 @@ var render = function () {
                             type: "number",
                             name: "Pprice",
                             id: "PriceProduct",
-                            placeholder: "Price Product .......",
+                            placeholder: "Price Product ",
                             required: "",
                           },
                           domProps: { value: _vm.DataAdd.Pprice },
@@ -85811,7 +85468,7 @@ var render = function () {
                         type: "text",
                         name: "Pdetail",
                         id: "DetailProduct",
-                        placeholder: "Detail Product .......",
+                        placeholder: "Detail Product ",
                         required: "",
                       },
                       domProps: { value: _vm.DataAdd.Pdetail },
@@ -85873,7 +85530,7 @@ var render = function () {
                           },
                           [
                             _c("option", { attrs: { value: "" } }, [
-                              _vm._v("Select Class ........."),
+                              _vm._v("Select Class"),
                             ]),
                             _vm._v(" "),
                             _c("option", { attrs: { value: "1" } }, [
@@ -89477,8 +89134,7 @@ var render = function () {
                               type: "text",
                               name: "name",
                               id: "NameUsers",
-                              placeholder:
-                                "First name - Last name  .......... ",
+                              placeholder: "First name - Last name  ",
                               required: "",
                             },
                             domProps: { value: _vm.InfoEdit.name },
@@ -89521,7 +89177,7 @@ var render = function () {
                               type: "text",
                               name: "email",
                               id: "UsersEmail",
-                              placeholder: "Eamil .......... ",
+                              placeholder: "Eamil ",
                               required: "",
                             },
                             domProps: { value: _vm.InfoEdit.email },
@@ -89566,7 +89222,7 @@ var render = function () {
                                   id: "password",
                                   type: "password",
                                   name: "password",
-                                  placeholder: "password ..........",
+                                  placeholder: "password",
                                 },
                                 domProps: { value: _vm.InfoEdit.password },
                                 on: {
@@ -89611,8 +89267,7 @@ var render = function () {
                                   id: "password_confirmation",
                                   type: "password",
                                   name: "password_confirmation",
-                                  placeholder:
-                                    "password confirmation ..........",
+                                  placeholder: "password confirmation",
                                 },
                                 domProps: {
                                   value: _vm.InfoEdit.password_confirmation,
@@ -89689,7 +89344,7 @@ var render = function () {
                                 },
                                 [
                                   _c("option", { attrs: { value: "" } }, [
-                                    _vm._v("Select status .........."),
+                                    _vm._v("Select status."),
                                   ]),
                                   _vm._v(" "),
                                   _c("option", { attrs: { value: "1" } }, [
@@ -89840,7 +89495,7 @@ var render = function () {
                         type: "text",
                         name: "name",
                         id: "AddNameUsers",
-                        placeholder: "First name - Last name  .......... ",
+                        placeholder: "First name - Last name",
                         required: "",
                       },
                       domProps: { value: _vm.InfoAdd.name },
@@ -89879,7 +89534,7 @@ var render = function () {
                         type: "text",
                         name: "email",
                         id: "AddUsersEmail",
-                        placeholder: "Eamil .......... ",
+                        placeholder: "Eamil",
                         required: "",
                       },
                       domProps: { value: _vm.InfoAdd.email },
@@ -89920,7 +89575,7 @@ var render = function () {
                             id: "AddPassword",
                             type: "password",
                             name: "password",
-                            placeholder: "password ..........",
+                            placeholder: "password",
                             required: "",
                           },
                           domProps: { value: _vm.InfoAdd.password },
@@ -89965,7 +89620,7 @@ var render = function () {
                             id: "AddPassword_confirmation",
                             type: "password",
                             name: "password_confirmation",
-                            placeholder: "password confirmation ..........",
+                            placeholder: "password confirmation",
                             required: "",
                           },
                           domProps: {
@@ -91399,7 +91054,7 @@ var render = function () {
                               attrs: {
                                 src: _vm.file_photo,
                                 alt: "",
-                                width: "60%",
+                                width: "140px",
                                 height: "140px",
                               },
                             })
@@ -91408,7 +91063,7 @@ var render = function () {
                               attrs: {
                                 src: _vm.infoProfile.image,
                                 alt: "",
-                                width: "60%",
+                                width: "140px",
                                 height: "140px",
                               },
                             }),
